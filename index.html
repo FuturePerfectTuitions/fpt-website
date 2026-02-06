@@ -27,7 +27,7 @@
 </head>
 
 <body>
-  <!-- Skip link (accessibility + SEO) -->
+  <!-- Skip link (accessibility) -->
   <a class="skip-link" href="#top">Skip to content</a>
 
   <header class="topbar">
@@ -125,7 +125,7 @@
             </div>
             <div class="micro-item">
               <span class="micro-dot" aria-hidden="true"></span>
-              Next to Carpenders Park Overground Station
+              158 Penrose Avenue, Watford, WD19 5AH • Next to Carpenders Park Overground Station
             </div>
           </div>
         </div>
@@ -153,20 +153,59 @@
 
             <div class="mini">
               <div class="mini-title">Location</div>
-              <div class="mini-text">Next to Carpenders Park Overground Station.</div>
+              <div class="mini-text">
+                158 Penrose Avenue, Watford, WD19 5AH • Next to Carpenders Park Overground Station.
+              </div>
             </div>
 
             <div class="mini mini-2">
-              <div class="mini-title">Prefer a call?</div>
-              <div class="mini-text">
-                <a class="link" href="tel:+447725443401">07725 443401</a>
+              <div class="mini-title">Quick actions</div>
+              <div class="mini-actions">
+                <a class="btn btn-outline btn-small" href="tel:+447725443401">Call</a>
+                <a class="btn btn-outline btn-small"
+                   href="https://www.google.com/maps?q=158+Penrose+Avenue,+Watford,+WD19+5AH"
+                   target="_blank" rel="noopener">
+                  Directions
+                </a>
               </div>
             </div>
           </div>
 
-          <!-- Decorative “premium” visual (CSS-only) -->
           <div class="hero-art" aria-hidden="true"></div>
         </aside>
+      </div>
+    </section>
+
+    <!-- 3-step trial strip under hero -->
+    <section class="trial-steps" aria-label="Free trial process">
+      <div class="container">
+        <div class="trial-steps-grid">
+          <div class="trial-step">
+            <div class="trial-step-num">1</div>
+            <div>
+              <div class="trial-step-title">Book a free trial</div>
+              <div class="trial-step-text">Choose online or face-to-face.</div>
+            </div>
+          </div>
+
+          <div class="trial-step">
+            <div class="trial-step-num">2</div>
+            <div>
+              <div class="trial-step-title">We teach a real lesson</div>
+              <div class="trial-step-text">Parents can sit in and observe.</div>
+            </div>
+          </div>
+
+          <div class="trial-step">
+            <div class="trial-step-num">3</div>
+            <div>
+              <div class="trial-step-title">You get clear next steps</div>
+              <div class="trial-step-text">Plan + best group or 1-to-1 fit.</div>
+            </div>
+          </div>
+
+          <a class="btn btn-primary trial-steps-cta" href="#contact">Book free trial</a>
+        </div>
       </div>
     </section>
 
@@ -305,9 +344,7 @@
         </div>
 
         <div class="marquee" role="region" aria-label="Scrolling review highlights">
-          <div class="marquee-track" id="chip-track">
-            <!-- chips injected from reviews.json -->
-          </div>
+          <div class="marquee-track" id="chip-track"></div>
         </div>
 
         <div class="review-strip-foot">
@@ -539,7 +576,7 @@
           <div>
             <h2>Trusted by parents.</h2>
             <p class="muted">
-              <span id="review-meta">Selected excerpts from reviews.</span>
+              <span id="review-meta">Selected excerpts from Google Reviews.</span>
             </p>
           </div>
           <a class="link" id="reviews-link" href="#" target="_blank" rel="noopener">View all Google reviews →</a>
@@ -573,16 +610,33 @@
 
             <div class="contact-mini">
               <div class="contact-mini-row"><strong>Email:</strong> <a class="link" href="mailto:barkha@futureperfect.education">barkha@futureperfect.education</a></div>
-              <div class="contact-mini-row"><strong>Location:</strong> Next to Carpenders Park Overground Station.</div>
+              <div class="contact-mini-row">
+                <strong>Location:</strong> 158 Penrose Avenue, Watford, WD19 5AH • Next to Carpenders Park Overground Station.
+              </div>
+              <div class="contact-mini-row">
+                <a class="link" target="_blank" rel="noopener"
+                   href="https://www.google.com/maps?q=158+Penrose+Avenue,+Watford,+WD19+5AH">
+                  Open in Google Maps →
+                </a>
+              </div>
+            </div>
+
+            <div class="map-embed" aria-label="Map showing the location of Future Perfect Tuitions">
+              <iframe
+                src="https://www.google.com/maps?q=158+Penrose+Avenue,+Watford,+WD19+5AH&output=embed"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                allowfullscreen>
+              </iframe>
             </div>
           </div>
 
-          <form class="form" method="post" action="https://api.web3forms.com/submit">
+          <form id="enquiry-form" class="form" method="post" action="https://api.web3forms.com/submit">
             <input type="hidden" name="access_key" value="e78ceb49-e34b-43b3-840c-a01217005ae9" />
             <input type="hidden" name="subject" value="New enquiry from futureperfect.education" />
             <input type="hidden" name="from_name" value="Future Perfect Website" />
 
-            <!-- Honeypot (spam reduction) -->
+            <!-- Honeypot -->
             <input type="checkbox" name="botcheck" class="hidden" style="display:none" tabindex="-1" autocomplete="off">
 
             <label>
@@ -625,11 +679,14 @@
               <textarea name="message" rows="5" required placeholder="Tell us what your child needs help with…"></textarea>
             </label>
 
-            <button class="btn btn-primary btn-full" type="submit">Send enquiry</button>
+            <button class="btn btn-primary btn-full" type="submit" id="enquiry-submit">Send enquiry</button>
+
             <div class="form-note">
               We’ll reply as soon as possible.
               <span class="form-note-sub">Tip: include your child’s school (optional) and any upcoming exam dates.</span>
             </div>
+
+            <div id="form-status" class="form-status" role="status" aria-live="polite" hidden></div>
           </form>
         </div>
       </div>
@@ -640,7 +697,7 @@
     <div class="container footer-inner">
       <div class="footer-left">
         <div class="footer-brand">© Future Perfect Tuitions</div>
-        <div class="footer-sub">Next to Carpenders Park Overground Station • Years 2–6 • 11+ Preparation</div>
+        <div class="footer-sub">158 Penrose Avenue, Watford, WD19 5AH • Years 2–6 • 11+ Preparation</div>
         <div class="footer-sub">
           <a href="mailto:barkha@futureperfect.education">barkha@futureperfect.education</a> •
           <a href="tel:+447725443401">07725 443401</a>
@@ -703,7 +760,7 @@
 
   <script>
     // ============================
-    // Mobile nav toggle (improved)
+    // Mobile nav toggle
     // ============================
     const toggle = document.querySelector(".nav-toggle");
     const mobileNav = document.getElementById("mobile-nav");
@@ -758,7 +815,6 @@
       if (!trialModal) return;
       trialModal.hidden = false;
       document.body.classList.add("modal-open");
-      // Focus close for keyboard users
       setTimeout(() => closeTrialBtn && closeTrialBtn.focus(), 0);
     }
 
@@ -769,12 +825,9 @@
       if (openTrialBtn) openTrialBtn.focus();
     }
 
-    if (openTrialBtn && trialModal) {
-      openTrialBtn.addEventListener("click", openModal);
-    }
-    if (closeTrialBtn && trialModal) {
-      closeTrialBtn.addEventListener("click", closeModal);
-    }
+    if (openTrialBtn && trialModal) openTrialBtn.addEventListener("click", openModal);
+    if (closeTrialBtn && trialModal) closeTrialBtn.addEventListener("click", closeModal);
+
     if (trialModal) {
       trialModal.addEventListener("click", (e) => {
         if (e.target === trialModal) closeModal();
@@ -783,20 +836,59 @@
         if (!trialModal.hidden && e.key === "Escape") closeModal();
       });
     }
-    if (modalBook) {
-      modalBook.addEventListener("click", () => closeModal());
-    }
+    if (modalBook) modalBook.addEventListener("click", () => closeModal());
 
     // ============================
-    // Helper: star row
+    // Smooth scroll + focus when clicking #contact links
+    // ============================
+    document.querySelectorAll('a[href="#contact"]').forEach(link => {
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        const section = document.getElementById("contact");
+        const form = document.getElementById("enquiry-form");
+        if (!section) return;
+
+        section.scrollIntoView({ behavior: "smooth", block: "start" });
+
+        setTimeout(() => {
+          const firstInput = form?.querySelector("input, textarea, select");
+          if (firstInput) firstInput.focus();
+        }, 500);
+      });
+    });
+
+    // ============================
+    // Reviews + chips + meta + schema
     // ============================
     const starRow = (n) =>
       "★".repeat(Math.max(0, Math.min(5, n || 0))) +
       "☆".repeat(Math.max(0, 5 - (n || 0)));
 
-    // ============================
-    // Reviews + chips + meta + schema
-    // ============================
+    const initialsOf = (name = "") => {
+      const parts = name.trim().split(/\s+/).filter(Boolean);
+      const a = parts[0]?.[0] || "";
+      const b = parts.length > 1 ? parts[parts.length - 1][0] : "";
+      return (a + b).toUpperCase();
+    };
+
+    const toChip = (text = "") => {
+      const t = text.replace(/\s+/g, " ").trim();
+      if (!t) return "";
+      const candidates = t.split(/(?<=[.!?])\s+|;\s+|\.\s+/).map(s => s.trim()).filter(Boolean);
+      let c = candidates.find(s => s.length >= 28 && s.length <= 80) || candidates[0] || t;
+      c = c.replace(/^["“”]+|["“”]+$/g, "").trim();
+      if (c.length > 78) c = c.slice(0, 75).trim() + "…";
+      return `“${c}”`;
+    };
+
+    const injectLD = (obj) => {
+      const s = document.createElement("script");
+      s.type = "application/ld+json";
+      s.textContent = JSON.stringify(obj);
+      document.head.appendChild(s);
+    };
+
     fetch("reviews.json")
       .then((res) => res.json())
       .then((data) => {
@@ -807,80 +899,75 @@
         const badge = document.getElementById("badge-rating");
         const trust = document.getElementById("trust-rating");
 
-        const reviews = (data && data.reviews) ? data.reviews : [];
-        const reviewCount = reviews.length || 0;
+        const reviews = Array.isArray(data?.reviews) ? data.reviews : [];
+        const reviewCount = Number(data?.source?.reviewCount) || reviews.length || 0;
 
-        // Optional: if your reviews.json includes overall rating info
-        const ratingValue = data?.source?.ratingValue; // e.g. "5.0"
-        const ratingLabel = ratingValue ? `${ratingValue}` : "5-star";
+        const avgRating = reviews.length
+          ? (reviews.reduce((sum, r) => sum + (Number(r.rating) || 0), 0) / reviews.length)
+          : null;
+
+        const ratingValueFromSource = data?.source?.ratingValue ? Number(data.source.ratingValue) : null;
+        const ratingValue = (ratingValueFromSource && ratingValueFromSource > 0)
+          ? ratingValueFromSource
+          : (avgRating ? Math.round(avgRating * 10) / 10 : null);
+
+        const ratingLabel = ratingValue ? `${ratingValue.toFixed(1)}` : "5-star";
 
         if (data?.source?.url && link) link.href = data.source.url;
 
         if (meta) {
           meta.textContent = reviewCount
-            ? `Selected excerpts • ${reviewCount} shown here.`
-            : `Selected excerpts from reviews.`;
+            ? `Rated ${ratingLabel} on Google • ${reviewCount} review excerpts shown here.`
+            : `Selected excerpts from Google Reviews.`;
         }
 
-        if (badge) badge.textContent = ratingValue ? `⭐ Rated ${ratingValue} on Google` : `⭐ 5-star Google reviews`;
-        if (trust) trust.textContent = ratingValue ? ratingValue : "5-star";
+        if (badge) badge.textContent = ratingValue ? `⭐ Rated ${ratingLabel} on Google` : `⭐ 5-star Google reviews`;
+        if (trust) trust.textContent = ratingValue ? ratingLabel : "5-star";
 
-        // Review cards
-        (reviews || []).slice(0, 6).forEach((r) => {
+        if (container) container.innerHTML = "";
+        reviews.slice(0, 6).forEach((r) => {
+          const name = r.author || "Parent";
           const card = document.createElement("div");
           card.className = "review-card";
           card.innerHTML = `
-            <div class="review-stars" aria-label="${r.rating || 5} out of 5 stars">${starRow(r.rating || 5)}</div>
-            <p class="review-text">“${r.text}”</p>
-            <div class="review-author">— ${r.author}</div>
+            <div class="review-top">
+              <div class="avatar" aria-hidden="true">${initialsOf(name)}</div>
+              <div class="review-top-right">
+                <div class="review-author">${name}</div>
+                <div class="review-stars" aria-label="${r.rating || 5} out of 5 stars">${starRow(r.rating || 5)}</div>
+              </div>
+            </div>
+            <p class="review-text">“${(r.text || "").trim()}”</p>
           `;
-          if (container) container.appendChild(card);
+          container && container.appendChild(card);
         });
 
-        // Chips
         if (track) {
-          const cleanSnippet = (t) => {
-            if (!t) return "";
-            const first = t.split(/(?<=[.!?])\s+/)[0] || t;
-            const s = first.replace(/^["“”]+|["“”]+$/g, "").trim();
-            return s.length > 64 ? s.slice(0, 61).trim() + "…" : s;
-          };
-
-          const chips = (reviews || [])
-            .map(r => cleanSnippet(r.text))
-            .filter(Boolean)
-            .slice(0, 8);
-
+          const chips = reviews.map(r => toChip(r.text)).filter(Boolean).slice(0, 8);
           const fallback = [
-            "My child is so much more confident.",
-            "Very organised and professional.",
-            "Patient; makes hard things easy.",
-            "Small groups are the perfect size.",
-            "Reward system really motivates.",
-            "Explains the ‘why’, not just answers.",
-            "We can access past lessons to revise.",
-            "Highly recommend."
+            "“My child is so much more confident.”",
+            "“Very organised and professional.”",
+            "“Patient; makes hard things feel easy.”",
+            "“Small groups are the perfect size.”",
+            "“Reward system really motivates.”",
+            "“Explains the ‘why’, not just answers.”",
+            "“We can revise past lessons.”",
+            "“Highly recommend.”"
           ];
-
-          const finalChips = (chips.length ? chips : fallback).map(t => `“${t}”`);
+          const finalChips = chips.length ? chips : fallback;
 
           track.innerHTML = "";
-          const renderSet = () => {
-            finalChips.forEach((text) => {
-              const el = document.createElement("div");
-              el.className = "chip";
-              el.textContent = text;
-              track.appendChild(el);
-            });
-          };
+          const renderSet = () => finalChips.forEach((text) => {
+            const el = document.createElement("div");
+            el.className = "chip";
+            el.textContent = text;
+            track.appendChild(el);
+          });
           renderSet();
           renderSet();
         }
 
-        // ============================
-        // SEO: JSON-LD
-        // ============================
-        // LocalBusiness (no invented street address)
+        // LocalBusiness schema (with address)
         const localBusiness = {
           "@context": "https://schema.org",
           "@type": "LocalBusiness",
@@ -888,13 +975,20 @@
           "url": "https://www.futureperfect.education/",
           "telephone": "+447725443401",
           "email": "barkha@futureperfect.education",
-          "areaServed": ["London", "Hertfordshire"],
-          "description": "Concept-driven Maths & English tuition for Years 2–6 and 11+ preparation. Small groups (max 5) and 1-to-1.",
-          "hasMap": undefined,
-          "address": undefined
+          "image": "https://www.futureperfect.education/assets/fpt-logo.png",
+          "priceRange": "££",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "158 Penrose Avenue",
+            "addressLocality": "Watford",
+            "addressRegion": "Hertfordshire",
+            "postalCode": "WD19 5AH",
+            "addressCountry": "GB"
+          },
+          "areaServed": ["Watford", "Hertfordshire", "North West London"],
+          "description": "Concept-driven Maths & English tuition for Years 2–6 and 11+ preparation. Small groups (max 5) and 1-to-1."
         };
 
-        // Optional AggregateRating only if ratingValue exists
         if (ratingValue && reviewCount) {
           localBusiness.aggregateRating = {
             "@type": "AggregateRating",
@@ -903,7 +997,7 @@
           };
         }
 
-        // FAQPage schema from on-page FAQs
+        // FAQPage schema (matches on-page FAQs)
         const faqPage = {
           "@context": "https://schema.org",
           "@type": "FAQPage",
@@ -959,13 +1053,6 @@
           ]
         };
 
-        const injectLD = (obj) => {
-          const s = document.createElement("script");
-          s.type = "application/ld+json";
-          s.textContent = JSON.stringify(obj);
-          document.head.appendChild(s);
-        };
-
         injectLD(localBusiness);
         injectLD(faqPage);
       })
@@ -975,14 +1062,21 @@
 
         if (track) {
           track.innerHTML = "";
-          ["“Highly recommend.”","“Very organised and professional.”","“My child is so much more confident.”","“Patient; makes hard things easy.”"]
-            .concat(["“Highly recommend.”","“Very organised and professional.”","“My child is so much more confident.”","“Patient; makes hard things easy.”"])
-            .forEach((t) => {
-              const el = document.createElement("div");
-              el.className = "chip";
-              el.textContent = t;
-              track.appendChild(el);
-            });
+          [
+            "“Highly recommend.”",
+            "“Very organised and professional.”",
+            "“My child is so much more confident.”",
+            "“Patient; makes hard things feel easy.”",
+            "“Highly recommend.”",
+            "“Very organised and professional.”",
+            "“My child is so much more confident.”",
+            "“Patient; makes hard things feel easy.”"
+          ].forEach((t) => {
+            const el = document.createElement("div");
+            el.className = "chip";
+            el.textContent = t;
+            track.appendChild(el);
+          });
         }
 
         if (container) {
@@ -994,25 +1088,80 @@
             </div>
           `;
         }
-
-        // Still add FAQ schema even if reviews fail
-        const faqPage = {
-          "@context":"https://schema.org",
-          "@type":"FAQPage",
-          "mainEntity":[
-            {"@type":"Question","name":"What happens in a free trial lesson?","acceptedAnswer":{"@type":"Answer","text":"We teach a real lesson (not a demo) so you can see our style and how we build understanding. Parents are welcome to sit in and observe."}},
-            {"@type":"Question","name":"How are groups formed?","acceptedAnswer":{"@type":"Answer","text":"We keep groups small (max 5) and align children by ability and learning needs, not just by year group."}},
-            {"@type":"Question","name":"Do you give homework?","acceptedAnswer":{"@type":"Answer","text":"Yes. Homework is set to reinforce what was taught, with clear answer support to keep practice focused and efficient."}},
-            {"@type":"Question","name":"Can we revise past topics?","acceptedAnswer":{"@type":"Answer","text":"Yes — revision support is built in, and students can revisit learning to strengthen weaker areas and prepare for tests/exams."}},
-            {"@type":"Question","name":"Do you offer online lessons?","acceptedAnswer":{"@type":"Answer","text":"Yes. We offer face-to-face and online. The same concept-driven approach is used in both formats."}},
-            {"@type":"Question","name":"What year groups do you teach?","acceptedAnswer":{"@type":"Answer","text":"We support Years 2–6 for Maths and English, and 11+ preparation (Year 4 and Year 5), including Maths, English, VR and NVR."}}
-          ]
-        };
-        const s = document.createElement("script");
-        s.type = "application/ld+json";
-        s.textContent = JSON.stringify(faqPage);
-        document.head.appendChild(s);
       });
+
+    // ============================
+    // Web3Forms AJAX submit + success/error message
+    // ============================
+    (function () {
+      const form = document.getElementById("enquiry-form");
+      if (!form) return;
+
+      const statusEl = document.getElementById("form-status");
+      const submitBtn = document.getElementById("enquiry-submit");
+
+      const setStatus = (type, html) => {
+        if (!statusEl) return;
+        statusEl.hidden = false;
+        statusEl.classList.remove("success", "error");
+        if (type) statusEl.classList.add(type);
+        statusEl.innerHTML = html;
+      };
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        if (statusEl) {
+          statusEl.hidden = true;
+          statusEl.classList.remove("success", "error");
+          statusEl.textContent = "";
+        }
+
+        const originalBtnText = submitBtn ? submitBtn.textContent : "";
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.textContent = "Sending…";
+        }
+
+        try {
+          const formData = new FormData(form);
+
+          const res = await fetch(form.action, {
+            method: "POST",
+            body: formData,
+            headers: { "Accept": "application/json" }
+          });
+
+          const data = await res.json().catch(() => ({}));
+
+          if (res.ok && (data.success === true || data.message === "Email sent successfully")) {
+            setStatus(
+              "success",
+              `✅ <strong>Thanks!</strong> Your enquiry has been sent.<br>
+               We’ll reply as soon as possible. If it’s urgent, call <a class="link" href="tel:+447725443401">07725 443401</a>.`
+            );
+            form.reset();
+          } else {
+            setStatus(
+              "error",
+              `⚠️ <strong>Sorry — something went wrong.</strong><br>
+               Please try again, or email <a class="link" href="mailto:barkha@futureperfect.education">barkha@futureperfect.education</a>.`
+            );
+          }
+        } catch (err) {
+          setStatus(
+            "error",
+            `⚠️ <strong>Couldn’t send your enquiry.</strong><br>
+             Please check your connection and try again, or email <a class="link" href="mailto:barkha@futureperfect.education">barkha@futureperfect.education</a>.`
+          );
+        } finally {
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalBtnText || "Send enquiry";
+          }
+        }
+      });
+    })();
   </script>
 </body>
 </html>
