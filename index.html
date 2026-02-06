@@ -795,41 +795,7 @@
       });
     }
 
-    // ============================
-    // Trial modal
-    // ============================
-    const trialModal = document.getElementById("trial-modal");
-    const openTrialBtn = document.getElementById("open-trial-modal");
-    const closeTrialBtn = document.getElementById("close-trial-modal");
-    const modalBook = document.getElementById("modal-book");
-
-    function openModal() {
-      if (!trialModal) return;
-      trialModal.hidden = false;
-      document.body.classList.add("modal-open");
-      setTimeout(() => closeTrialBtn && closeTrialBtn.focus(), 0);
-    }
-
-    function closeModal() {
-      if (!trialModal) return;
-      trialModal.hidden = true;
-      document.body.classList.remove("modal-open");
-      if (openTrialBtn) openTrialBtn.focus();
-    }
-
-    if (openTrialBtn && trialModal) openTrialBtn.addEventListener("click", openModal);
-    if (closeTrialBtn && trialModal) closeTrialBtn.addEventListener("click", closeModal);
-
-    if (trialModal) {
-      trialModal.addEventListener("click", (e) => {
-        if (e.target === trialModal) closeModal();
-      });
-      document.addEventListener("keydown", (e) => {
-        if (!trialModal.hidden && e.key === "Escape") closeModal();
-      });
-    }
-    if (modalBook) modalBook.addEventListener("click", () => closeModal());
-
+   
     // ============================
     // Smooth scroll + focus when clicking #contact links
     // ============================
