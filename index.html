@@ -55,16 +55,18 @@
 </section>
 
 <section class="reviews">
-  <h2>What parents say</h2>
-  <div id="reviews-container"></div>
+  <div class="reviews-head">
+    <h2>What parents say</h2>
+    <a class="link" id="reviews-link" href="#" target="_blank" rel="noopener">View all Google reviews →</a>
+  </div>
+
+  <div id="reviews-container" class="reviews-grid"></div>
 </section>
 
 <section id="contact" class="contact">
   <h2>Get started</h2>
   <p>Book a free consultation to discuss your child’s needs.</p>
-  <a href="mailto:info@futureperfect.education" class="cta">
-    Contact us
-  </a>
+  <a href="mailto:info@futureperfect.education" class="cta">Contact us</a>
 </section>
 
 <footer>
@@ -72,17 +74,27 @@
 </footer>
 
 <script>
-fetch('reviews.json')
-  .then(res => res.json())
-  .then(data => {
-    const container = document.getElementById('reviews-container');
-    data.reviews.slice(0,3).forEach(r => {
-      const div = document.createElement('div');
-      div.className = 'review';
-      div.innerHTML = `<p>"${r.text}"</p><strong>– ${r.author}</strong>`;
-      container.appendChild(div);
+  const starRow = (n) => "★".repeat(Math.max(0, Math.min(5, n || 0))) + "☆".repeat(Math.max(0, 5 - (n || 0)));
+
+  fetch("reviews.json")
+    .then(res => res.json())
+    .then(data => {
+      const container = document.getElementById("reviews-container");
+      const link = document.getElementById("reviews-link");
+
+      if (data?.source?.url && link) link.href = data.source.url;
+
+      (data.reviews || []).slice(0, 6).forEach(r => {
+        const card = document.createElement("div");
+        card.className = "review-card";
+        card.innerHTML = `
+          <div class="review-stars" aria-label="${r.rating || 5} out of 5 stars">${starRow(r.rating || 5)}</div>
+          <p class="review-text">“${r.text}”</p>
+          <div class="review-author">— ${r.author}</div>
+        `;
+        container.appendChild(card);
+      });
     });
-  });
 </script>
 
 </body>
