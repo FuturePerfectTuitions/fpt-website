@@ -607,53 +607,7 @@ button, input, select, textarea{ font: inherit; }
 .outcomes-cta-title{ font-weight: 1000; color: var(--red); }
 .outcomes-cta-text{ color: var(--muted); }
 
-/* ---- Review strip + marquee chips ---- */
-.review-strip{
-  background: var(--bg-soft);
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-}
 
-.review-strip-head h2{ margin: 0 0 8px; font-size: 1.7rem; letter-spacing: -0.4px; }
-.review-strip-head p{ margin: 0; }
-
-.marquee{
-  margin-top: 16px;
-  overflow: hidden;
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  background: #fff;
-  box-shadow: 0 10px 22px rgba(9,24,54,.06);
-}
-
-.marquee-track{
-  display: inline-flex;
-  gap: 10px;
-  padding: 14px;
-  white-space: nowrap;
-  animation: marquee 26s linear infinite;
-}
-
-@keyframes marquee{
-  0%{ transform: translateX(0); }
-  100%{ transform: translateX(-50%); }
-}
-
-.chip{
-  padding: 10px 12px;
-  border-radius: 999px;
-  border: 1px solid rgba(11,42,111,.18);
-  background: rgba(11,42,111,.05);
-  color: var(--navy);
-  font-weight: 900;
-  font-size: .92rem;
-}
-
-.review-strip-foot{
-  display: flex;
-  gap: 10px;
-  margin-top: 14px;
-}
 
 /* ---- Section headings + cards ---- */
 .section-head h2{
