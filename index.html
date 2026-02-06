@@ -21,17 +21,22 @@
       <a href="#how">How it works</a>
       <a href="#reviews">Reviews</a>
       <a href="#contact" class="btn btn-outline">Enquire</a>
+      <a href="https://lessons.futureperfect.education/" class="btn btn-students" target="_blank" rel="noopener">
+        Existing Students
+      </a>
     </nav>
 
     <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">☰</button>
   </div>
 
+  <!-- MOBILE MENU (hidden on desktop). This is NOT supposed to show in a big vertical list on desktop. -->
   <div id="mobile-nav" class="mobile-nav" hidden>
     <a href="#why">Why FPT</a>
     <a href="#tuition">Tuition</a>
     <a href="#how">How it works</a>
     <a href="#reviews">Reviews</a>
     <a href="#contact">Enquire</a>
+    <a href="https://lessons.futureperfect.education/" target="_blank" rel="noopener">Existing Students</a>
   </div>
 </header>
 
@@ -257,20 +262,6 @@
     </div>
   </section>
 
-  <!-- FINAL CTA -->
-  <section class="section section-cta">
-    <div class="container cta-box">
-      <div>
-        <h2>Choosing the right tuition feels hard.</h2>
-        <p class="muted">
-          Don’t guess. Experience it. Sit in on a free trial lesson and see exactly how your child is taught:
-          focused on understanding, not memorisation.
-        </p>
-      </div>
-      <a href="#contact" class="btn btn-primary">Book a free trial lesson</a>
-    </div>
-  </section>
-
   <!-- CONTACT -->
   <section id="contact" class="section">
     <div class="container">
@@ -365,11 +356,21 @@
   // Mobile nav toggle
   const toggle = document.querySelector(".nav-toggle");
   const mobileNav = document.getElementById("mobile-nav");
+
   if (toggle && mobileNav) {
     toggle.addEventListener("click", () => {
       const expanded = toggle.getAttribute("aria-expanded") === "true";
       toggle.setAttribute("aria-expanded", String(!expanded));
       mobileNav.hidden = expanded;
+    });
+
+    // Close mobile menu when a link is clicked
+    mobileNav.addEventListener("click", (e) => {
+      const t = e.target;
+      if (t && t.tagName === "A") {
+        toggle.setAttribute("aria-expanded", "false");
+        mobileNav.hidden = true;
+      }
     });
   }
 
