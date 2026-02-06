@@ -243,11 +243,27 @@ button, input, select, textarea{ font: inherit; }
 
 /* ---- HERO ---- */
 .hero{
+  position: relative;
   padding: 54px 0 20px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.hero::before{
+  content: "";
+  position: absolute;
+  inset: 0;
   background:
-    radial-gradient(900px 420px at 10% 10%, rgba(215,25,32,.08), transparent 55%),
-    radial-gradient(900px 420px at 90% 20%, rgba(11,42,111,.10), transparent 55%),
-    #fff;
+    linear-gradient(rgba(255,255,255,.88), rgba(255,255,255,.92)),
+    url("assets/hero-classroom.jpg") center/cover no-repeat;
+  opacity: 0.55;
+  z-index: 0;
+}
+
+/* keep hero content above image */
+.hero > *{
+  position: relative;
+  z-index: 1;
 }
 
 .hero-grid{
