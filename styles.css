@@ -10,14 +10,15 @@
   --shadow:0 12px 28px rgba(0,0,0,0.08);
   --radius:14px;
 
-  /* Anchor offset so headings don't get hidden behind the sticky header */
-  --header-offset: 110px;
+  /* Sticky-header anchor offset (tuned so it doesn't feel "too far down") */
+  --headerH: 82px;
+  --anchorGap: 10px;
 }
 
 *{ box-sizing:border-box; }
 html{
   scroll-behavior:smooth;
-  scroll-padding-top: var(--header-offset); /* fallback */
+  scroll-padding-top: calc(var(--headerH) + var(--anchorGap));
 }
 body{
   margin:0;
@@ -28,7 +29,7 @@ body{
 
 /* Prevent sticky header from covering anchored section headings */
 section[id]{
-  scroll-margin-top: var(--header-offset);
+  scroll-margin-top: calc(var(--headerH) + var(--anchorGap));
 }
 
 .container{
@@ -681,7 +682,11 @@ textarea{ resize:vertical; }
 }
 
 @media (max-width: 900px){
-  :root{ --header-offset: 130px; } /* a bit more room on mobile */
+  /* Mobile header is slightly taller because menu can appear */
+  :root{
+    --headerH: 98px;
+    --anchorGap: 12px;
+  }
 
   .navlinks{ display:none; }
   .nav-toggle{ display:inline-flex; }
