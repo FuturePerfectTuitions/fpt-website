@@ -34,7 +34,7 @@
   <header class="topbar">
     <div class="container topbar-inner">
       <a class="brand" href="#top" aria-label="Future Perfect Tuitions">
-        <img src="assets/fpt-logo.png" alt="Future Perfect Tuitions" class="logo" width="360" height="80" />
+        <img src="assets/fpt-logo.png" alt="Future Perfect Tuitions" class="logo" width="300" height="80" />
       </a>
 
       <nav class="navlinks" aria-label="Primary">
@@ -579,18 +579,21 @@
             </p>
           </div>
 
-          <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
-            <a class="link" id="reviews-link" href="#" target="_blank" rel="noopener">View all Google reviews →</a>
-
-            <!-- optional arrows -->
+          <!-- ✅ Arrows + link -->
+          <div class="reviews-actions">
             <div class="reviews-controls" aria-label="Scroll reviews">
-              <button class="reviews-arrow" id="reviews-left" type="button" aria-label="Scroll reviews left">←</button>
-              <button class="reviews-arrow" id="reviews-right" type="button" aria-label="Scroll reviews right">→</button>
+              <button class="reviews-arrow" type="button" id="reviews-prev" aria-label="Scroll reviews left">←</button>
+              <button class="reviews-arrow" type="button" id="reviews-next" aria-label="Scroll reviews right">→</button>
             </div>
+
+            <a class="link" id="reviews-link" href="#" target="_blank" rel="noopener">View all Google reviews →</a>
           </div>
         </div>
 
-        <div id="reviews-container" class="reviews-grid" aria-label="Review excerpts"></div>
+        <div id="reviews-container" class="reviews-grid"></div>
+
+        <!-- ✅ Dots -->
+        <div class="reviews-dots" id="reviews-dots" aria-label="Review pages"></div>
       </div>
     </section>
 
@@ -617,13 +620,13 @@
             </div>
 
             <div class="contact-mini">
-              
+              <div class="contact-mini-row"><strong>Email:</strong> <a class="link" href="mailto:barkha@futureperfect.education">barkha@futureperfect.education</a></div>
               <div class="contact-mini-row">
-                <strong>Location:</strong> Future Perfect Tuitions, Penrose Avenue, Watford, WD19 5AH • Next to Carpenders Park Overground Station.
+                <strong>Location:</strong> 158 Penrose Avenue, Watford, WD19 5AH • Next to Carpenders Park Overground Station.
               </div>
               <div class="contact-mini-row">
                 <a class="link" target="_blank" rel="noopener"
-                   href="https://www.google.com/maps/place/Future+Perfect/@51.6290488,-0.386323,17z/data=!3m1!4b1!4m6!3m5!1s0x48766bb8476f0adb:0x7226221b2bb69cbc!8m2!3d51.6290488!4d-0.3837481!16s%2Fg%2F11k3xbzkgn?entry=ttu&g_ep=EgoyMDI2MDIwMy4wIKXMDSoASAFQAw%3D%3D">
+                   href="https://www.google.com/maps?q=158+Penrose+Avenue,+Watford,+WD19+5AH">
                   Open in Google Maps →
                 </a>
               </div>
@@ -707,7 +710,8 @@
         <div class="footer-brand">© Future Perfect Tuitions</div>
         <div class="footer-sub">158 Penrose Avenue, Watford, WD19 5AH • Years 2–6 • 11+ Preparation</div>
         <div class="footer-sub">
-                   <a href="tel:+447725443401">07725 443401</a>
+          <a href="mailto:barkha@futureperfect.education">barkha@futureperfect.education</a> •
+          <a href="tel:+447725443401">07725 443401</a>
         </div>
       </div>
 
@@ -861,15 +865,16 @@
 
         if (data?.source?.url && link) link.href = data.source.url;
 
-        // keep your exact wording
-        if (meta) meta.textContent = "Selected excerpts from Google Reviews.";
+        if (meta) {
+          meta.textContent = reviewCount
+            ? `Rated ${ratingLabel} on Google • ${reviewCount} review excerpts shown here.`
+            : `Selected excerpts from Google Reviews.`;
+        }
 
         if (badge) badge.textContent = ratingValue ? `⭐ Rated ${ratingLabel} on Google` : `⭐ 5-star Google reviews`;
         if (trust) trust.textContent = ratingValue ? ratingLabel : "5-star";
 
         if (container) container.innerHTML = "";
-
-        // Render ALL reviews (carousel is handled by CSS)
         reviews.forEach((r) => {
           const name = r.author || "Parent";
           const card = document.createElement("div");
@@ -886,20 +891,6 @@
           `;
           container && container.appendChild(card);
         });
-
-        // Enable arrow scrolling
-        const leftBtn = document.getElementById("reviews-left");
-        const rightBtn = document.getElementById("reviews-right");
-
-        const scrollByCards = (dir = 1) => {
-          if (!container) return;
-          const firstCard = container.querySelector(".review-card");
-          const cardW = firstCard ? firstCard.getBoundingClientRect().width : 320;
-          container.scrollBy({ left: dir * (cardW + 14), behavior: "smooth" });
-        };
-
-        if (leftBtn) leftBtn.addEventListener("click", () => scrollByCards(-1));
-        if (rightBtn) rightBtn.addEventListener("click", () => scrollByCards(1));
 
         if (track) {
           const chips = reviews.map(r => toChip(r.text)).filter(Boolean).slice(0, 8);
@@ -1048,6 +1039,211 @@
           `;
         }
       });
+
+    // ============================
+    // Reviews carousel controls:
+    // - arrows
+    // - auto-scroll (pause on hover/focus)
+    // - drag-to-scroll + snap to nearest card
+    // - progress dots
+    // ============================
+    (function () {
+      const scroller = document.getElementById("reviews-container");
+      const prevBtn = document.getElementById("reviews-prev");
+      const nextBtn = document.getElementById("reviews-next");
+      const dotsWrap = document.getElementById("reviews-dots");
+
+      if (!scroller) return;
+
+      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+      let autoTimer = null;
+      const AUTO_MS = 4200;
+
+      const measure = () => {
+        const firstCard = scroller.querySelector(".review-card");
+        if (!firstCard) return { step: 0, gap: 14, perView: 1, pages: 1, cards: 0 };
+
+        const cardW = firstCard.getBoundingClientRect().width;
+        const styles = window.getComputedStyle(scroller);
+        const gap = parseFloat(styles.columnGap || styles.gap || "14") || 14;
+        const step = cardW + gap;
+
+        const cards = scroller.querySelectorAll(".review-card").length || 0;
+        const perView = Math.max(1, Math.floor((scroller.clientWidth + gap) / step));
+        const pages = Math.max(1, cards - perView + 1);
+
+        return { step, gap, perView, pages, cards };
+      };
+
+      const clamp = (n, a, b) => Math.max(a, Math.min(b, n));
+
+      const getPageIndex = () => {
+        const { step, pages } = measure();
+        if (!step) return 0;
+        const raw = Math.round(scroller.scrollLeft / step);
+        return clamp(raw, 0, pages - 1);
+      };
+
+      const scrollToPage = (pageIndex) => {
+        const { step, pages } = measure();
+        if (!step) return;
+        const idx = clamp(pageIndex, 0, pages - 1);
+        scroller.scrollTo({ left: idx * step, behavior: "smooth" });
+      };
+
+      const scrollByCard = (dir = 1) => {
+        const idx = getPageIndex();
+        scrollToPage(idx + dir);
+      };
+
+      // Arrow buttons
+      if (prevBtn) prevBtn.addEventListener("click", () => scrollByCard(-1));
+      if (nextBtn) nextBtn.addEventListener("click", () => scrollByCard(1));
+
+      // Auto-scroll
+      const startAuto = () => {
+        if (reduceMotion.matches) return;
+        if (autoTimer) return;
+        autoTimer = window.setInterval(() => {
+          const { pages } = measure();
+          const idx = getPageIndex();
+          if (idx >= pages - 1) scrollToPage(0);
+          else scrollToPage(idx + 1);
+        }, AUTO_MS);
+      };
+
+      const stopAuto = () => {
+        if (!autoTimer) return;
+        window.clearInterval(autoTimer);
+        autoTimer = null;
+      };
+
+      // Pause on hover/focus
+      scroller.addEventListener("mouseenter", stopAuto);
+      scroller.addEventListener("mouseleave", startAuto);
+      scroller.addEventListener("focusin", stopAuto);
+      scroller.addEventListener("focusout", startAuto);
+
+      if (prevBtn){
+        prevBtn.addEventListener("mouseenter", stopAuto);
+        prevBtn.addEventListener("mouseleave", startAuto);
+        prevBtn.addEventListener("focusin", stopAuto);
+        prevBtn.addEventListener("focusout", startAuto);
+      }
+      if (nextBtn){
+        nextBtn.addEventListener("mouseenter", stopAuto);
+        nextBtn.addEventListener("mouseleave", startAuto);
+        nextBtn.addEventListener("focusin", stopAuto);
+        nextBtn.addEventListener("focusout", startAuto);
+      }
+
+      // Drag-to-scroll + snap
+      let isDown = false;
+      let startX = 0;
+      let startScrollLeft = 0;
+      let moved = 0;
+
+      const onDown = (e) => {
+        if (e.pointerType === "mouse" && e.button !== 0) return;
+        isDown = true;
+        moved = 0;
+        startX = e.clientX;
+        startScrollLeft = scroller.scrollLeft;
+        stopAuto();
+        scroller.setPointerCapture?.(e.pointerId);
+      };
+
+      const onMove = (e) => {
+        if (!isDown) return;
+        const dx = e.clientX - startX;
+        moved += Math.abs(dx);
+
+        // slightly “glide-y” drag feel
+        scroller.scrollLeft = startScrollLeft - (dx * 1.15);
+      };
+
+      const setActiveDot = (idx) => {
+        if (!dotsWrap) return;
+        const dots = Array.from(dotsWrap.querySelectorAll(".reviews-dot"));
+        dots.forEach((d, i) => d.classList.toggle("is-active", i === idx));
+      };
+
+      const snapToNearest = () => {
+        const { step, pages } = measure();
+        if (!step) return;
+        const raw = Math.round(scroller.scrollLeft / step);
+        const idx = clamp(raw, 0, pages - 1);
+        scroller.scrollTo({ left: idx * step, behavior: "smooth" });
+        setActiveDot(idx);
+      };
+
+      const onUp = () => {
+        if (!isDown) return;
+        isDown = false;
+        snapToNearest();
+        window.setTimeout(startAuto, 900);
+      };
+
+      scroller.addEventListener("pointerdown", onDown);
+      scroller.addEventListener("pointermove", onMove);
+      window.addEventListener("pointerup", onUp);
+      window.addEventListener("pointercancel", onUp);
+
+      // Prevent accidental click during drag
+      scroller.addEventListener("click", (e) => {
+        if (moved > 10) {
+          e.preventDefault();
+          e.stopPropagation();
+          moved = 0;
+        }
+      }, true);
+
+      // Dots build
+      const buildDots = () => {
+        if (!dotsWrap) return;
+        const { pages } = measure();
+        dotsWrap.innerHTML = "";
+        for (let i = 0; i < pages; i++) {
+          const b = document.createElement("button");
+          b.type = "button";
+          b.className = "reviews-dot";
+          b.setAttribute("aria-label", `Go to reviews page ${i + 1}`);
+          b.addEventListener("click", () => {
+            stopAuto();
+            scrollToPage(i);
+            window.setTimeout(startAuto, 1200);
+          });
+          dotsWrap.appendChild(b);
+        }
+        setActiveDot(getPageIndex());
+      };
+
+      // Update dot on scroll (throttled)
+      let raf = 0;
+      scroller.addEventListener("scroll", () => {
+        if (raf) return;
+        raf = requestAnimationFrame(() => {
+          raf = 0;
+          setActiveDot(getPageIndex());
+        });
+      });
+
+      // Build after reviews are injected
+      window.setTimeout(buildDots, 1100);
+
+      // Rebuild on resize
+      window.addEventListener("resize", () => {
+        buildDots();
+        window.setTimeout(snapToNearest, 50);
+      });
+
+      reduceMotion.addEventListener?.("change", () => {
+        stopAuto();
+        startAuto();
+      });
+
+      window.setTimeout(startAuto, 1400);
+    })();
 
     // ============================
     // Web3Forms AJAX submit + success/error message
