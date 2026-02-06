@@ -68,7 +68,7 @@
         </div>
       </div>
 
-      <div class="hero-card" aria-label="Quick info">
+      <div class="hero-card">
         <div class="card">
           <h2 class="card-title">Start with a free consultation</h2>
           <p class="card-text">Tell us your child’s year group, strengths, and goals. We’ll recommend the best next step.</p>
@@ -97,59 +97,17 @@
         <article class="info-card">
           <h3>Maths Tuition</h3>
           <p>From core numeracy and fluency to multi-step reasoning and problem solving.</p>
-          <ul>
-            <li>Number & place value</li>
-            <li>Fractions, decimals & percentages</li>
-            <li>Reasoning and exam technique</li>
-          </ul>
         </article>
 
         <article class="info-card">
           <h3>English Tuition</h3>
           <p>Reading comprehension, grammar, vocabulary, and writing with structure and flair.</p>
-          <ul>
-            <li>Comprehension strategies</li>
-            <li>SPaG and sentence craft</li>
-            <li>Creative writing frameworks</li>
-          </ul>
         </article>
 
         <article class="info-card">
           <h3>11+ Preparation</h3>
           <p>Structured preparation that builds core skills and confidence, not memorisation.</p>
-          <ul>
-            <li>Technique + timed practice</li>
-            <li>Mock-style questions</li>
-            <li>Targeted feedback and gaps plan</li>
-          </ul>
         </article>
-      </div>
-    </div>
-  </section>
-
-  <section id="how" class="section section-alt">
-    <div class="container">
-      <div class="section-head">
-        <h2>How it works</h2>
-        <p>A simple, structured approach designed for steady progress.</p>
-      </div>
-
-      <div class="steps">
-        <div class="step">
-          <div class="step-num">1</div>
-          <h3>Consultation</h3>
-          <p>We understand your child’s needs, confidence levels and goals.</p>
-        </div>
-        <div class="step">
-          <div class="step-num">2</div>
-          <h3>Personal plan</h3>
-          <p>We place your child in the right group or 1-to-1 and tailor the learning path.</p>
-        </div>
-        <div class="step">
-          <div class="step-num">3</div>
-          <h3>Teach • practise • revise</h3>
-          <p>Structured lessons, homework, and built-in revision — plus access to past lessons.</p>
-        </div>
       </div>
     </div>
   </section>
@@ -157,10 +115,7 @@
   <section id="reviews" class="section reviews">
     <div class="container">
       <div class="reviews-head">
-        <div>
-          <h2>What parents say</h2>
-          <p class="muted">Selected excerpts from Google Reviews.</p>
-        </div>
+        <h2>What parents say</h2>
         <a class="link" id="reviews-link" href="#" target="_blank" rel="noopener">View all Google reviews →</a>
       </div>
 
@@ -177,36 +132,29 @@
             Send us a message with your child’s year group and what you’d like help with.
             We’ll recommend the best next step.
           </p>
-
-          <div class="contact-points">
-            <div>✔ Years 2–6 and 11+</div>
-            <div>✔ Maths and English</div>
-            <div>✔ Small groups or 1-to-1</div>
-          </div>
         </div>
 
         <form class="form" method="post" action="https://api.web3forms.com/submit">
-          <!-- Replace with your own Web3Forms access key (free). -->
           <input type="hidden" name="access_key" value="e78ceb49-e34b-43b3-840c-a01217005ae9">
 
           <label>
             Parent/Guardian name
-            <input name="name" required autocomplete="name" placeholder="Your name">
+            <input name="name" required>
           </label>
 
           <label>
             Email
-            <input name="email" type="email" required autocomplete="email" placeholder="you@example.com">
+            <input name="email" type="email" required>
           </label>
 
           <label>
             Child’s year group
-            <input name="year" required placeholder="e.g. Year 4 / Year 5 11+">
+            <input name="year" required>
           </label>
 
           <label>
             Message
-            <textarea name="message" rows="5" required placeholder="Tell us what support your child needs…"></textarea>
+            <textarea name="message" rows="5" required></textarea>
           </label>
 
           <button class="btn btn-primary btn-full" type="submit">Send enquiry</button>
@@ -221,28 +169,10 @@
 <footer class="footer">
   <div class="container footer-inner">
     <div>© Future Perfect Tuitions</div>
-    <div class="footer-links">
-      <a href="#tuition">Tuition</a>
-      <a href="#how">How it works</a>
-      <a href="#reviews">Reviews</a>
-      <a href="#contact">Contact</a>
-    </div>
   </div>
 </footer>
 
 <script>
-  // Mobile nav toggle
-  const toggle = document.querySelector(".nav-toggle");
-  const mobileNav = document.getElementById("mobile-nav");
-  if (toggle && mobileNav) {
-    toggle.addEventListener("click", () => {
-      const expanded = toggle.getAttribute("aria-expanded") === "true";
-      toggle.setAttribute("aria-expanded", String(!expanded));
-      mobileNav.hidden = expanded;
-    });
-  }
-
-  // Reviews renderer
   const starRow = (n) =>
     "★".repeat(Math.max(0, Math.min(5, n || 0))) +
     "☆".repeat(Math.max(0, 5 - (n || 0)));
@@ -259,7 +189,7 @@
         const card = document.createElement("div");
         card.className = "review-card";
         card.innerHTML = `
-          <div class="review-stars" aria-label="${r.rating || 5} out of 5 stars">${starRow(r.rating || 5)}</div>
+          <div class="review-stars">${starRow(r.rating || 5)}</div>
           <p class="review-text">“${r.text}”</p>
           <div class="review-author">— ${r.author}</div>
         `;
