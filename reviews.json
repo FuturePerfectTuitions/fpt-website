@@ -1,16 +1,48 @@
 {
+  "source": {
+    "label": "Google Reviews",
+    "url": "https://www.google.com/search?sca_esv=e4930b54a8b6c4ed&rlz=1C1CHBF_enGB1061GB1061&si=AL3DRZEsmMGCryMMFSHJ3StBhOdZ2-6yYkXd_doETEE1OR-qOfK3U-UIQxhND-VxSHZBdxfr9NN09ZQzrNQTE49wTjJu3Wcr0bGaOcldG56e2mkThOANeWCE_0FXdHXvVX7Ud3aF3MUW&q=Future+Perfect+Reviews&sa=X&ved=2ahUKEwiMuPvU9JCSAxXvXUEAHfjIFtgQ0bkNegQIOBAH&biw=1101&bih=770&dpr=1.56&aic=0#cobssid=s"
+  },
   "reviews": [
     {
-      "author": "Parent",
-      "text": "My child’s confidence in maths has improved massively."
+      "author": "Jenny Hughes",
+      "rating": 5,
+      "text": "My daughter is so much more confident with maths and she enjoys her lessons. The teaching is patient and makes hard things feel easy."
     },
     {
-      "author": "Parent",
-      "text": "Clear explanations and very organised lessons."
+      "author": "Thomas Woodvine",
+      "rating": 5,
+      "text": "Our son has grown massively in confidence and maths skills. He enjoys the interaction and the reward system really motivates him."
     },
     {
-      "author": "Parent",
-      "text": "A fantastic tutoring experience."
+      "author": "Mayank Rohini",
+      "rating": 5,
+      "text": "Professional and very organised. Structured lessons with revision built into homework and across the term. Group classes are the perfect size."
+    },
+    {
+      "author": "Gurunanuj Anuj",
+      "rating": 5,
+      "text": "Highly recommend. Focuses on core skills across Maths, English, Verbal and Non-Verbal Reasoning, and teaches the ‘why’ — not memorisation."
+    },
+    {
+      "author": "Ruby Sahney",
+      "rating": 5,
+      "text": "My son has made huge progress and thoroughly enjoys his classes. The rewarding teaching style and personal touch build confidence."
+    },
+    {
+      "author": "Gunjan Agarwal",
+      "rating": 5,
+      "text": "They focus on strengths and weaknesses and we get regular updates on what to work on at home. Massive improvement in maths and English."
+    },
+    {
+      "author": "Baldev Patel",
+      "rating": 5,
+      "text": "Since starting 11+ preparation, my daughter has shown significant improvement in both maths and English. Thorough progress and engaging lessons."
+    },
+    {
+      "author": "Priya Kalia",
+      "rating": 5,
+      "text": "My daughter is much more confident and happier. Teaching is kind but firm, quickly identifies weaknesses, and doesn’t move on until she understands."
     }
   ]
 }
