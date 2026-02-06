@@ -4,19 +4,34 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Future Perfect Tuitions | Maths & English for tomorrow</title>
+
   <meta name="description" content="Give your child confidence, not just worksheets. Concept-driven Maths & English tuition for Years 2–6 and 11+ preparation. Small groups (max 5) and 1-to-1. Rated 5.0 on Google." />
+
+  <!-- Basic social sharing (replace og:image if/when you add one) -->
+  <meta property="og:title" content="Future Perfect Tuitions | Maths & English for tomorrow" />
+  <meta property="og:description" content="Give your child confidence, not just worksheets. Concept-driven Maths & English tuition for Years 2–6 and 11+ preparation. Small groups (max 5) and 1-to-1. Rated 5.0 on Google." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.futureperfect.education/" />
+  <meta property="og:image" content="https://www.futureperfect.education/assets/fpt-logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Favicons (optional, but professional) -->
+  <link rel="icon" href="assets/favicon.png" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
 
 <header class="topbar">
   <div class="container topbar-inner">
-    <a class="brand" href="#top">
-      <img src="assets/fpt-logo.png" alt="Future Perfect Tuitions" class="logo" />
+    <a class="brand" href="#top" aria-label="Future Perfect Tuitions">
+      <img src="assets/fpt-logo.png" alt="Future Perfect Tuitions" class="logo" width="240" height="64" />
     </a>
 
     <nav class="navlinks" aria-label="Primary">
-      <a href="#why">Why FPT</a>
+      <a href="#usp">What you get</a>
+      <a href="#outcomes">Outcomes</a>
       <a href="#tuition">Tuition</a>
       <a href="#how">How it works</a>
       <a href="#reviews">Reviews</a>
@@ -33,7 +48,8 @@
   </div>
 
   <div id="mobile-nav" class="mobile-nav" hidden>
-    <a href="#why">Why FPT</a>
+    <a href="#usp">What you get</a>
+    <a href="#outcomes">Outcomes</a>
     <a href="#tuition">Tuition</a>
     <a href="#how">How it works</a>
     <a href="#reviews">Reviews</a>
@@ -408,17 +424,72 @@
     </div>
   </section>
 
+  <!-- FAQ (Professional + high-conversion) -->
+  <section id="faq" class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <h2>Frequently asked questions</h2>
+        <p class="muted">Quick answers to the most common questions parents ask us.</p>
+      </div>
+
+      <div class="faq">
+        <details class="faq-item">
+          <summary>What happens in a free trial lesson?</summary>
+          <div class="faq-body">
+            We teach a real lesson (not a “demo”), so you can see our style and how we build understanding.
+            Parents are welcome to sit in and observe.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>How are groups formed?</summary>
+          <div class="faq-body">
+            We keep groups small (max 5) and align children by ability and learning needs, not just by year group.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Do you give homework?</summary>
+          <div class="faq-body">
+            Yes. Homework is set to reinforce what was taught, with clear answer support to keep practice focused and efficient.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Can we revise past topics?</summary>
+          <div class="faq-body">
+            Yes — revision support is built in, and students can revisit learning to strengthen weaker areas and prepare for tests/exams.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>Do you offer online lessons?</summary>
+          <div class="faq-body">
+            Yes. We offer face-to-face and online. The same concept-driven approach is used in both formats.
+          </div>
+        </details>
+
+        <details class="faq-item">
+          <summary>What year groups do you teach?</summary>
+          <div class="faq-body">
+            We support Years 2–6 for Maths and English, and 11+ preparation (Year 4 and Year 5), including Maths, English, VR and NVR.
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
   <!-- REVIEWS -->
   <section id="reviews" class="section reviews">
     <div class="container">
       <div class="reviews-head">
         <div>
           <h2>Trusted by parents. Rated 5.0 on Google.</h2>
-          <p class="muted">Selected excerpts from Google Reviews.</p>
+          <p class="muted">
+            <span id="review-meta">Selected excerpts from Google Reviews.</span>
+          </p>
         </div>
-        <a class="link" id="reviews-link"
-           href="PUT-YOUR-GOOGLE-REVIEWS-LINK-HERE"
-           target="_blank" rel="noopener">View all Google reviews →</a>
+        <a class="link" id="reviews-link" href="#" target="_blank" rel="noopener">View all Google reviews →</a>
       </div>
 
       <div id="reviews-container" class="reviews-grid"></div>
@@ -445,6 +516,11 @@
           <div class="callout">
             <div class="callout-title">Prefer a call?</div>
             <div class="callout-text"><strong>Barkha and Sej:</strong> 07725 443401</div>
+          </div>
+
+          <div class="contact-mini">
+            <div class="contact-mini-row"><strong>Email:</strong> <a class="link" href="mailto:futureperfecttuitions@gmail.com">futureperfecttuitions@gmail.com</a></div>
+            <div class="contact-mini-row"><strong>Location:</strong> Next to Carpenders Park Overground Station.</div>
           </div>
         </div>
 
@@ -504,11 +580,21 @@
 
 <footer class="footer">
   <div class="container footer-inner">
-    <div>© Future Perfect Tuitions</div>
+    <div class="footer-left">
+      <div class="footer-brand">© Future Perfect Tuitions</div>
+      <div class="footer-sub">Next to Carpenders Park Overground Station • Years 2–6 • 11+ Preparation</div>
+      <div class="footer-sub">
+        <a href="mailto:futureperfecttuitions@gmail.com">futureperfecttuitions@gmail.com</a> •
+        <a href="tel:+447725443401">07725 443401</a>
+      </div>
+    </div>
+
     <div class="footer-links">
-      <a href="#why">Why FPT</a>
+      <a href="#usp">What you get</a>
+      <a href="#outcomes">Outcomes</a>
       <a href="#tuition">Tuition</a>
       <a href="#how">How it works</a>
+      <a href="#faq">FAQ</a>
       <a href="#reviews">Reviews</a>
       <a href="#contact">Enquire</a>
     </div>
@@ -541,19 +627,26 @@
     "★".repeat(Math.max(0, Math.min(5, n || 0))) +
     "☆".repeat(Math.max(0, 5 - (n || 0)));
 
-  // Reviews + chips renderer
+  // Reviews + chips renderer + review meta + schema injection
   fetch("reviews.json")
     .then((res) => res.json())
     .then((data) => {
       const container = document.getElementById("reviews-container");
       const link = document.getElementById("reviews-link");
       const track = document.getElementById("chip-track");
+      const meta = document.getElementById("review-meta");
 
-      // Set "View all Google reviews" link from reviews.json
+      const reviews = (data && data.reviews) ? data.reviews : [];
+      const reviewCount = reviews.length || 0;
+
       if (data?.source?.url && link) link.href = data.source.url;
 
+      if (meta && reviewCount) {
+        meta.textContent = `Rated 5.0 on Google • ${reviewCount} selected review excerpts shown here.`;
+      }
+
       // Review cards
-      (data.reviews || []).slice(0, 6).forEach((r) => {
+      (reviews || []).slice(0, 6).forEach((r) => {
         const card = document.createElement("div");
         card.className = "review-card";
         card.innerHTML = `
@@ -564,7 +657,7 @@
         if (container) container.appendChild(card);
       });
 
-      // Chips from reviews.json
+      // Chips
       if (track) {
         const cleanSnippet = (t) => {
           if (!t) return "";
@@ -573,7 +666,7 @@
           return s.length > 64 ? s.slice(0, 61).trim() + "…" : s;
         };
 
-        const chips = (data.reviews || [])
+        const chips = (reviews || [])
           .map(r => cleanSnippet(r.text))
           .filter(Boolean)
           .slice(0, 8);
@@ -601,8 +694,28 @@
           });
         };
         renderSet();
-        renderSet(); // duplicate for seamless loop
+        renderSet();
       }
+
+      // JSON-LD (LocalBusiness + AggregateRating)
+      const ld = {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Future Perfect Tuitions",
+        "url": "https://www.futureperfect.education/",
+        "telephone": "+447725443401",
+        "areaServed": "London",
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "5.0",
+          "reviewCount": String(reviewCount || 0)
+        }
+      };
+
+      const script = document.createElement("script");
+      script.type = "application/ld+json";
+      script.textContent = JSON.stringify(ld);
+      document.head.appendChild(script);
     })
     .catch(() => {
       const track = document.getElementById("chip-track");
