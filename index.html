@@ -11,7 +11,7 @@
 
 <header class="topbar">
   <div class="container topbar-inner">
-    <a class="brand" href="#">
+    <a class="brand" href="#top">
       <img src="assets/fpt-logo.png" alt="Future Perfect Tuitions" class="logo" />
     </a>
 
@@ -42,7 +42,7 @@
   </div>
 </header>
 
-<main>
+<main id="top">
 
   <!-- HERO -->
   <section class="hero">
@@ -416,7 +416,9 @@
           <h2>Trusted by parents. Rated 5.0 on Google.</h2>
           <p class="muted">Selected excerpts from Google Reviews.</p>
         </div>
-        <a class="link" id="reviews-link" href="#" target="_blank" rel="noopener">View all Google reviews →</a>
+        <a class="link" id="reviews-link"
+           href="PUT-YOUR-GOOGLE-REVIEWS-LINK-HERE"
+           target="_blank" rel="noopener">View all Google reviews →</a>
       </div>
 
       <div id="reviews-container" class="reviews-grid"></div>
@@ -600,6 +602,32 @@
         };
         renderSet();
         renderSet(); // duplicate for seamless loop
+      }
+    })
+    .catch(() => {
+      const track = document.getElementById("chip-track");
+      const container = document.getElementById("reviews-container");
+
+      if (track) {
+        track.innerHTML = "";
+        ["“Highly recommend.”","“Very organised and professional.”","“My child is so much more confident.”","“Patient; makes hard things easy.”"]
+          .concat(["“Highly recommend.”","“Very organised and professional.”","“My child is so much more confident.”","“Patient; makes hard things easy.”"])
+          .forEach((t) => {
+            const el = document.createElement("div");
+            el.className = "chip";
+            el.textContent = t;
+            track.appendChild(el);
+          });
+      }
+
+      if (container) {
+        container.innerHTML = `
+          <div class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-text">“Parents consistently rate us 5.0 on Google.”</p>
+            <div class="review-author">— Future Perfect Tuitions</div>
+          </div>
+        `;
       }
     });
 </script>
