@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Future Perfect Tuitions | Maths & English for tomorrow</title>
-  <meta name="description" content="Give your child confidence, not just worksheets. Concept-driven Maths & English tuition for Years 2–6 and 11+ preparation." />
+  <meta name="description" content="Give your child confidence, not just worksheets. Concept-driven Maths & English tuition for Years 2–6 and 11+ preparation. Small groups (max 5) and 1-to-1. Rated 5.0 on Google." />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -15,7 +15,7 @@
       <img src="assets/fpt-logo.png" alt="Future Perfect Tuitions" class="logo" />
     </a>
 
-    <nav class="navlinks">
+    <nav class="navlinks" aria-label="Primary">
       <a href="#why">Why FPT</a>
       <a href="#tuition">Tuition</a>
       <a href="#how">How it works</a>
@@ -23,211 +23,585 @@
 
       <div class="nav-actions">
         <a href="#contact" class="btn btn-outline">Enquire</a>
-        <a href="https://lessons.futureperfect.education/" class="btn btn-students" target="_blank">Existing Students</a>
+        <a href="https://lessons.futureperfect.education/" class="btn btn-students" target="_blank" rel="noopener">
+          Existing Students
+        </a>
       </div>
     </nav>
+
+    <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">☰</button>
+  </div>
+
+  <div id="mobile-nav" class="mobile-nav" hidden>
+    <a href="#why">Why FPT</a>
+    <a href="#tuition">Tuition</a>
+    <a href="#how">How it works</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#contact">Enquire</a>
+    <a href="https://lessons.futureperfect.education/" target="_blank" rel="noopener">Existing Students</a>
   </div>
 </header>
 
 <main>
 
-<section class="hero">
-  <div class="container hero-grid">
-    <div class="hero-copy">
-      <div class="pill">Years 2–6 • 11+ Preparation • Face-to-face or Online</div>
-      <h1>Give your child confidence, not just worksheets.</h1>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <div class="pill">Years 2–6 • 11+ Preparation • Face-to-face or Online</div>
 
-      <p class="lead">
-        Maths and English lessons that are structured, concept-driven,
-        and designed to make children think, not just complete.
-      </p>
+        <h1>Give your child confidence, not just worksheets.</h1>
 
-      <div class="cta-row">
-        <a href="#contact" class="btn btn-primary">Book a free trial lesson</a>
-        <a href="#reviews" class="btn btn-ghost">See Google reviews</a>
-      </div>
-
-      <div class="trust-strip">
-        <div class="trust-item">
-          <div class="trust-icon">⭐</div>
-          <div>
-            <div class="trust-metric">5.0</div>
-            <div class="trust-label">Google rating</div>
-          </div>
-        </div>
-
-        <div class="trust-item">
-          <div class="trust-icon">👥</div>
-          <div>
-            <div class="trust-metric">Max 5</div>
-            <div class="trust-label">per group</div>
-          </div>
-        </div>
-
-        <div class="trust-item">
-          <div class="trust-icon">🧠</div>
-          <div>
-            <div class="trust-metric">Concept-first</div>
-            <div class="trust-label">understanding, not memorising</div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <aside class="hero-card">
-      <div class="card">
-        <div class="badge-row">
-          <div class="badge">⭐ Rated 5.0 on Google</div>
-          <div class="badge badge-outline">Free trial available</div>
-        </div>
-
-        <h2 class="card-title">See the difference in one lesson</h2>
-        <p class="card-text">
-          Sit in on a free trial session and see how we build confidence,
-          understanding, and steady progress.
+        <p class="lead">
+          Maths and English lessons that are <strong>structured</strong>, <strong>concept-driven</strong>,
+          and designed to make children <strong>think</strong>, not just complete.
+          Strong foundations built early — for school, for 11+, and beyond.
         </p>
 
-        <div class="card-points">
-          <div>✔ Concept-driven teaching</div>
-          <div>✔ Gaps fixed early</div>
-          <div>✔ Revision support built in</div>
+        <div class="cta-row">
+          <a href="#contact" class="btn btn-primary">Book a free trial lesson</a>
+          <a href="#reviews" class="btn btn-ghost">See Google reviews</a>
         </div>
 
-        <a href="#contact" class="btn btn-primary btn-full">Enquire now</a>
+        <!-- Metric-style trust strip -->
+        <div class="trust-strip" aria-label="Key trust points">
+          <div class="trust-item">
+            <div class="trust-icon">⭐</div>
+            <div>
+              <div class="trust-metric">5.0</div>
+              <div class="trust-label">Google rating</div>
+            </div>
+          </div>
 
-        <div class="mini">
-          <div class="mini-title">Location</div>
-          <div class="mini-text">Near Carpenders Park Overground Station.</div>
+          <div class="trust-item">
+            <div class="trust-icon">👥</div>
+            <div>
+              <div class="trust-metric">Max 5</div>
+              <div class="trust-label">per group</div>
+            </div>
+          </div>
+
+          <div class="trust-item">
+            <div class="trust-icon">🧠</div>
+            <div>
+              <div class="trust-metric">Concept-first</div>
+              <div class="trust-label">understanding, not memorising</div>
+            </div>
+          </div>
         </div>
       </div>
-    </aside>
-  </div>
-</section>
 
-<!-- OUTCOMES -->
-<section id="outcomes" class="section section-outcomes">
-  <div class="container">
-    <h2>What your child gains</h2>
+      <aside class="hero-card" aria-label="Quick info card">
+        <div class="card">
+          <div class="badge-row">
+            <div class="badge">⭐ Rated 5.0 on Google</div>
+            <div class="badge badge-outline">Free trial available</div>
+          </div>
 
-    <div class="outcomes-grid">
-      <div class="outcome-card">
-        <div class="outcome-title">Confidence in Maths & English</div>
+          <h2 class="card-title">See the difference in one lesson</h2>
+          <p class="card-text">
+            We invite parents to sit in on a free trial session and see exactly how we teach:
+            focused on understanding, confidence, and steady progress.
+          </p>
+
+          <div class="card-points">
+            <div>✔ Concept-driven teaching</div>
+            <div>✔ Gaps fixed early</div>
+            <div>✔ Revision support built in</div>
+          </div>
+
+          <a href="#contact" class="btn btn-primary btn-full">Enquire now</a>
+
+          <div class="mini">
+            <div class="mini-title">Location</div>
+            <div class="mini-text">Next to Carpenders Park Overground Station.</div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- USP: WHAT YOU GET -->
+  <section id="usp" class="section section-usp">
+    <div class="container">
+      <div class="usp-head">
+        <h2>What you get at Future Perfect</h2>
+        <p class="muted">
+          Not silent repetition. Not endless worksheets. A structured system that builds understanding, confidence, and results.
+        </p>
       </div>
-      <div class="outcome-card">
-        <div class="outcome-title">Strong foundations</div>
+
+      <div class="usp-grid">
+        <div class="usp-item">
+          <div class="usp-icon">👥</div>
+          <div class="usp-title">Small batches (max 5)</div>
+          <div class="usp-text">Personal attention, real interaction, and teaching that adapts to the child.</div>
+        </div>
+
+        <div class="usp-item">
+          <div class="usp-icon">🧠</div>
+          <div class="usp-title">Concept-driven teaching</div>
+          <div class="usp-text">We teach the <strong>why</strong> behind answers — clear methods, not rushed shortcuts.</div>
+        </div>
+
+        <div class="usp-item">
+          <div class="usp-icon">🎥</div>
+          <div class="usp-title">Revision video lessons</div>
+          <div class="usp-text">Topic-by-topic support so children can revisit learning and revise at their own pace.</div>
+        </div>
+
+        <div class="usp-item">
+          <div class="usp-icon">📝</div>
+          <div class="usp-title">Homework + answer packs</div>
+          <div class="usp-text">Homework reinforces what was taught — with clear answer support for focused practice.</div>
+        </div>
+
+        <div class="usp-item">
+          <div class="usp-icon">📊</div>
+          <div class="usp-title">Assessments & feedback</div>
+          <div class="usp-text">Regular checkpoints to spot gaps early and keep progress on track.</div>
+        </div>
+
+        <div class="usp-item">
+          <div class="usp-icon">✅</div>
+          <div class="usp-title">Confidence built step-by-step</div>
+          <div class="usp-text">Children feel safe to try, make mistakes, improve, and succeed — consistently.</div>
+        </div>
       </div>
-      <div class="outcome-card">
-        <div class="outcome-title">Better reasoning skills</div>
-      </div>
-      <div class="outcome-card">
-        <div class="outcome-title">Improved reading & writing</div>
-      </div>
-      <div class="outcome-card">
-        <div class="outcome-title">Accuracy with numbers</div>
-      </div>
-      <div class="outcome-card">
-        <div class="outcome-title">Love for learning</div>
+
+      <div class="usp-band">
+        <div class="usp-band-left">
+          <div class="usp-band-title">For Years 2–6 and 11+</div>
+          <div class="usp-band-text">Strong foundations first. Clear thinking. Confident problem-solving.</div>
+        </div>
+        <a href="#contact" class="btn btn-primary">Book a free trial lesson</a>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- REVIEW HIGHLIGHTS STRIP -->
-<section class="section review-strip">
-  <div class="container">
-    <div class="review-strip-head">
-      <h2>What parents keep mentioning</h2>
+  <!-- OUTCOMES -->
+  <section id="outcomes" class="section section-outcomes">
+    <div class="container">
+      <div class="outcomes-head">
+        <h2>What your child gains</h2>
+        <p class="muted">Outcomes we build consistently — across Maths, English, and 11+ readiness.</p>
+      </div>
+
+      <div class="outcomes-grid">
+        <div class="outcome-card">
+          <div class="outcome-top">
+            <div class="outcome-icon">💪</div>
+            <div class="outcome-title">Confidence in Maths & English</div>
+          </div>
+          <div class="outcome-text">Children participate, attempt problems calmly, and stop fearing mistakes.</div>
+        </div>
+
+        <div class="outcome-card">
+          <div class="outcome-top">
+            <div class="outcome-icon">🧱</div>
+            <div class="outcome-title">Strong foundations, not learning gaps</div>
+          </div>
+          <div class="outcome-text">We fix misunderstandings early so progress doesn’t wobble later.</div>
+        </div>
+
+        <div class="outcome-card">
+          <div class="outcome-top">
+            <div class="outcome-icon">🧩</div>
+            <div class="outcome-title">Better reasoning & problem-solving</div>
+          </div>
+          <div class="outcome-text">Children learn to think clearly, choose methods, and explain their answers.</div>
+        </div>
+
+        <div class="outcome-card">
+          <div class="outcome-top">
+            <div class="outcome-icon">📚</div>
+            <div class="outcome-title">Improved reading, writing & comprehension</div>
+          </div>
+          <div class="outcome-text">Stronger understanding, clearer writing, and better exam-style responses.</div>
+        </div>
+
+        <div class="outcome-card">
+          <div class="outcome-top">
+            <div class="outcome-icon">🎯</div>
+            <div class="outcome-title">Accuracy and confidence with numbers</div>
+          </div>
+          <div class="outcome-text">More careful working, fewer careless errors, and stronger fluency.</div>
+        </div>
+
+        <div class="outcome-card">
+          <div class="outcome-top">
+            <div class="outcome-icon">✨</div>
+            <div class="outcome-title">A lasting love for learning</div>
+          </div>
+          <div class="outcome-text">Children feel motivated because they understand — not because they memorise.</div>
+        </div>
+      </div>
+
+      <div class="outcomes-cta">
+        <div class="outcomes-cta-left">
+          <div class="outcomes-cta-title">Want to see this in action?</div>
+          <div class="outcomes-cta-text">Book a free trial lesson and sit in with your child.</div>
+        </div>
+        <a href="#contact" class="btn btn-primary">Book a free trial lesson</a>
+      </div>
     </div>
+  </section>
 
-    <div class="marquee">
-      <div class="marquee-track" id="chip-track"></div>
+  <!-- REVIEW HIGHLIGHTS STRIP -->
+  <section class="section review-strip" aria-label="Review highlights">
+    <div class="container">
+      <div class="review-strip-head">
+        <h2>What parents keep mentioning</h2>
+        <p class="muted">Auto-generated from Google review excerpts on this site.</p>
+      </div>
+
+      <div class="marquee" role="region" aria-label="Scrolling review highlights">
+        <div class="marquee-track" id="chip-track">
+          <!-- chips injected from reviews.json -->
+        </div>
+      </div>
+
+      <div class="review-strip-foot">
+        <a href="#reviews" class="btn btn-outline">Read full reviews</a>
+        <a href="#contact" class="btn btn-primary">Book a free trial lesson</a>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- REVIEWS -->
-<section id="reviews" class="section reviews">
-  <div class="container">
-    <h2>Trusted by parents</h2>
-    <div id="reviews-container" class="reviews-grid"></div>
-  </div>
-</section>
+  <!-- WHY -->
+  <section id="why" class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>Why Future Perfect is different</h2>
+        <p>
+          If maths feels boring, it’s being taught the wrong way. At Future Perfect Tuitions,
+          children don’t dread learning — <strong>they own it</strong>.
+        </p>
+      </div>
 
-<!-- CONTACT -->
-<section id="contact" class="section">
-  <div class="container">
-    <h2>Enquire now</h2>
+      <div class="cards-3">
+        <article class="info-card">
+          <h3>Strong foundations matter</h3>
+          <p>
+            Doing well at school — and later in exams like the 11+ — relies on
+            strong English and Maths foundations built early.
+          </p>
+        </article>
 
-    <form class="form" method="post" action="https://api.web3forms.com/submit">
-      <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_KEY" />
+        <article class="info-card">
+          <h3>Confidence built step-by-step</h3>
+          <p>
+            We build confidence through clear methods, patient teaching, and
+            fixing gaps before they become barriers.
+          </p>
+        </article>
 
-      <label>
-        Name
-        <input name="name" required />
-      </label>
+        <article class="info-card">
+          <h3>Think, don’t memorise</h3>
+          <p>
+            Lessons are structured and concept-driven.
+            Children learn the <strong>why</strong> behind answers — not silent repetition.
+          </p>
+        </article>
+      </div>
 
-      <label>
-        Email
-        <input name="email" type="email" required />
-      </label>
+      <div class="big-quote">
+        <div class="big-quote-inner">
+          <div class="big-quote-text">“Most tutors promise results. We show you how.”</div>
+          <div class="big-quote-sub">Success is a process: thinking clearly, reasoning confidently, and building secure foundations.</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-      <label>
-        Child’s year group
-        <input name="year" required />
-      </label>
+  <!-- TUITION -->
+  <section id="tuition" class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <h2>Tuition for Years 2–6 and 11+</h2>
+        <p>Face-to-face or online. Small groups (max 5) or 1-to-1.</p>
+      </div>
 
-      <label>
-        Message
-        <textarea name="message" rows="5" required></textarea>
-      </label>
+      <div class="two-col">
+        <div class="panel">
+          <h3>Years 2 to Year 6</h3>
+          <p class="muted">
+            Foundations built for life: confidence in Maths and English, better reasoning skills,
+            and stronger reading, writing, and comprehension.
+          </p>
 
-      <button class="btn btn-primary btn-full" type="submit">Send enquiry</button>
-    </form>
-  </div>
-</section>
+          <ul class="ticks">
+            <li>Concept-driven Maths & English</li>
+            <li>Improved problem-solving and reasoning</li>
+            <li>Accuracy and confidence with numbers</li>
+            <li>Enjoyment of learning and steady progress</li>
+          </ul>
+
+          <a href="#contact" class="btn btn-primary">Enquire for Years 2–6</a>
+        </div>
+
+        <div class="panel">
+          <h3>11+ Preparation (Year 4 and Year 5)</h3>
+          <p class="muted">
+            Don’t guess the right 11+ tuition. Experience it.
+            Our approach is focused on understanding, not memorisation.
+          </p>
+
+          <ul class="ticks">
+            <li>English, Maths, Verbal Reasoning and NVR support</li>
+            <li>Clear methods and exam-style practice</li>
+            <li>Confidence built step-by-step</li>
+            <li>Small batches for personal attention</li>
+          </ul>
+
+          <a href="#contact" class="btn btn-primary">Enquire for 11+</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how" class="section">
+    <div class="container">
+      <div class="section-head">
+        <h2>How our system supports real progress</h2>
+        <p>It’s not just the lesson — it’s everything around it.</p>
+      </div>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <h3>Structured lessons</h3>
+          <p>Lessons are organised, concept-driven, and designed to make children think.</p>
+        </div>
+
+        <div class="step">
+          <div class="step-num">2</div>
+          <h3>Revision support built in</h3>
+          <p>Access past lessons for revision at your own pace, and reinforce learning over time.</p>
+        </div>
+
+        <div class="step">
+          <div class="step-num">3</div>
+          <h3>Homework + answer packs</h3>
+          <p>Homework supports what was taught, with clear answer packs to guide practice.</p>
+        </div>
+
+        <div class="step">
+          <div class="step-num">4</div>
+          <h3>Assessments and feedback</h3>
+          <p>Regular checkpoints highlight gaps early and keep progress on track.</p>
+        </div>
+
+        <div class="step">
+          <div class="step-num">5</div>
+          <h3>Confidence, motivation, rewards</h3>
+          <p>A positive environment where children feel safe to try, improve, and succeed.</p>
+        </div>
+
+        <div class="step">
+          <div class="step-num">6</div>
+          <h3>Parents can see the difference</h3>
+          <p>We invite parents to sit in on a free trial and watch how growth happens.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section id="reviews" class="section reviews">
+    <div class="container">
+      <div class="reviews-head">
+        <div>
+          <h2>Trusted by parents. Rated 5.0 on Google.</h2>
+          <p class="muted">Selected excerpts from Google Reviews.</p>
+        </div>
+        <a class="link" id="reviews-link" href="#" target="_blank" rel="noopener">View all Google reviews →</a>
+      </div>
+
+      <div id="reviews-container" class="reviews-grid"></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section">
+    <div class="container">
+      <div class="contact-grid">
+        <div>
+          <h2>Enquire now</h2>
+          <p class="lead">
+            Tell us your child’s year group and what support you’re looking for.
+            We’ll recommend the best next step.
+          </p>
+
+          <div class="contact-points">
+            <div>✔ Years 2–6 (Maths & English)</div>
+            <div>✔ 11+ (English, Maths, Verbal Reasoning, NVR)</div>
+            <div>✔ Online or face-to-face</div>
+          </div>
+
+          <div class="callout">
+            <div class="callout-title">Prefer a call?</div>
+            <div class="callout-text"><strong>Barkha and Sej:</strong> 07725 443401</div>
+          </div>
+        </div>
+
+        <form class="form" method="post" action="https://api.web3forms.com/submit">
+          <input type="hidden" name="access_key" value="e78ceb49-e34b-43b3-840c-a01217005ae9" />
+          <input type="hidden" name="subject" value="New enquiry from futureperfect.education" />
+          <input type="hidden" name="from_name" value="Future Perfect Website" />
+
+          <label>
+            Parent/Guardian name
+            <input name="name" required autocomplete="name" placeholder="Your name" />
+          </label>
+
+          <label>
+            Email
+            <input name="email" type="email" required autocomplete="email" placeholder="you@example.com" />
+          </label>
+
+          <label>
+            Child’s year group
+            <input name="year" required placeholder="e.g. Year 3 / Year 5 (11+)" />
+          </label>
+
+          <label>
+            Tuition type
+            <select name="tuition_type" required>
+              <option value="" selected disabled>Select…</option>
+              <option>Years 2–6 (Maths & English)</option>
+              <option>11+ (English, Maths, VR, NVR)</option>
+              <option>Not sure yet</option>
+            </select>
+          </label>
+
+          <label>
+            Online or face-to-face?
+            <select name="mode" required>
+              <option value="" selected disabled>Select…</option>
+              <option>Face-to-face</option>
+              <option>Online</option>
+              <option>Either</option>
+            </select>
+          </label>
+
+          <label>
+            Message
+            <textarea name="message" rows="5" required placeholder="Tell us what your child needs help with…"></textarea>
+          </label>
+
+          <button class="btn btn-primary btn-full" type="submit">Send enquiry</button>
+          <div class="form-note">We’ll reply as soon as possible.</div>
+        </form>
+      </div>
+    </div>
+  </section>
 
 </main>
 
 <footer class="footer">
-  <div class="container">
-    © Future Perfect Tuitions
+  <div class="container footer-inner">
+    <div>© Future Perfect Tuitions</div>
+    <div class="footer-links">
+      <a href="#why">Why FPT</a>
+      <a href="#tuition">Tuition</a>
+      <a href="#how">How it works</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Enquire</a>
+    </div>
   </div>
 </footer>
 
 <script>
-fetch("reviews.json")
-  .then(res => res.json())
-  .then(data => {
-    const container = document.getElementById("reviews-container");
-    const track = document.getElementById("chip-track");
+  // Mobile nav toggle
+  const toggle = document.querySelector(".nav-toggle");
+  const mobileNav = document.getElementById("mobile-nav");
 
-    const starRow = n => "★".repeat(n) + "☆".repeat(5 - n);
-
-    (data.reviews || []).slice(0,6).forEach(r => {
-      const card = document.createElement("div");
-      card.className = "review-card";
-      card.innerHTML = `
-        <div class="review-stars">${starRow(r.rating || 5)}</div>
-        <p class="review-text">“${r.text}”</p>
-        <div class="review-author">— ${r.author}</div>
-      `;
-      container.appendChild(card);
+  if (toggle && mobileNav) {
+    toggle.addEventListener("click", () => {
+      const expanded = toggle.getAttribute("aria-expanded") === "true";
+      toggle.setAttribute("aria-expanded", String(!expanded));
+      mobileNav.hidden = expanded;
     });
 
-    if(track){
-      const snippets = data.reviews.slice(0,8).map(r => r.text.split(".")[0]);
-      const render = () => {
-        snippets.forEach(t=>{
-          const el=document.createElement("div");
-          el.className="chip";
-          el.textContent="“"+t+"”";
-          track.appendChild(el);
-        });
-      };
-      render();
-      render();
-    }
-  });
+    mobileNav.addEventListener("click", (e) => {
+      const t = e.target;
+      if (t && t.tagName === "A") {
+        toggle.setAttribute("aria-expanded", "false");
+        mobileNav.hidden = true;
+      }
+    });
+  }
+
+  // Helper: star row
+  const starRow = (n) =>
+    "★".repeat(Math.max(0, Math.min(5, n || 0))) +
+    "☆".repeat(Math.max(0, 5 - (n || 0)));
+
+  // Reviews + chips renderer
+  fetch("reviews.json")
+    .then((res) => res.json())
+    .then((data) => {
+      const container = document.getElementById("reviews-container");
+      const link = document.getElementById("reviews-link");
+      const track = document.getElementById("chip-track");
+
+      // Set "View all Google reviews" link from reviews.json
+      if (data?.source?.url && link) link.href = data.source.url;
+
+      // Review cards
+      (data.reviews || []).slice(0, 6).forEach((r) => {
+        const card = document.createElement("div");
+        card.className = "review-card";
+        card.innerHTML = `
+          <div class="review-stars" aria-label="${r.rating || 5} out of 5 stars">${starRow(r.rating || 5)}</div>
+          <p class="review-text">“${r.text}”</p>
+          <div class="review-author">— ${r.author}</div>
+        `;
+        if (container) container.appendChild(card);
+      });
+
+      // Chips from reviews.json
+      if (track) {
+        const cleanSnippet = (t) => {
+          if (!t) return "";
+          const first = t.split(/(?<=[.!?])\s+/)[0] || t;
+          const s = first.replace(/^["“”]+|["“”]+$/g, "").trim();
+          return s.length > 64 ? s.slice(0, 61).trim() + "…" : s;
+        };
+
+        const chips = (data.reviews || [])
+          .map(r => cleanSnippet(r.text))
+          .filter(Boolean)
+          .slice(0, 8);
+
+        const fallback = [
+          "My child is so much more confident.",
+          "Very organised and professional.",
+          "Patient; makes hard things easy.",
+          "Small groups are the perfect size.",
+          "Reward system really motivates.",
+          "Explains the ‘why’, not just answers.",
+          "We can access past lessons to revise.",
+          "Highly recommend."
+        ];
+
+        const finalChips = (chips.length ? chips : fallback).map(t => `“${t}”`);
+
+        track.innerHTML = "";
+        const renderSet = () => {
+          finalChips.forEach((text) => {
+            const el = document.createElement("div");
+            el.className = "chip";
+            el.textContent = text;
+            track.appendChild(el);
+          });
+        };
+        renderSet();
+        renderSet(); // duplicate for seamless loop
+      }
+    });
 </script>
 
 </body>
