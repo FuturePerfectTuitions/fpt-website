@@ -29,7 +29,6 @@
     <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">☰</button>
   </div>
 
-  <!-- MOBILE MENU (hidden on desktop). This is NOT supposed to show in a big vertical list on desktop. -->
   <div id="mobile-nav" class="mobile-nav" hidden>
     <a href="#why">Why FPT</a>
     <a href="#tuition">Tuition</a>
@@ -104,6 +103,66 @@
           </div>
         </div>
       </aside>
+    </div>
+  </section>
+
+  <!-- USP: WHAT YOU GET -->
+  <section id="usp" class="section section-usp">
+    <div class="container">
+      <div class="usp-head">
+        <h2>What you get at Future Perfect</h2>
+        <p class="muted">
+          Not silent repetition. Not endless worksheets. A structured system that builds understanding, confidence, and results.
+        </p>
+      </div>
+
+      <div class="usp-grid">
+        <div class="usp-item">
+          <div class="usp-icon">👥</div>
+          <div class="usp-title">Small batches (max 5)</div>
+          <div class="usp-text">Personal attention, real interaction, and teaching that adapts to the child.</div>
+        </div>
+
+        <div class="usp-item">
+          <div class="usp-icon">🧠</div>
+          <div class="usp-title">Concept-driven teaching</div>
+          <div class="usp-text">We teach the <strong>why</strong> behind answers — clear methods, not rushed shortcuts.</div>
+        </div>
+
+        <div class="usp-item">
+          <div class="usp-icon">🎥</div>
+          <div class="usp-title">Revision video lessons</div>
+          <div class="usp-text">Topic-by-topic support so children can revisit learning and revise at their own pace.</div>
+        </div>
+
+        <div class="usp-item">
+          <div class="usp-icon">📝</div>
+          <div class="usp-title">Homework + answer packs</div>
+          <div class="usp-text">Homework reinforces what was taught — with clear answer support for focused practice.</div>
+        </div>
+
+        <div class="usp-item">
+          <div class="usp-icon">📊</div>
+          <div class="usp-title">Assessments & feedback</div>
+          <div class="usp-text">Regular checkpoints to spot gaps early and keep progress on track.</div>
+        </div>
+
+        <div class="usp-item">
+          <div class="usp-icon">✅</div>
+          <div class="usp-title">Confidence built step-by-step</div>
+          <div class="usp-text">Children feel safe to try, make mistakes, improve, and succeed — consistently.</div>
+        </div>
+      </div>
+
+      <div class="usp-band">
+        <div class="usp-band-left">
+          <div class="usp-band-title">For Years 2–6 and 11+</div>
+          <div class="usp-band-text">
+            Strong foundations first. Clear thinking. Confident problem-solving.
+          </div>
+        </div>
+        <a href="#contact" class="btn btn-primary">Book a free trial lesson</a>
+      </div>
     </div>
   </section>
 
@@ -364,7 +423,6 @@
       mobileNav.hidden = expanded;
     });
 
-    // Close mobile menu when a link is clicked
     mobileNav.addEventListener("click", (e) => {
       const t = e.target;
       if (t && t.tagName === "A") {
