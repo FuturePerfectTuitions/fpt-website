@@ -844,6 +844,7 @@
         const ratingLabel = ratingValue ? `${ratingValue.toFixed(1)}` : "5-star";
 
         if (data?.source?.url && link) link.href = data.source.url;
+        if (data?.source?.url && badge) badge.href = data.source.url;
 
         if (meta) {
           // ✅ Keep this exact phrase (your request), with optional rating/count appended
