@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Future Perfect Tuitions</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="nav">
+  <img src="assets/logo.png" alt="Future Perfect Tuitions" class="logo">
+</header>
+
+<section class="hero">
+  <h1>Maths & English tuition that builds strong foundations</h1>
+  <p>Personalised support for Years 2–6 and 11+ preparation.</p>
+  <a href="#contact" class="cta">Book a free consultation</a>
+</section>
+
+<section class="features">
+  <h2>Why parents choose Future Perfect</h2>
+  <div class="grid">
+    <div>
+      <h3>Personalised lessons</h3>
+      <p>Every child follows a tailored learning path.</p>
+    </div>
+    <div>
+      <h3>Strong foundations</h3>
+      <p>We focus on deep understanding, not shortcuts.</p>
+    </div>
+    <div>
+      <h3>Proven results</h3>
+      <p>Consistent progress and confident learners.</p>
+    </div>
+  </div>
+</section>
+
+<section class="subjects">
+  <h2>Our Tuition</h2>
+  <div class="grid">
+    <div>
+      <h3>Maths Tuition</h3>
+      <p>From core numeracy to advanced problem solving.</p>
+    </div>
+    <div>
+      <h3>English Tuition</h3>
+      <p>Reading, writing, comprehension, and grammar.</p>
+    </div>
+    <div>
+      <h3>11+ Preparation</h3>
+      <p>Structured support for selective school exams.</p>
+    </div>
+  </div>
+</section>
+
+<section class="reviews">
+  <h2>What parents say</h2>
+  <div id="reviews-container"></div>
+</section>
+
+<section id="contact" class="contact">
+  <h2>Get started</h2>
+  <p>Book a free consultation to discuss your child’s needs.</p>
+  <a href="mailto:info@futureperfect.education" class="cta">
+    Contact us
+  </a>
+</section>
+
+<footer>
+  <p>© Future Perfect Tuitions</p>
+</footer>
+
+<script>
+fetch('reviews.json')
+  .then(res => res.json())
+  .then(data => {
+    const container = document.getElementById('reviews-container');
+    data.reviews.slice(0,3).forEach(r => {
+      const div = document.createElement('div');
+      div.className = 'review';
+      div.innerHTML = `<p>"${r.text}"</p><strong>– ${r.author}</strong>`;
+      container.appendChild(div);
+    });
+  });
+</script>
+
+</body>
+</html>
