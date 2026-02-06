@@ -24,19 +24,46 @@
   <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
 
-  <link rel="stylesheet" href="styles.css" />
+  <!-- CSS -->
+  <link rel="stylesheet" href="/styles.css?v=20260206-1" />
 </head>
 
-<body>
+<body id="top">
   <!-- Skip link (accessibility) -->
-  <a class="skip-link" href="#top">Skip to content</a>
+  <a class="skip-link" href="#main">Skip to content</a>
 
+  <!-- =========================
+       TWO-ROW PREMIUM HEADER
+       ========================= -->
   <header class="topbar">
-    <div class="container topbar-inner">
+    <!-- ROW 1: logo + actions -->
+    <div class="container topbar-row topbar-row-1">
       <a class="brand" href="#top" aria-label="Future Perfect Tuitions">
         <img src="assets/fpt-logo.png" alt="Future Perfect Tuitions" class="logo" width="300" height="80" />
       </a>
 
+      <div class="topbar-actions">
+        <a href="#contact" class="btn btn-outline">Enquire</a>
+
+        <!-- Existing Students button unchanged -->
+        <a href="https://lessons.futureperfect.education/"
+           class="btn btn-students"
+           target="_blank"
+           rel="noopener">
+          Existing Students
+        </a>
+
+        <button class="nav-toggle"
+                aria-label="Open menu"
+                aria-expanded="false"
+                aria-controls="mobile-nav">
+          ☰
+        </button>
+      </div>
+    </div>
+
+    <!-- ROW 2: navigation -->
+    <div class="container topbar-row topbar-row-2">
       <nav class="navlinks" aria-label="Primary">
         <a href="#usp">Approach</a>
         <a href="#outcomes">Outcomes</a>
@@ -45,18 +72,10 @@
         <a href="#how">Method</a>
         <a href="#faq">FAQ</a>
         <a href="#reviews">Reviews</a>
-
-        <div class="nav-actions">
-          <a href="#contact" class="btn btn-outline">Enquire</a>
-          <a href="https://lessons.futureperfect.education/" class="btn btn-students" target="_blank" rel="noopener">
-            Existing Students
-          </a>
-        </div>
       </nav>
-
-      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">☰</button>
     </div>
 
+    <!-- Mobile nav -->
     <div id="mobile-nav" class="mobile-nav" hidden>
       <a href="#usp">Approach</a>
       <a href="#outcomes">Outcomes</a>
@@ -70,7 +89,7 @@
     </div>
   </header>
 
-  <main id="top">
+  <main id="main">
     <!-- HERO -->
     <section class="hero">
       <div class="container hero-grid">
@@ -85,10 +104,7 @@
             Strong foundations built early — for school, for 11+, and beyond.
           </p>
 
-          <div class="cta-row">
-            <a href="#contact" class="btn btn-primary">Book a free trial lesson</a>
-            <a href="#trial" class="btn btn-ghost">How the trial works</a>
-          </div>
+          <!-- ✅ Removed the hero CTA row entirely (Book a free trial + How the trial works) -->
 
           <!-- Trust strip -->
           <div class="trust-strip" aria-label="Key trust points">
@@ -148,7 +164,8 @@
               <div>✔ Revision support built in</div>
             </div>
 
-            <a href="#contact" class="btn btn-primary btn-full">Enquire now</a>
+            <!-- ✅ Removed “Enquire now” red button from hero card (too pushy) -->
+            <a href="#contact" class="btn btn-outline btn-full">Enquire</a>
 
             <div class="mini">
               <div class="mini-title">Location</div>
@@ -175,38 +192,7 @@
       </div>
     </section>
 
-    <!-- 3-step trial strip under hero (NO POPUP) -->
-    <section id="trial" class="trial-steps" aria-label="How the free trial works">
-      <div class="container">
-        <div class="trial-steps-grid">
-          <div class="trial-step">
-            <div class="trial-step-num">1</div>
-            <div>
-              <div class="trial-step-title">Book</div>
-              <div class="trial-step-text">Choose online or face-to-face.</div>
-            </div>
-          </div>
-
-          <div class="trial-step">
-            <div class="trial-step-num">2</div>
-            <div>
-              <div class="trial-step-title">Try</div>
-              <div class="trial-step-text">We teach a real lesson; parents can sit in.</div>
-            </div>
-          </div>
-
-          <div class="trial-step">
-            <div class="trial-step-num">3</div>
-            <div>
-              <div class="trial-step-title">Plan</div>
-              <div class="trial-step-text">You get clear next steps and the best fit.</div>
-            </div>
-          </div>
-
-          <a class="btn btn-primary trial-steps-cta" href="#contact">Book free trial</a>
-        </div>
-      </div>
-    </section>
+    <!-- ✅ Removed the entire 3-step trial strip section (#trial) -->
 
     <!-- USP -->
     <section id="usp" class="section section-usp">
@@ -256,13 +242,7 @@
           </div>
         </div>
 
-        <div class="usp-band">
-          <div class="usp-band-left">
-            <div class="usp-band-title">For Years 2–6 and 11+</div>
-            <div class="usp-band-text">Strong foundations first. Clear thinking. Confident problem-solving.</div>
-          </div>
-          <a href="#contact" class="btn btn-primary">Book a free trial lesson</a>
-        </div>
+        <!-- ✅ Removed the USP band that had the repeated red button -->
       </div>
     </section>
 
@@ -324,13 +304,7 @@
           </div>
         </div>
 
-        <div class="outcomes-cta">
-          <div class="outcomes-cta-left">
-            <div class="outcomes-cta-title">Want to see this in action?</div>
-            <div class="outcomes-cta-text">Book a free trial lesson and sit in with your child.</div>
-          </div>
-          <a href="#contact" class="btn btn-primary">Book a free trial lesson</a>
-        </div>
+        <!-- ✅ Removed the outcomes CTA strip with the red button -->
       </div>
     </section>
 
@@ -346,10 +320,7 @@
           <div class="marquee-track" id="chip-track"></div>
         </div>
 
-        <div class="review-strip-foot">
-          <a href="#reviews" class="btn btn-outline">Read full reviews</a>
-          <a href="#contact" class="btn btn-primary">Book a free trial lesson</a>
-        </div>
+        <!-- ✅ Removed extra CTA buttons here to reduce “salesy” feel -->
       </div>
     </section>
 
@@ -424,7 +395,7 @@
               <li>Enjoyment of learning and steady progress</li>
             </ul>
 
-            <a href="#contact" class="btn btn-primary">Enquire for Years 2–6</a>
+            <a href="#contact" class="btn btn-outline">Enquire for Years 2–6</a>
           </div>
 
           <div class="panel">
@@ -441,7 +412,7 @@
               <li>Small batches for personal attention</li>
             </ul>
 
-            <a href="#contact" class="btn btn-primary">Enquire for 11+</a>
+            <a href="#contact" class="btn btn-outline">Enquire for 11+</a>
           </div>
         </div>
       </div>
@@ -578,22 +549,10 @@
               <span id="review-meta">Selected excerpts from Google Reviews.</span>
             </p>
           </div>
-
-          <!-- ✅ Arrows + link -->
-          <div class="reviews-actions">
-            <div class="reviews-controls" aria-label="Scroll reviews">
-              <button class="reviews-arrow" type="button" id="reviews-prev" aria-label="Scroll reviews left">←</button>
-              <button class="reviews-arrow" type="button" id="reviews-next" aria-label="Scroll reviews right">→</button>
-            </div>
-
-            <a class="link" id="reviews-link" href="#" target="_blank" rel="noopener">View all Google reviews →</a>
-          </div>
+          <a class="link" id="reviews-link" href="#" target="_blank" rel="noopener">View all Google reviews →</a>
         </div>
 
         <div id="reviews-container" class="reviews-grid"></div>
-
-        <!-- ✅ Dots -->
-        <div class="reviews-dots" id="reviews-dots" aria-label="Review pages"></div>
       </div>
     </section>
 
@@ -739,7 +698,7 @@
 
   <!-- Sticky mobile CTA bar -->
   <div class="sticky-cta" role="region" aria-label="Quick actions">
-    <a class="sticky-cta-btn sticky-primary" href="#contact">Book free trial</a>
+    <a class="sticky-cta-btn sticky-primary" href="#contact">Enquire</a>
     <a class="sticky-cta-btn" href="tel:+447725443401">Call</a>
   </div>
 
@@ -866,9 +825,8 @@
         if (data?.source?.url && link) link.href = data.source.url;
 
         if (meta) {
-          meta.textContent = reviewCount
-            ? `Rated ${ratingLabel} on Google • ${reviewCount} review excerpts shown here.`
-            : `Selected excerpts from Google Reviews.`;
+          // ✅ Keep this exact phrase (your request), with optional rating/count appended
+          meta.textContent = `Selected excerpts from Google Reviews.`;
         }
 
         if (badge) badge.textContent = ratingValue ? `⭐ Rated ${ratingLabel} on Google` : `⭐ 5-star Google reviews`;
@@ -1039,211 +997,6 @@
           `;
         }
       });
-
-    // ============================
-    // Reviews carousel controls:
-    // - arrows
-    // - auto-scroll (pause on hover/focus)
-    // - drag-to-scroll + snap to nearest card
-    // - progress dots
-    // ============================
-    (function () {
-      const scroller = document.getElementById("reviews-container");
-      const prevBtn = document.getElementById("reviews-prev");
-      const nextBtn = document.getElementById("reviews-next");
-      const dotsWrap = document.getElementById("reviews-dots");
-
-      if (!scroller) return;
-
-      const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-      let autoTimer = null;
-      const AUTO_MS = 4200;
-
-      const measure = () => {
-        const firstCard = scroller.querySelector(".review-card");
-        if (!firstCard) return { step: 0, gap: 14, perView: 1, pages: 1, cards: 0 };
-
-        const cardW = firstCard.getBoundingClientRect().width;
-        const styles = window.getComputedStyle(scroller);
-        const gap = parseFloat(styles.columnGap || styles.gap || "14") || 14;
-        const step = cardW + gap;
-
-        const cards = scroller.querySelectorAll(".review-card").length || 0;
-        const perView = Math.max(1, Math.floor((scroller.clientWidth + gap) / step));
-        const pages = Math.max(1, cards - perView + 1);
-
-        return { step, gap, perView, pages, cards };
-      };
-
-      const clamp = (n, a, b) => Math.max(a, Math.min(b, n));
-
-      const getPageIndex = () => {
-        const { step, pages } = measure();
-        if (!step) return 0;
-        const raw = Math.round(scroller.scrollLeft / step);
-        return clamp(raw, 0, pages - 1);
-      };
-
-      const scrollToPage = (pageIndex) => {
-        const { step, pages } = measure();
-        if (!step) return;
-        const idx = clamp(pageIndex, 0, pages - 1);
-        scroller.scrollTo({ left: idx * step, behavior: "smooth" });
-      };
-
-      const scrollByCard = (dir = 1) => {
-        const idx = getPageIndex();
-        scrollToPage(idx + dir);
-      };
-
-      // Arrow buttons
-      if (prevBtn) prevBtn.addEventListener("click", () => scrollByCard(-1));
-      if (nextBtn) nextBtn.addEventListener("click", () => scrollByCard(1));
-
-      // Auto-scroll
-      const startAuto = () => {
-        if (reduceMotion.matches) return;
-        if (autoTimer) return;
-        autoTimer = window.setInterval(() => {
-          const { pages } = measure();
-          const idx = getPageIndex();
-          if (idx >= pages - 1) scrollToPage(0);
-          else scrollToPage(idx + 1);
-        }, AUTO_MS);
-      };
-
-      const stopAuto = () => {
-        if (!autoTimer) return;
-        window.clearInterval(autoTimer);
-        autoTimer = null;
-      };
-
-      // Pause on hover/focus
-      scroller.addEventListener("mouseenter", stopAuto);
-      scroller.addEventListener("mouseleave", startAuto);
-      scroller.addEventListener("focusin", stopAuto);
-      scroller.addEventListener("focusout", startAuto);
-
-      if (prevBtn){
-        prevBtn.addEventListener("mouseenter", stopAuto);
-        prevBtn.addEventListener("mouseleave", startAuto);
-        prevBtn.addEventListener("focusin", stopAuto);
-        prevBtn.addEventListener("focusout", startAuto);
-      }
-      if (nextBtn){
-        nextBtn.addEventListener("mouseenter", stopAuto);
-        nextBtn.addEventListener("mouseleave", startAuto);
-        nextBtn.addEventListener("focusin", stopAuto);
-        nextBtn.addEventListener("focusout", startAuto);
-      }
-
-      // Drag-to-scroll + snap
-      let isDown = false;
-      let startX = 0;
-      let startScrollLeft = 0;
-      let moved = 0;
-
-      const onDown = (e) => {
-        if (e.pointerType === "mouse" && e.button !== 0) return;
-        isDown = true;
-        moved = 0;
-        startX = e.clientX;
-        startScrollLeft = scroller.scrollLeft;
-        stopAuto();
-        scroller.setPointerCapture?.(e.pointerId);
-      };
-
-      const onMove = (e) => {
-        if (!isDown) return;
-        const dx = e.clientX - startX;
-        moved += Math.abs(dx);
-
-        // slightly “glide-y” drag feel
-        scroller.scrollLeft = startScrollLeft - (dx * 1.15);
-      };
-
-      const setActiveDot = (idx) => {
-        if (!dotsWrap) return;
-        const dots = Array.from(dotsWrap.querySelectorAll(".reviews-dot"));
-        dots.forEach((d, i) => d.classList.toggle("is-active", i === idx));
-      };
-
-      const snapToNearest = () => {
-        const { step, pages } = measure();
-        if (!step) return;
-        const raw = Math.round(scroller.scrollLeft / step);
-        const idx = clamp(raw, 0, pages - 1);
-        scroller.scrollTo({ left: idx * step, behavior: "smooth" });
-        setActiveDot(idx);
-      };
-
-      const onUp = () => {
-        if (!isDown) return;
-        isDown = false;
-        snapToNearest();
-        window.setTimeout(startAuto, 900);
-      };
-
-      scroller.addEventListener("pointerdown", onDown);
-      scroller.addEventListener("pointermove", onMove);
-      window.addEventListener("pointerup", onUp);
-      window.addEventListener("pointercancel", onUp);
-
-      // Prevent accidental click during drag
-      scroller.addEventListener("click", (e) => {
-        if (moved > 10) {
-          e.preventDefault();
-          e.stopPropagation();
-          moved = 0;
-        }
-      }, true);
-
-      // Dots build
-      const buildDots = () => {
-        if (!dotsWrap) return;
-        const { pages } = measure();
-        dotsWrap.innerHTML = "";
-        for (let i = 0; i < pages; i++) {
-          const b = document.createElement("button");
-          b.type = "button";
-          b.className = "reviews-dot";
-          b.setAttribute("aria-label", `Go to reviews page ${i + 1}`);
-          b.addEventListener("click", () => {
-            stopAuto();
-            scrollToPage(i);
-            window.setTimeout(startAuto, 1200);
-          });
-          dotsWrap.appendChild(b);
-        }
-        setActiveDot(getPageIndex());
-      };
-
-      // Update dot on scroll (throttled)
-      let raf = 0;
-      scroller.addEventListener("scroll", () => {
-        if (raf) return;
-        raf = requestAnimationFrame(() => {
-          raf = 0;
-          setActiveDot(getPageIndex());
-        });
-      });
-
-      // Build after reviews are injected
-      window.setTimeout(buildDots, 1100);
-
-      // Rebuild on resize
-      window.addEventListener("resize", () => {
-        buildDots();
-        window.setTimeout(snapToNearest, 50);
-      });
-
-      reduceMotion.addEventListener?.("change", () => {
-        stopAuto();
-        startAuto();
-      });
-
-      window.setTimeout(startAuto, 1400);
-    })();
 
     // ============================
     // Web3Forms AJAX submit + success/error message
