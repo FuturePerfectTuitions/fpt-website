@@ -902,6 +902,93 @@ button, input, select, textarea{ font: inherit; }
   color: var(--ink);
 }
 
+/* =========================================
+   Reviews scroller: premium arrows + edge fades
+   Requires HTML wrapper: .reviews-scroller around #reviews-container
+   ========================================= */
+
+.reviews-scroller{
+  position: relative;
+}
+
+/* subtle fade edges to hint horizontal scroll */
+.reviews-scroller::before,
+.reviews-scroller::after{
+  content:"";
+  position:absolute;
+  top: 0;
+  bottom: 0;
+  width: 54px;
+  pointer-events:none;
+  z-index: 2;
+  opacity: 0; /* enabled by JS when scrollable */
+  transition: opacity .18s ease;
+}
+
+.reviews-scroller::before{
+  left: 0;
+  background: linear-gradient(to right, var(--bg-soft), rgba(247,249,252,0));
+}
+
+.reviews-scroller::after{
+  right: 0;
+  background: linear-gradient(to left, var(--bg-soft), rgba(247,249,252,0));
+}
+
+.reviews-scroller.has-left::before{ opacity: 1; }
+.reviews-scroller.has-right::after{ opacity: 1; }
+
+/* Arrow buttons */
+.scroll-btn{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid rgba(12,24,46,.14);
+  background: rgba(255,255,255,.92);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 10px 24px rgba(9,24,54,.10);
+  display: none; /* shown on desktop only */
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  line-height: 1;
+  font-weight: 1000;
+  color: var(--navy);
+  cursor: pointer;
+  z-index: 3;
+}
+
+.scroll-btn:hover{
+  border-color: rgba(11,42,111,.35);
+  box-shadow: 0 14px 30px rgba(9,24,54,.14);
+}
+
+.scroll-btn:active{
+  transform: translateY(-50%) translateY(1px);
+}
+
+.scroll-btn[disabled]{
+  opacity: .35;
+  cursor: default;
+  box-shadow: none;
+}
+
+.scroll-btn-left{ left: 10px; }
+.scroll-btn-right{ right: 10px; }
+
+/* Don’t show arrows on mobile/tablet (swipe is enough) */
+@media (min-width: 981px){
+  .scroll-btn{ display: inline-flex; }
+  /* add extra breathing room so arrows don't cover cards */
+  .reviews-grid{
+    padding-left: 54px;
+    padding-right: 54px;
+  }
+}
+
 /* ---- Contact ---- */
 .contact-grid{
   display: grid;
