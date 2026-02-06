@@ -1,6 +1,7 @@
 /* =========================
    Future Perfect Tuitions
    styles.css (FULL / UPDATED)
+   + Reviews horizontal scroll (carousel)
    ========================= */
 
 /* ---- CSS Reset (light) ---- */
@@ -54,6 +55,10 @@ button, input, select, textarea{ font: inherit; }
 
   /* Tighten the gap between FAQ and Reviews slightly */
   --reviewsTopGap: 40px;
+
+  /* Reviews carousel sizing */
+  --reviewCardMin: 320px;
+  --reviewCardMax: 380px;
 }
 
 /* ---- Layout helpers ---- */
@@ -85,7 +90,7 @@ button, input, select, textarea{ font: inherit; }
 
 .brand{ display:flex; align-items:center; gap: 12px; }
 
-/* ✅ Logo bigger (this fixes “logo too small”) */
+/* ✅ Logo bigger */
 .logo{
   width: 260px;
   height: auto;
@@ -789,7 +794,7 @@ button, input, select, textarea{ font: inherit; }
   color: var(--muted);
 }
 
-/* ---- Reviews section ---- */
+/* ---- Reviews section (HORIZONTAL SCROLL) ---- */
 .reviews{
   background: var(--bg-soft);
   border-top: 1px solid var(--line);
@@ -802,6 +807,7 @@ button, input, select, textarea{ font: inherit; }
   align-items: end;
   justify-content: space-between;
   gap: 12px;
+  flex-wrap: wrap;
 }
 
 .reviews-head h2{
@@ -820,12 +826,28 @@ button, input, select, textarea{ font: inherit; }
 
 .link:hover{ border-bottom-color: rgba(11,42,111,.55); }
 
+/* ✅ turn grid into a horizontal scroller */
 .reviews-grid{
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(var(--reviewCardMin), var(--reviewCardMax));
   gap: 14px;
   margin-top: 18px;
+
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 10px;
+  -webkit-overflow-scrolling: touch;
+
+  padding: 6px 2px 14px;
 }
+
+/* scrollbar styling (subtle) */
+.reviews-grid::-webkit-scrollbar{ height: 10px; }
+.reviews-grid::-webkit-scrollbar-track{ background: rgba(11,42,111,.06); border-radius: 999px; }
+.reviews-grid::-webkit-scrollbar-thumb{ background: rgba(11,42,111,.18); border-radius: 999px; }
+.reviews-grid::-webkit-scrollbar-thumb:hover{ background: rgba(11,42,111,.26); }
 
 .review-card{
   border: 1px solid var(--line);
@@ -833,6 +855,7 @@ button, input, select, textarea{ font: inherit; }
   background: #fff;
   box-shadow: var(--shadow-soft);
   padding: 16px;
+  scroll-snap-align: start;
 }
 
 .review-top{
@@ -869,12 +892,39 @@ button, input, select, textarea{ font: inherit; }
   margin: 0;
   color: var(--muted);
   font-weight: 750;
+  white-space: pre-line; /* keeps \n\n */
 }
 
 .review-author{
   font-weight: 1000;
   color: var(--ink);
 }
+
+/* optional arrows */
+.reviews-controls{
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.reviews-arrow{
+  border: 1px solid rgba(11,42,111,.22);
+  background: #fff;
+  color: var(--navy);
+  font-weight: 1000;
+  border-radius: 999px;
+  padding: 8px 12px;
+  cursor: pointer;
+  box-shadow: 0 8px 18px rgba(9,24,54,.06);
+  transition: transform .08s ease, background .15s ease, border-color .15s ease;
+}
+
+.reviews-arrow:hover{
+  border-color: rgba(11,42,111,.40);
+  background: rgba(11,42,111,.04);
+}
+
+.reviews-arrow:active{ transform: translateY(1px); }
 
 /* ---- Contact ---- */
 .contact-grid{
@@ -1102,11 +1152,16 @@ button, input, select, textarea{ font: inherit; }
   .cards-3{ grid-template-columns: 1fr; }
   .two-col{ grid-template-columns: 1fr; }
   .steps{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .reviews-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .contact-grid{ grid-template-columns: 1fr; }
 
   /* ✅ Keep logo strong on medium screens */
   .logo{ width: 240px; }
+
+  /* Review cards slightly smaller on medium screens */
+  :root{
+    --reviewCardMin: 300px;
+    --reviewCardMax: 360px;
+  }
 }
 
 @media (max-width: 760px){
@@ -1114,13 +1169,15 @@ button, input, select, textarea{ font: inherit; }
   .nav-toggle{ display: inline-flex; }
   .container{ width: min(1120px, calc(100% - 32px)); }
   .steps{ grid-template-columns: 1fr; }
-  .reviews-grid{ grid-template-columns: 1fr; }
   .usp-grid{ grid-template-columns: 1fr; }
   .outcomes-grid{ grid-template-columns: 1fr; }
   .footer-inner{ flex-direction: column; align-items: flex-start; }
 
   /* ✅ Mobile logo not tiny */
   .logo{ width: 210px; }
+
+  /* Hide arrows on mobile (swipe instead) */
+  .reviews-controls{ display: none; }
 }
 
 /* ---- Reduced motion ---- */
@@ -1129,4 +1186,5 @@ button, input, select, textarea{ font: inherit; }
   .marquee-track{ animation: none; }
   .btn{ transition: none; }
   .usp-item{ transition: none; }
+  .reviews-grid{ scroll-behavior: auto; }
 }
