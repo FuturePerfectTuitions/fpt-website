@@ -22,6 +22,9 @@ img{ max-width: 100%; height: auto; display: block; }
 a{ color: inherit; text-decoration: none; }
 button, input, select, textarea{ font: inherit; }
 
+/* Ensure native [hidden] always hides elements */
+[hidden]{ display:none !important; }
+
 /* Skip link */
 .skip-link{
   position: absolute;
@@ -1079,14 +1082,18 @@ button, input, select, textarea{ font: inherit; }
 /* ---- Modal ---- */
 body.modal-open{ overflow: hidden; }
 
+/* IMPORTANT: default to hidden; show only when JS removes [hidden] */
 .modal-backdrop{
   position: fixed;
   inset: 0;
   background: rgba(11, 27, 51, .55);
-  display: grid;
+  display: none;
   place-items: center;
   padding: 18px;
   z-index: 1400;
+}
+.modal-backdrop:not([hidden]){
+  display: grid;
 }
 
 .modal{
