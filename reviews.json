@@ -1,48 +1,145 @@
 {
   "source": {
     "label": "Google Reviews",
-    "url": "https://www.google.com/search?sca_esv=e4930b54a8b6c4ed&rlz=1C1CHBF_enGB1061GB1061&si=AL3DRZEsmMGCryMMFSHJ3StBhOdZ2-6yYkXd_doETEE1OR-qOfK3U-UIQxhND-VxSHZBdxfr9NN09ZQzrNQTE49wTjJu3Wcr0bGaOcldG56e2mkThOANeWCE_0FXdHXvVX7Ud3aF3MUW&q=Future+Perfect+Reviews&sa=X&ved=2ahUKEwiMuPvU9JCSAxXvXUEAHfjIFtgQ0bkNegQIOBAH&biw=1101&bih=770&dpr=1.56&aic=0#cobssid=s"
+    "url": "https://www.google.com/search?sca_esv=e4930b54a8b6c4ed&rlz=1C1CHBF_enGB1061GB1061&si=AL3DRZEsmMGCryMMFSHJ3StBhOdZ2-6yYkXd_doETEE1OR-qOfK3U-UIQxhND-VxSHZBdxfr9NN09ZQzrNQTE49wTjJu3Wcr0bGaOcldG56e2mkThOANeWCE_0FXdHXvVX7Ud3aF3MUW&q=Future+Perfect+Reviews&sa=X&ved=2ahUKEwiMuPvU9JCSAxXvXUEAHfjIFtgQ0bkNegQIOBAH&biw=1101&bih=770&dpr=1.56&aic=0#cobssid=s",
+    "ratingValue": 5,
+    "reviewCount": 0
   },
   "reviews": [
     {
+      "author": "Alpa Boricha",
+      "rating": 5,
+      "text": "Fantastic and amazing Sej sir. My son has made lot of progress and feels more confident. You are great with kids."
+    },
+    {
+      "author": "Shweta Shrigiriwar",
+      "rating": 5,
+      "text": "A fantastic Year 3 tutors, Sejal and team are very patient, engaging, and fun. My son enjoys every lesson and stays motivated throughout. We’re very happy with the progress he’s made. Highly recommend."
+    },
+    {
       "author": "Jenny Hughes",
       "rating": 5,
-      "text": "My daughter is so much more confident with maths and she enjoys her lessons. The teaching is patient and makes hard things feel easy."
+      "text": "I have been really impressed with the maths tutor sessions my daughter is having. She is so much more confident with maths and she enjoys her lessons. Mr Dalal is very enthusiastic about the subject which is reflected in my daughter’s learning.\n\nI asked my daughter to contribute to this review and she said: ‘Mr Dalal is patient with us, he doesn’t expect me to know the answer straight away, he helps us and makes things that are hard, easy’.\n\nI would highly recommend Future Perfect to other parents."
     },
     {
       "author": "Thomas Woodvine",
       "rating": 5,
-      "text": "Our son has grown massively in confidence and maths skills. He enjoys the interaction and the reward system really motivates him."
+      "text": "We noticed our Son was lacking in confidence and struggling with maths at the start of Year 4. After a trial session, a year and a half later our Son has not just grown massively in confidence but his maths skills also. He enjoys the interaction in class and the reward system really motivates him. We couldn’t be happier with the support and encouragement he gets from all those at Future Perfect. We can highly recommend Future Perfect."
+    },
+    {
+      "author": "Preeti Rathi",
+      "rating": 5,
+      "text": "I’m extremely pleased and highly recommend Future Perfect Tuitions to all parents looking for the best start for their child’s 11+ journey."
+    },
+    {
+      "author": "Swati Gupta Karia",
+      "rating": 5,
+      "text": "My 7-year-old attends maths classes at Future Perfect and has shown great improvement in both skills and confidence. The teaching approach is very supportive, patient, and child-friendly, making concepts easy to understand and enjoyable to learn. The classes are well-structured and keep young learners engaged. We are very pleased with the progress and would highly recommend."
+    },
+    {
+      "author": "Rida Khurshid",
+      "rating": 5,
+      "text": "Best teacher one could have. Sej sir has this ability to engage kids during the class that helps them understand the concept and helps them stay motivated to achieve their goals."
     },
     {
       "author": "Mayank Rohini",
       "rating": 5,
-      "text": "Professional and very organised. Structured lessons with revision built into homework and across the term. Group classes are the perfect size."
+      "text": "Future Perfect Tuitions has been a positive experience for my Y4 child. They are professional and very organised in their methods. Sej has been tutoring my child for 2 terms now and she loves going. He has plans in place to ensure content is revised in homework and throughout the term. The children get rewards which motivates them. The group classes are the perfect size. Thank you Sej and Barkha."
+    },
+    {
+      "author": "Cwoody",
+      "rating": 5,
+      "text": "Our daughter started having tuition with Sej last November and the difference in only a few months has been amazing. She was quiet in class and lacking in confidence, yet once she started tuition she has come on leaps and bounds in ability and confidence. She is always eager to learn more and we can see how proud she is each week.\n\nThe communication from Future Perfect is second to none and we always feel able to ask questions. The video recaps we have access to for each lesson help us to help her with homework. Can’t recommend Future Perfect enough!"
+    },
+    {
+      "author": "Nidhi Budki",
+      "rating": 5,
+      "text": "I am so glad to have discovered Future Perfect for my child. I saw him flourish in maths and English, thanks to the right guidance from the tutors and their genuine interest in his accomplishments. I have tried a few others and these guys are top notch. Thank you for being an important part of my child’s academic journey."
+    },
+    {
+      "author": "Tanvi Kothari",
+      "rating": 5,
+      "text": "Excellent tutor with passion, drive and motivation for the kids. Our son is thriving and doing well! Thank you Barkha and Sej."
     },
     {
       "author": "Gurunanuj Anuj",
       "rating": 5,
-      "text": "Highly recommend. Focuses on core skills across Maths, English, Verbal and Non-Verbal Reasoning, and teaches the ‘why’ — not memorisation."
+      "text": "Highly recommend Future Perfect Tuitions. Great tuition centre focusing not only on exam techniques but also on developing core skills in Maths, English, Verbal Reasoning, and Non-Verbal Reasoning. Tutors break down complex topics into steps, ensuring students understand the ‘why’ behind the answers—not just memorise them. Mock exams and regular assessments provide valuable feedback."
     },
     {
       "author": "Ruby Sahney",
       "rating": 5,
-      "text": "My son has made huge progress and thoroughly enjoys his classes. The rewarding teaching style and personal touch build confidence."
+      "text": "We've had a great experience joining Future Perfect with Sej & Barkha. My son joined in March and I can see him making huge progress. He thoroughly enjoys his classes and Sej's rewarding teaching style & personal touch encourages kids to perform better & gain confidence. Really recommend."
+    },
+    {
+      "author": "Shyna Arora",
+      "rating": 5,
+      "text": "We’ve had such a wonderful experience with Barkha and Sej as my son prepares for his 11+ exams. They encourage, support and patiently work with the children. My son has started enjoying and calling education ‘fun’ and has made noticeable progress in his work, focus and confidence. Highly recommend to any parent looking for tutors who truly care."
+    },
+    {
+      "author": "Markus V",
+      "rating": 5,
+      "text": "Very good sessions with good structured lessons and homework tailored to a better understanding. Barkha covers all aspects and approaches the lesson so our sons will take in the information. We have also appreciated the flexibility in some exceptional circumstances."
+    },
+    {
+      "author": "Masuma Chomoko",
+      "rating": 5,
+      "text": "Barkha has been supporting my daughter’s learning since last year. Barkha is patient, friendly and kind. I would recommend Barkha to friends and family."
+    },
+    {
+      "author": "Ervisa Rama",
+      "rating": 5,
+      "text": "Barkha has been my daughter’s online tutor since September 2024 and she is amazing and very professional. My daughter used to struggle with maths especially and Barkha is helping her gain confidence and improve so much. My daughter is happy to do online tutoring and it has had a huge positive impact. Highly recommend."
+    },
+    {
+      "author": "Mukesh Issrani",
+      "rating": 5,
+      "text": "Being new to London we tried multiple tutors for our daughter’s 11+ journey. Better late than never, Sej has got her on track and learning is now enjoyable. Future Perfect understands that each child has their own journey and tailors teaching accordingly. Our daughter looks forward to lessons and homework each week with her confidence much elevated. Thanks Sej and the Future Perfect team."
+    },
+    {
+      "author": "Hemal Parikh",
+      "rating": 5,
+      "text": "My daughter goes for Year 4 English tuition there. She likes to go as it’s very interactive. I am pleased to have a good tutor who gives personal attention too."
     },
     {
       "author": "Gunjan Agarwal",
       "rating": 5,
-      "text": "They focus on strengths and weaknesses and we get regular updates on what to work on at home. Massive improvement in maths and English."
+      "text": "Future Perfect is an amazing tuition. They really focus on the child's strengths and weakness and I get regular updates on what we need to work on at home too. I have seen a massive improvement in my son's maths and English."
+    },
+    {
+      "author": "Akash B",
+      "rating": 5,
+      "text": "I am so glad I put my daughter in Future Perfect for 11+ prep. They have a great system and teaching style. My daughter improved immensely in English and is very good in maths now. I would recommend to anyone preparing for 11+ and targeting grammar school."
     },
     {
       "author": "Baldev Patel",
       "rating": 5,
-      "text": "Since starting 11+ preparation, my daughter has shown significant improvement in both maths and English. Thorough progress and engaging lessons."
+      "text": "My daughter enrolled in Future Perfect Tuition for 11+ preparation, and since then, she has shown significant improvement in both maths and English. Their engaging method using games and puzzles keeps the children focused and interested in learning, making it easier for them to grasp concepts."
+    },
+    {
+      "author": "Shelley Tong",
+      "rating": 5,
+      "text": "My son loves to go to tuition, he is really enjoying the fun way that tutor teaches him. He has improved with his English and we are looking forward to continue next year."
+    },
+    {
+      "author": "K G",
+      "rating": 5,
+      "text": "Barkha and Sej are excellent tutors. I have seen so much difference since lessons started. They are kind and accommodating as well, allowing us to sit in for the trial lesson which gives an insight of their ways of teaching. They use creative and fun methods to motivate children to learn and understand topics."
+    },
+    {
+      "author": "Matt Davey",
+      "rating": 5,
+      "text": "Excellent tutors, really helped my son’s confidence. Highly recommended."
+    },
+    {
+      "author": "Char Beedle",
+      "rating": 5,
+      "text": "My daughter has really enjoyed her tutoring from Future Perfect. I have seen such a difference in her confidence and ability since we have started. I would recommend Future Perfect to anyone looking for tuition for their children."
     },
     {
       "author": "Priya Kalia",
       "rating": 5,
-      "text": "My daughter is much more confident and happier. Teaching is kind but firm, quickly identifies weaknesses, and doesn’t move on until she understands."
+      "text": "Future Perfect is a great tutoring service for my daughter. She started off shy and had some weaknesses which are gradually being addressed. I now see her more confident and happier. Barkha is excellent at being kind but firm, analyses weaknesses quickly, and does not move on until she understands. Highly recommend."
     }
   ]
 }
