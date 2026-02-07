@@ -1192,39 +1192,7 @@
     })();
 
     // ============================
-    // (2) Hero parallax (subtle)
-    // ============================
-    (function () {
-      const hero = document.querySelector(".hero");
-      if (!hero) return;
-
-      const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      if (reduce) return;
-
-      let raf = null;
-      const strength = 10; // px max movement (subtle)
-
-      function onMove(e) {
-        const rect = hero.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width; // 0..1
-        const y = (e.clientY - rect.top) / rect.height; // 0..1
-
-        const px = (x - 0.5) * strength;
-        const py = (y - 0.5) * strength;
-
-        if (raf) cancelAnimationFrame(raf);
-        raf = requestAnimationFrame(() => {
-          document.documentElement.style.setProperty("--heroPx", px.toFixed(2) + "px");
-          document.documentElement.style.setProperty("--heroPy", py.toFixed(2) + "px");
-        });
-      }
-
-      hero.addEventListener("mousemove", onMove);
-      hero.addEventListener("mouseleave", () => {
-        document.documentElement.style.setProperty("--heroPx", "0px");
-        document.documentElement.style.setProperty("--heroPy", "0px");
-      });
-    })();
+ 
      // ============================
     // (2) Hero parallax (subtle)
     // ============================
@@ -1261,48 +1229,42 @@
     })();
 
     // ============================
-    // FAQ: auto-scroll opened item into view
-    // ============================
-    (function () {
-      const faq = document.querySelector("#faq");
-      if (!faq) return;
+   // ============================
+// FAQ: auto-scroll opened item into view
+// ============================
+(function () {
+  const faq = document.querySelector("#faq");
+  if (!faq) return;
 
-      const prefersReduce =
-        window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const prefersReduce =
+    window.matchMedia &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-      const headerOffset = () => {
-  const topbar = document.querySelector(".topbar");
-  if (topbar) return Math.ceil(topbar.getBoundingClientRect().height);
+  const getHeaderHeight = () => {
+    const topbar = document.querySelector(".topbar");
+    if (!topbar) return 130;
+    return Math.ceil(topbar.getBoundingClientRect().height);
+  };
 
-  // fallback to CSS var if topbar not found
-  const v = getComputedStyle(document.documentElement)
-    .getPropertyValue("--headerH")
-    .trim();
-  const n = parseFloat(v);
-  return Number.isFinite(n) ? n : 130;
-};
+  faq.querySelectorAll("details.faq-item").forEach((d) => {
+    d.addEventListener("toggle", () => {
+      if (!d.open) return;
 
-      faq.querySelectorAll("details.faq-item").forEach((d) => {
-        d.addEventListener("toggle", () => {
-          if (!d.open) return;
+      requestAnimationFrame(() => {
+        const summary = d.querySelector("summary") || d;
+        const rect = summary.getBoundingClientRect();
+        const topY = rect.top + window.scrollY;
 
-          requestAnimationFrame(() => {
-  const summary = d.querySelector("summary") || d;
-  const rect = summary.getBoundingClientRect();
-  const topY = rect.top + window.scrollY;
+        const offset = getHeaderHeight() + 32;
 
-  // extra breathing room so the question never looks clipped
-  const offset = headerOffset() + 24;
-
-  window.scrollTo({
-    top: Math.max(0, topY - offset),
-    behavior: prefersReduce ? "auto" : "smooth",
-  });
-});
-          });
+        window.scrollTo({
+          top: Math.max(0, topY - offset),
+          behavior: prefersReduce ? "auto" : "smooth",
         });
       });
-    })();
+    });
+  });
+})();
   </script>
 </body>
 </html>
