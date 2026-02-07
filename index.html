@@ -1271,26 +1271,34 @@
         window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
       const headerOffset = () => {
-        const v = getComputedStyle(document.documentElement)
-          .getPropertyValue("--headerH")
-          .trim();
-        const n = parseFloat(v);
-        return Number.isFinite(n) ? n : 130;
-      };
+  const topbar = document.querySelector(".topbar");
+  if (topbar) return Math.ceil(topbar.getBoundingClientRect().height);
+
+  // fallback to CSS var if topbar not found
+  const v = getComputedStyle(document.documentElement)
+    .getPropertyValue("--headerH")
+    .trim();
+  const n = parseFloat(v);
+  return Number.isFinite(n) ? n : 130;
+};
 
       faq.querySelectorAll("details.faq-item").forEach((d) => {
         d.addEventListener("toggle", () => {
           if (!d.open) return;
 
           requestAnimationFrame(() => {
-            const rect = d.getBoundingClientRect();
-            const topY = rect.top + window.scrollY;
-            const offset = headerOffset() + 18;
+  const summary = d.querySelector("summary") || d;
+  const rect = summary.getBoundingClientRect();
+  const topY = rect.top + window.scrollY;
 
-            window.scrollTo({
-              top: Math.max(0, topY - offset),
-              behavior: prefersReduce ? "auto" : "smooth",
-            });
+  // extra breathing room so the question never looks clipped
+  const offset = headerOffset() + 24;
+
+  window.scrollTo({
+    top: Math.max(0, topY - offset),
+    behavior: prefersReduce ? "auto" : "smooth",
+  });
+});
           });
         });
       });
