@@ -54,6 +54,10 @@ button, input, select, textarea{ font: inherit; }
 
   /* Tighten the gap between FAQ and Reviews slightly */
   --reviewsTopGap: 40px;
+
+  /* (2) Hero parallax variables (used by hero background image) */
+  --heroPx: 0px;
+  --heroPy: 0px;
 }
 
 /* ---- Layout helpers ---- */
@@ -254,11 +258,13 @@ button, input, select, textarea{ font: inherit; }
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(rgba(255,255,255,.75), rgba(255,255,255,.85)),
-opacity: 0.65;
+    linear-gradient(rgba(255,255,255,.88), rgba(255,255,255,.92)),
     url("assets/hero-classroom.jpg") center/cover no-repeat;
+  /* (2) subtle parallax translate */
+  transform: translate(var(--heroPx), var(--heroPy)) scale(1.03);
   opacity: 0.55;
   z-index: 0;
+  will-change: transform;
 }
 
 /* keep hero content above image */
@@ -401,6 +407,7 @@ opacity: 0.65;
   font-size: 1.35rem;
   letter-spacing: -0.3px;
 }
+
 /* clickable badge links */
 .badge-link{
   cursor: pointer;
@@ -418,6 +425,7 @@ opacity: 0.65;
   outline: 3px solid rgba(11,42,111,.22);
   outline-offset: 3px;
 }
+
 .card-text{ margin: 0 0 12px; color: var(--muted); }
 
 .card-points{
@@ -623,8 +631,6 @@ opacity: 0.65;
 
 .outcomes-cta-title{ font-weight: 1000; color: var(--red); }
 .outcomes-cta-text{ color: var(--muted); }
-
-
 
 /* ---- Section headings + cards ---- */
 .section-head h2{
@@ -893,7 +899,6 @@ opacity: 0.65;
    Reviews scroller: premium arrows + edge fades
    Requires HTML wrapper: .reviews-scroller around #reviews-container
    ========================================= */
-
 .reviews-scroller{
   position: relative;
 }
@@ -1237,7 +1242,7 @@ opacity: 0.65;
 /* ---- Reduced motion ---- */
 @media (prefers-reduced-motion: reduce){
   html{ scroll-behavior: auto; }
-  .marquee-track{ animation: none; }
   .btn{ transition: none; }
   .usp-item{ transition: none; }
+  .hero::before{ transform: none; }
 }
