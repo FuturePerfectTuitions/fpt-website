@@ -636,9 +636,34 @@ button, input, select, textarea{ font: inherit; }
 .usp-band-title{ font-weight: 1000; color: var(--navy); }
 .usp-band-text{ color: var(--muted); }
 
+
 /* ---- Outcomes ---- */
-.section-outcomes{ background: #fff; }
-.outcomes-head h2{ margin: 0 0 8px; font-size: 1.9rem; letter-spacing: -0.4px; }
+.section-outcomes{
+  position: relative;
+  overflow: hidden;
+}
+
+.section-outcomes::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(rgba(255,255,255,.85), rgba(255,255,255,.93)),
+    url("assets/outcomes.jpg") center/cover no-repeat;
+  opacity: .75;
+  z-index: 0;
+}
+
+.section-outcomes > .container{
+  position: relative;
+  z-index: 1;
+}
+
+.outcomes-head h2{ 
+  margin: 0 0 8px; 
+  font-size: 1.9rem; 
+  letter-spacing: -0.4px; 
+}
 
 .outcomes-grid{
   display: grid;
