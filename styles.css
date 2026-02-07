@@ -888,7 +888,7 @@ button, input, select, textarea{ font: inherit; }
 
 /* Ensure opened FAQ doesn't sit under sticky header */
 .faq-item{
-  scroll-margin-top: calc(var(--headerH) + 18px);
+  scroll-margin-top: 160px;
 }
 
 .faq details{
