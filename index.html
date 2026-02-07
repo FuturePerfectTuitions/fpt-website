@@ -1,133 +1,321 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+/* =========================
+   Future Perfect Tuitions
+   styles.css (FULL / UPDATED)
+   ========================= */
 
-  <title>Future Perfect Tuitions | Maths & English for tomorrow</title>
+/* ---- CSS Reset (light) ---- */
+*,
+*::before,
+*::after { box-sizing: border-box; }
 
-  <meta name="description" content="Give your child confidence, not just worksheets. Concept-driven Maths & English tuition for Years 2–6 and 11+ preparation. Small groups (max 5) and 1-to-1. Rated 5-star by parents on Google." />
+html { scroll-behavior: smooth; }
 
-  <link rel="canonical" href="https://www.futureperfect.education/" />
+body{
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  color: #0b1b33;
+  background: #ffffff;
+  line-height: 1.55;
+}
 
-  <meta property="og:title" content="Future Perfect Tuitions | Maths & English for tomorrow" />
-  <meta property="og:description" content="Give your child confidence, not just worksheets. Concept-driven Maths & English tuition for Years 2–6 and 11+ preparation. Small groups (max 5) and 1-to-1." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.futureperfect.education/" />
-  <meta property="og:image" content="https://www.futureperfect.education/assets/fpt-logo.png" />
-  <meta name="twitter:card" content="summary_large_image" />
+img{ max-width: 100%; height: auto; display: block; }
+a{ color: inherit; text-decoration: none; }
+button, input, select, textarea{ font: inherit; }
 
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+/* Skip link */
+.skip-link{
+  position: absolute;
+  left: -999px;
+  top: 12px;
+  background: #fff;
+  border: 1px solid rgba(12,24,46,.18);
+  border-radius: 12px;
+  padding: 10px 12px;
+  font-weight: 900;
+  z-index: 2000;
+}
+.skip-link:focus{ left: 12px; }
 
-  <link rel="stylesheet" href="/styles.css?v=20260206-2" />
-</head>
+/* ---- Brand tokens ---- */
+:root{
+  --red:#d71920;
+  --navy:#0b2a6f;
+  --ink:#0b1b33;
+  --muted:#52607a;
+  --bg:#ffffff;
+  --bg-soft:#f7f9fc;
+  --line: rgba(12, 24, 46, .10);
+  --shadow: 0 14px 35px rgba(9, 24, 54, .10);
+  --shadow-soft: 0 10px 24px rgba(9, 24, 54, .08);
+  --radius: 18px;
 
-<body id="top">
-<a class="skip-link" href="#main">Skip to content</a>
+  --headerH: 130px;
+  --reviewsTopGap: 40px;
 
-<header class="topbar">
-  <div class="container topbar-row topbar-row-1">
-    <a class="brand" href="#top" aria-label="Future Perfect Tuitions">
-      <img src="assets/fpt-logo.png" alt="Future Perfect Tuitions" class="logo" width="300" height="80" />
-    </a>
+  --heroPx: 0px;
+  --heroPy: 0px;
+}
 
-    <div class="topbar-actions">
-      <a href="#contact" class="btn btn-outline">Enquire</a>
-      <a href="https://lessons.futureperfect.education/" class="btn btn-students" target="_blank" rel="noopener">
-        Existing Students
-      </a>
-      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
-        ☰
-      </button>
-    </div>
-  </div>
+/* ---- Layout helpers ---- */
+.container{
+  width: min(1120px, calc(100% - 48px));
+  margin: 0 auto;
+}
 
-  <div class="container topbar-row topbar-row-2">
-    <nav class="navlinks" aria-label="Primary">
-      <a href="#usp">Approach</a>
-      <a href="#outcomes">Outcomes</a>
-      <a href="#difference">Difference</a>
-      <a href="#tuition">Tuition</a>
-      <a href="#how">Method</a>
-      <a href="#faq">FAQ</a>
-      <a href="#reviews">Reviews</a>
-    </nav>
-  </div>
+.muted{ color: var(--muted); }
+.lead{ font-size: 1.05rem; color: var(--muted); }
 
-  <div id="mobile-nav" class="mobile-nav" hidden>
-    <a href="#usp">Approach</a>
-    <a href="#outcomes">Outcomes</a>
-    <a href="#difference">Difference</a>
-    <a href="#tuition">Tuition</a>
-    <a href="#how">Method</a>
-    <a href="#faq">FAQ</a>
-    <a href="#reviews">Reviews</a>
-    <a href="#contact">Enquire</a>
-    <a href="https://lessons.futureperfect.education/" target="_blank" rel="noopener">Existing Students</a>
-  </div>
-</header>
+/* =========================================
+   TWO-ROW PREMIUM HEADER
+   ========================================= */
+.topbar{
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: rgba(255,255,255,.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
 
-<main id="main">
+.topbar-row{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
 
-  <!-- HERO (unchanged) -->
-  <section class="hero">
-    ...
-  </section>
+.topbar-row-1{ padding: 18px 0 10px; }
+.topbar-row-2{
+  padding: 8px 0 14px;
+  border-top: 1px solid var(--line);
+}
 
-  <!-- USP (UPDATED WITH BACKGROUND IMAGE) -->
-  <section id="usp" class="section section-usp section-usp-bg">
-    <div class="container">
-      <div class="usp-head">
-        <h2>Our approach</h2>
-        <p class="muted">
-          Not silent repetition. Not endless worksheets. A structured system that builds understanding, confidence, and results.
-        </p>
-      </div>
+.brand{ display:flex; align-items:center; gap: 12px; }
 
-      <div class="usp-grid">
-        <div class="usp-item">
-          <div class="usp-icon">👥</div>
-          <div class="usp-title">Small batches (max 5)</div>
-          <div class="usp-text">Personal attention, real interaction, and teaching that adapts to the child.</div>
-        </div>
+.logo{
+  width: 360px;
+  height: auto;
+}
 
-        <div class="usp-item">
-          <div class="usp-icon">🧠</div>
-          <div class="usp-title">Concept-driven teaching</div>
-          <div class="usp-text">We teach the <strong>why</strong> behind answers — clear methods, not rushed shortcuts.</div>
-        </div>
+.topbar-actions{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 
-        <div class="usp-item">
-          <div class="usp-icon">🎥</div>
-          <div class="usp-title">Revision video lessons</div>
-          <div class="usp-text">Topic-by-topic support so children can revisit learning and revise at their own pace.</div>
-        </div>
+.navlinks{
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
 
-        <div class="usp-item">
-          <div class="usp-icon">📝</div>
-          <div class="usp-title">Homework + answer packs</div>
-          <div class="usp-text">Homework reinforces what was taught — with clear answer support for focused practice.</div>
-        </div>
+.navlinks > a{
+  position: relative;
+  padding: 10px 10px;
+  font-weight: 800;
+  color: var(--ink);
+  border-radius: 10px;
+}
 
-        <div class="usp-item">
-          <div class="usp-icon">📊</div>
-          <div class="usp-title">Assessments & feedback</div>
-          <div class="usp-text">Regular checkpoints to spot gaps early and keep progress on track.</div>
-        </div>
+.navlinks > a:hover{
+  background: rgba(11,42,111,.06);
+}
 
-        <div class="usp-item">
-          <div class="usp-icon">✅</div>
-          <div class="usp-title">Confidence built step-by-step</div>
-          <div class="usp-text">Children feel safe to try, make mistakes, improve, and succeed — consistently.</div>
-        </div>
-      </div>
-    </div>
-  </section>
+.nav-toggle{
+  display: none;
+  border: 1px solid var(--line);
+  background: #fff;
+  border-radius: 12px;
+  padding: 10px 12px;
+  font-size: 18px;
+  cursor: pointer;
+}
 
-  <!-- rest of your page unchanged -->
-  ...
-</main>
-</body>
-</html>
+.mobile-nav{
+  border-top: 1px solid var(--line);
+  padding: 12px 0 16px;
+  background: #fff;
+}
+
+.mobile-nav a{
+  display: block;
+  padding: 12px 18px;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.mobile-nav a:hover{
+  background: rgba(11,42,111,.06);
+}
+
+/* ---- Buttons ---- */
+.btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 999px;
+  padding: 12px 16px;
+  font-weight: 900;
+  letter-spacing: .2px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform .08s ease, box-shadow .15s ease, background .15s ease, border-color .15s ease;
+}
+
+.btn:active{ transform: translateY(1px); }
+
+.btn-primary{
+  background: var(--red);
+  color: #fff;
+  box-shadow: 0 12px 24px rgba(215,25,32,.18);
+}
+
+.btn-outline{
+  background: #fff;
+  color: var(--navy);
+  border-color: rgba(11,42,111,.25);
+}
+
+.btn-students{
+  background: rgba(11,42,111,.10);
+  color: var(--navy);
+  border-color: rgba(11,42,111,.18);
+}
+
+.btn-full{ width: 100%; }
+.btn-small{ padding: 8px 14px; font-size: .92rem; font-weight: 900; }
+
+/* ---- Sections ---- */
+.section{ padding: 72px 0; }
+
+.section[id],
+.hero[id],
+.trial-steps[id]{
+  scroll-margin-top: calc(var(--headerH) + 18px);
+}
+
+.section-alt{
+  background: var(--bg-soft);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+/* ---- HERO ---- */
+.hero{
+  position: relative;
+  padding: 54px 0 20px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.hero::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(rgba(255,255,255,.88), rgba(255,255,255,.92)),
+    url("assets/hero-classroom.jpg") center/cover no-repeat;
+  transform: translate(var(--heroPx), var(--heroPy)) scale(1.03);
+  opacity: 0.55;
+  z-index: 0;
+}
+
+.hero > *{
+  position: relative;
+  z-index: 1;
+}
+
+/* =========================
+   USP grid
+   ========================= */
+.section-usp{ padding-top: 56px; }
+
+.usp-head h2{ margin: 0 0 8px; font-size: 1.9rem; }
+.usp-head p{ margin: 0; }
+
+.usp-grid{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.usp-item{
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 16px;
+  background: #fff;
+  box-shadow: 0 10px 22px rgba(9,24,54,.06);
+}
+
+.usp-icon{
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: rgba(215,25,32,.08);
+  color: var(--red);
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.usp-title{ font-weight: 1000; margin: 0 0 6px; }
+.usp-text{ color: var(--muted); margin: 0; }
+
+/* =========================
+   Our Approach background image
+   ========================= */
+.section-usp-bg{
+  position: relative;
+  overflow: hidden;
+  background: #fff;
+}
+
+.section-usp-bg::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(rgba(255,255,255,.88), rgba(255,255,255,.92)),
+    url("assets/our-approach.jpg") center/cover no-repeat;
+  opacity: 0.55;
+  z-index: 0;
+}
+
+.section-usp-bg > .container{
+  position: relative;
+  z-index: 1;
+}
+
+/* ---- Outcomes ---- */
+.outcomes-grid{
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.outcome-card{
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 16px;
+  background: #fff;
+}
+
+/* ---- Footer ---- */
+.footer{
+  border-top: 1px solid var(--line);
+  background: #fff;
+  padding: 22px 0;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 980px){
+  .usp-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 760px){
+  .usp-grid{ grid-template-columns: 1fr; }
+}
