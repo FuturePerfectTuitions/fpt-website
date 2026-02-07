@@ -166,7 +166,30 @@ button, input, select, textarea{ font: inherit; }
   font-size: 18px;
   cursor: pointer;
 }
+/* =========================
+   FAQ background
+   ========================= */
+.section-faq-bg{
+  position: relative;
+  overflow: hidden;
+}
 
+.section-faq-bg::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(rgba(247,249,252,.92), rgba(247,249,252,.97)),
+    url("assets/faq.jpg") center/cover no-repeat;
+  opacity: .85;
+  z-index: 0;
+}
+
+/* keep content above the background */
+.section-faq-bg > .container{
+  position: relative;
+  z-index: 1;
+}
 /* Mobile nav dropdown */
 .mobile-nav{
   border-top: 1px solid var(--line);
