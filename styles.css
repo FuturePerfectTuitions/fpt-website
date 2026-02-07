@@ -607,7 +607,31 @@ button, input, select, textarea{ font: inherit; }
   align-items: center;
   justify-content: space-between;
 }
+/* =========================
+   Our Approach background image
+   ========================= */
+.section-usp-bg{
+  position: relative;
+  overflow: hidden;
+  background: #fff;
+}
 
+.section-usp-bg::before{
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(rgba(255,255,255,.88), rgba(255,255,255,.92)),
+    url("assets/our-approach.jpg") center/cover no-repeat;
+  opacity: 0.55;
+  z-index: 0;
+}
+
+/* keep content above image */
+.section-usp-bg > .container{
+  position: relative;
+  z-index: 1;
+}
 .usp-band-title{ font-weight: 1000; color: var(--navy); }
 .usp-band-text{ color: var(--muted); }
 
