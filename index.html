@@ -1,4 +1,4 @@
-t need<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -25,7 +25,7 @@ t need<!DOCTYPE html>
   <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
 
   <!-- CSS -->
-  <link rel="stylesheet" href="/styles.css?v=20260206-1" />
+  <link rel="stylesheet" href="/styles.css?v=20260206-2" />
 </head>
 
 <body id="top">
@@ -104,8 +104,6 @@ t need<!DOCTYPE html>
             Strong foundations built early — for school, for 11+, and beyond.
           </p>
 
-          <!-- ✅ Removed the hero CTA row entirely (Book a free trial + How the trial works) -->
-
           <!-- Trust strip -->
           <div class="trust-strip" aria-label="Key trust points">
             <div class="trust-item">
@@ -147,21 +145,21 @@ t need<!DOCTYPE html>
 
         <aside class="hero-card" aria-label="Quick info card">
           <div class="card">
-           <div class="badge-row">
-  <a class="badge badge-link" id="badge-rating"
-     href="#"
-     target="_blank"
-     rel="noopener"
-     aria-label="Read all Google reviews">
-    ⭐ 5-star Google reviews
-  </a>
+            <div class="badge-row">
+              <a class="badge badge-link" id="badge-rating"
+                 href="#"
+                 target="_blank"
+                 rel="noopener"
+                 aria-label="Read all Google reviews">
+                ⭐ 5-star Google reviews
+              </a>
 
-  <a class="badge badge-outline badge-link"
-     href="#contact"
-     aria-label="Jump to the enquiry form">
-    Free trial available
-  </a>
-</div>
+              <a class="badge badge-outline badge-link"
+                 href="#contact"
+                 aria-label="Jump to the enquiry form">
+                Free trial available
+              </a>
+            </div>
 
             <h2 class="card-title">See the difference in one lesson</h2>
             <p class="card-text">
@@ -175,7 +173,6 @@ t need<!DOCTYPE html>
               <div>✔ Revision support built in</div>
             </div>
 
-            <!-- ✅ Removed “Enquire now” red button from hero card (too pushy) -->
             <a href="#contact" class="btn btn-outline btn-full">Enquire</a>
 
             <div class="mini">
@@ -202,8 +199,6 @@ t need<!DOCTYPE html>
         </aside>
       </div>
     </section>
-
-    <!-- ✅ Removed the entire 3-step trial strip section (#trial) -->
 
     <!-- USP -->
     <section id="usp" class="section section-usp">
@@ -252,8 +247,6 @@ t need<!DOCTYPE html>
             <div class="usp-text">Children feel safe to try, make mistakes, improve, and succeed — consistently.</div>
           </div>
         </div>
-
-        <!-- ✅ Removed the USP band that had the repeated red button -->
       </div>
     </section>
 
@@ -314,12 +307,8 @@ t need<!DOCTYPE html>
             <div class="outcome-text">Children feel motivated because they understand — not because they memorise.</div>
           </div>
         </div>
-
-        <!-- ✅ Removed the outcomes CTA strip with the red button -->
       </div>
     </section>
-
-   
 
     <!-- DIFFERENCE -->
     <section id="difference" class="section">
@@ -548,18 +537,14 @@ t need<!DOCTYPE html>
           </div>
           <a class="link" id="reviews-link" href="#" target="_blank" rel="noopener">View all Google reviews →</a>
         </div>
-<div class="reviews-scroller" aria-label="Scrollable review excerpts">
-  <button class="scroll-btn scroll-btn-left" type="button" aria-label="Scroll reviews left">
-    ‹
-  </button>
 
-  <div id="reviews-container" class="reviews-grid"></div>
+        <div class="reviews-scroller" aria-label="Scrollable review excerpts">
+          <button class="scroll-btn scroll-btn-left" type="button" aria-label="Scroll reviews left">‹</button>
 
-  <button class="scroll-btn scroll-btn-right" type="button" aria-label="Scroll reviews right">
-    ›
-  </button>
-</div>
-        
+          <div id="reviews-container" class="reviews-grid"></div>
+
+          <button class="scroll-btn scroll-btn-right" type="button" aria-label="Scroll reviews right">›</button>
+        </div>
       </div>
     </section>
 
@@ -586,7 +571,6 @@ t need<!DOCTYPE html>
             </div>
 
             <div class="contact-mini">
-              
               <div class="contact-mini-row">
                 <strong>Location:</strong> Future Perfect Tuitions, Penrose Avenue, Watford, WD19 5AH • Next to Carpenders Park Overground Station.
               </div>
@@ -677,7 +661,6 @@ t need<!DOCTYPE html>
         <div class="footer-sub">Penrose Avenue, Watford, WD19 5AH </div>
         <div class="footer-sub">Years 2–6 • 11+ Preparation</div>
         <div class="footer-sub">
-         
           <a href="tel:+447725443401">07725 443401</a>
         </div>
       </div>
@@ -776,7 +759,7 @@ t need<!DOCTYPE html>
     });
 
     // ============================
-    // Reviews + chips + meta + schema
+    // Reviews + meta + schema
     // ============================
     const starRow = (n) =>
       "★".repeat(Math.max(0, Math.min(5, n || 0))) +
@@ -787,16 +770,6 @@ t need<!DOCTYPE html>
       const a = parts[0]?.[0] || "";
       const b = parts.length > 1 ? parts[parts.length - 1][0] : "";
       return (a + b).toUpperCase();
-    };
-
-    const toChip = (text = "") => {
-      const t = text.replace(/\s+/g, " ").trim();
-      if (!t) return "";
-      const candidates = t.split(/(?<=[.!?])\s+|;\s+|\.\s+/).map(s => s.trim()).filter(Boolean);
-      let c = candidates.find(s => s.length >= 28 && s.length <= 80) || candidates[0] || t;
-      c = c.replace(/^["“”]+|["“”]+$/g, "").trim();
-      if (c.length > 78) c = c.slice(0, 75).trim() + "…";
-      return `“${c}”`;
     };
 
     const injectLD = (obj) => {
@@ -811,7 +784,6 @@ t need<!DOCTYPE html>
       .then((data) => {
         const container = document.getElementById("reviews-container");
         const link = document.getElementById("reviews-link");
-        const track = document.getElementById("chip-track");
         const meta = document.getElementById("review-meta");
         const badge = document.getElementById("badge-rating");
         const trust = document.getElementById("trust-rating");
@@ -833,11 +805,7 @@ t need<!DOCTYPE html>
         if (data?.source?.url && link) link.href = data.source.url;
         if (data?.source?.url && badge) badge.href = data.source.url;
 
-        if (meta) {
-          // ✅ Keep this exact phrase (your request), with optional rating/count appended
-          meta.textContent = `Selected excerpts from Google Reviews.`;
-        }
-
+        if (meta) meta.textContent = `Selected excerpts from Google Reviews.`;
         if (badge) badge.textContent = ratingValue ? `⭐ Rated ${ratingLabel} on Google` : `⭐ 5-star Google reviews`;
         if (trust) trust.textContent = ratingValue ? ratingLabel : "5-star";
 
@@ -858,31 +826,6 @@ t need<!DOCTYPE html>
           `;
           container && container.appendChild(card);
         });
-
-        if (track) {
-          const chips = reviews.map(r => toChip(r.text)).filter(Boolean).slice(0, 8);
-          const fallback = [
-            "“My child is so much more confident.”",
-            "“Very organised and professional.”",
-            "“Patient; makes hard things feel easy.”",
-            "“Small groups are the perfect size.”",
-            "“Reward system really motivates.”",
-            "“Explains the ‘why’, not just answers.”",
-            "“We can revise past lessons.”",
-            "“Highly recommend.”"
-          ];
-          const finalChips = chips.length ? chips : fallback;
-
-          track.innerHTML = "";
-          const renderSet = () => finalChips.forEach((text) => {
-            const el = document.createElement("div");
-            el.className = "chip";
-            el.textContent = text;
-            track.appendChild(el);
-          });
-          renderSet();
-          renderSet();
-        }
 
         // LocalBusiness schema (with address)
         const localBusiness = {
@@ -974,28 +917,7 @@ t need<!DOCTYPE html>
         injectLD(faqPage);
       })
       .catch(() => {
-        const track = document.getElementById("chip-track");
         const container = document.getElementById("reviews-container");
-
-        if (track) {
-          track.innerHTML = "";
-          [
-            "“Highly recommend.”",
-            "“Very organised and professional.”",
-            "“My child is so much more confident.”",
-            "“Patient; makes hard things feel easy.”",
-            "“Highly recommend.”",
-            "“Very organised and professional.”",
-            "“My child is so much more confident.”",
-            "“Patient; makes hard things feel easy.”"
-          ].forEach((t) => {
-            const el = document.createElement("div");
-            el.className = "chip";
-            el.textContent = t;
-            track.appendChild(el);
-          });
-        }
-
         if (container) {
           container.innerHTML = `
             <div class="review-card">
@@ -1006,6 +928,42 @@ t need<!DOCTYPE html>
           `;
         }
       });
+
+    // ============================
+    // Reviews scroller arrows + fades
+    // ============================
+    (function () {
+      const wrap = document.querySelector(".reviews-scroller");
+      const scroller = document.getElementById("reviews-container");
+      const btnL = document.querySelector(".scroll-btn-left");
+      const btnR = document.querySelector(".scroll-btn-right");
+      if (!wrap || !scroller || !btnL || !btnR) return;
+
+      const step = () => Math.max(260, Math.floor(scroller.clientWidth * 0.85));
+
+      const update = () => {
+        const max = scroller.scrollWidth - scroller.clientWidth;
+        const x = scroller.scrollLeft;
+
+        const hasLeft = x > 6;
+        const hasRight = x < max - 6;
+
+        wrap.classList.toggle("has-left", hasLeft);
+        wrap.classList.toggle("has-right", hasRight);
+
+        btnL.disabled = !hasLeft;
+        btnR.disabled = !hasRight;
+      };
+
+      btnL.addEventListener("click", () => scroller.scrollBy({ left: -step(), behavior: "smooth" }));
+      btnR.addEventListener("click", () => scroller.scrollBy({ left: step(), behavior: "smooth" }));
+
+      scroller.addEventListener("scroll", () => requestAnimationFrame(update));
+      window.addEventListener("resize", () => requestAnimationFrame(update));
+
+      // initial
+      setTimeout(update, 200);
+    })();
 
     // ============================
     // Web3Forms AJAX submit + success/error message
@@ -1077,6 +1035,41 @@ t need<!DOCTYPE html>
             submitBtn.textContent = originalBtnText || "Send enquiry";
           }
         }
+      });
+    })();
+
+    // ============================
+    // (2) Hero parallax (subtle)
+    // ============================
+    (function () {
+      const hero = document.querySelector(".hero");
+      if (!hero) return;
+
+      const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (reduce) return;
+
+      let raf = null;
+      const strength = 10; // px max movement (subtle)
+
+      function onMove(e) {
+        const rect = hero.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width;   // 0..1
+        const y = (e.clientY - rect.top) / rect.height;   // 0..1
+        const px = (x - 0.5) * strength;
+        const py = (y - 0.5) * strength;
+
+        if (raf) cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(() => {
+          document.documentElement.style.setProperty("--heroPx", px.toFixed(2) + "px");
+          document.documentElement.style.setProperty("--heroPy", py.toFixed(2) + "px");
+        });
+      }
+
+      hero.addEventListener("mousemove", onMove);
+
+      hero.addEventListener("mouseleave", () => {
+        document.documentElement.style.setProperty("--heroPx", "0px");
+        document.documentElement.style.setProperty("--heroPy", "0px");
       });
     })();
   </script>
