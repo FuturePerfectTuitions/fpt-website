@@ -131,19 +131,29 @@ button, input, select, textarea{ font: inherit; }
 .navlinks{
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 28px;
 }
 
 .navlinks > a{
   position: relative;
-  padding: 10px 10px;
+  padding: 10px 12px;
   font-weight: 800;
   color: var(--ink);
   border-radius: 10px;
+  letter-spacing: .2px;
 }
 
 .navlinks > a:hover{
   background: rgba(11,42,111,.06);
+}
+/* Nav CTA (Enquire) */
+.navlinks > a.nav-cta{
+  background: rgba(215,25,32,.10);
+  color: var(--red);
+  border: 1px solid rgba(215,25,32,.22);
+  padding: 10px 14px;
+  border-radius: 999px;
+  font-weight: 1000;
 }
 
 /* Mobile menu toggle button */
