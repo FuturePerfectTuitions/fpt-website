@@ -683,7 +683,29 @@ button, input, select, textarea{ font: inherit; }
   opacity: .70;
   z-index: 0;
 }
+/* =========================
+   Contact / Enquire background
+   ========================= */
+.section-contact-bg{
+  position: relative;
+  overflow: hidden;
+}
 
+.section-contact-bg::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(rgba(255,255,255,.92), rgba(255,255,255,.97)),
+    url("assets/contact.jpg") center/cover no-repeat;
+  opacity: .75;
+  z-index: 0;
+}
+
+.section-contact-bg > .container{
+  position: relative;
+  z-index: 1;
+}
 .section-method-bg > .container{
   position: relative;
   z-index: 1;
