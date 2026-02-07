@@ -45,8 +45,8 @@ button, input, select, textarea{ font: inherit; }
   --bg:#ffffff;
   --bg-soft:#f7f9fc;
   --line: rgba(12, 24, 46, .10);
-  --shadow: 0 14px 35px rgba(9, 24, 54, .10);
-  --shadow-soft: 0 10px 24px rgba(9, 24, 54, .08);
+  --shadow: 0 18px 42px rgba(9, 24, 54, .14);
+  --shadow-soft: 0 12px 28px rgba(9, 24, 54, .10);
   --radius: 18px;
 
   /* Anchor offset so section titles don't hide under sticky header */
@@ -58,6 +58,21 @@ button, input, select, textarea{ font: inherit; }
   /* (2) Hero parallax variables (used by hero background image) */
   --heroPx: 0px;
   --heroPy: 0px;
+}
+
+.info-card,
+.outcome-card,
+.panel,
+.step{
+  transition: transform .14s ease, box-shadow .18s ease;
+}
+
+.info-card:hover,
+.outcome-card:hover,
+.panel:hover,
+.step:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 18px 38px rgba(9,24,54,.14);
 }
 
 /* ---- Layout helpers ---- */
@@ -229,7 +244,14 @@ button, input, select, textarea{ font: inherit; }
 
 /* ---- Section spacing + anchor offset ---- */
 .section{
-  padding: 72px 0;
+  padding: 84px 0;
+}
+
+/* slightly tighter on mobile so it doesn’t feel too long */
+@media (max-width: 760px){
+  .section{
+    padding: 64px 0;
+  }
 }
 
 /* Ensure anchor jumps don't hide headings under sticky header */
@@ -718,9 +740,14 @@ button, input, select, textarea{ font: inherit; }
 
 /* ---- Section headings + cards ---- */
 .section-head h2{
-  margin: 0 0 10px;
-  font-size: 1.9rem;
-  letter-spacing: -0.4px;
+  margin: 0 0 12px;
+  font-size: 2.1rem;
+  letter-spacing: -0.5px;
+  color: var(--navy);
+}
+
+.section-head{
+  max-width: 720px;
 }
 
 .section-head p{
@@ -743,7 +770,7 @@ button, input, select, textarea{ font: inherit; }
   background:
     linear-gradient(rgba(255,255,255,.88), rgba(255,255,255,.94)),
     url("assets/difference.jpg") center/cover no-repeat;
-  opacity: .70;
+  opacity: .60;
   z-index: 0;
 }
 
@@ -776,11 +803,12 @@ button, input, select, textarea{ font: inherit; }
 .info-card p{ margin: 0; color: var(--muted); }
 
 .big-quote{
-  margin-top: 18px;
+  margin-top: 24px;
   border: 1px solid rgba(11,42,111,.18);
   background: rgba(11,42,111,.05);
-  border-radius: 18px;
-  padding: 18px;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: var(--shadow-soft);
 }
 
 .big-quote-text{
