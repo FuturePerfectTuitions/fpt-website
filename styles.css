@@ -254,7 +254,8 @@ button, input, select, textarea{ font: inherit; }
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(rgba(255,255,255,.88), rgba(255,255,255,.92)),
+    linear-gradient(rgba(255,255,255,.75), rgba(255,255,255,.85)),
+opacity: 0.65;
     url("assets/hero-classroom.jpg") center/cover no-repeat;
   opacity: 0.55;
   z-index: 0;
