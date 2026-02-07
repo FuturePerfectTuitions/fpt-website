@@ -728,7 +728,30 @@ button, input, select, textarea{ font: inherit; }
   color: var(--muted);
   max-width: 76ch;
 }
+/* =========================
+   Difference background image
+   ========================= */
+.section-diff-bg{
+  position: relative;
+  overflow: hidden;
+}
 
+.section-diff-bg::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(rgba(255,255,255,.88), rgba(255,255,255,.94)),
+    url("assets/difference.jpg") center/cover no-repeat;
+  opacity: .70;
+  z-index: 0;
+}
+
+/* keep all content above the background */
+.section-diff-bg > .container{
+  position: relative;
+  z-index: 1;
+}
 .cards-3{
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
