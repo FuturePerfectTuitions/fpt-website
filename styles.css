@@ -667,7 +667,27 @@ button, input, select, textarea{ font: inherit; }
 }
 .usp-band-title{ font-weight: 1000; color: var(--navy); }
 .usp-band-text{ color: var(--muted); }
+/* ---- Method background ---- */
+.section-method-bg{
+  position: relative;
+  overflow: hidden;
+}
 
+.section-method-bg::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(rgba(255,255,255,.90), rgba(255,255,255,.96)),
+    url("assets/method.jpg") center/cover no-repeat;
+  opacity: .70;
+  z-index: 0;
+}
+
+.section-method-bg > .container{
+  position: relative;
+  z-index: 1;
+}
 
 /* ---- Outcomes ---- */
 .section-outcomes{
