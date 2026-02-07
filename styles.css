@@ -835,6 +835,20 @@ button, input, select, textarea{ font: inherit; }
   gap: 12px;
 }
 
+/* Ensure opened FAQ doesn't sit under sticky header */
+.faq-item{
+  scroll-margin-top: calc(var(--headerH) + 18px);
+}
+
+.faq details{
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #fff;
+  box-shadow: var(--shadow-soft);
+  padding: 0;
+  overflow: hidden;
+}
+
 .faq details{
   border: 1px solid var(--line);
   border-radius: 18px;
