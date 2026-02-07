@@ -523,6 +523,40 @@ button, input, select, textarea{ font: inherit; }
 
 /* ---- USP grid ---- */
 .section-usp{ padding-top: 56px; }
+/* USP split layout (image + content) */
+.section-usp .usp-split{
+  display: grid;
+  grid-template-columns: 1fr 1.25fr; /* image | content */
+  gap: 60px;
+  align-items: start;
+}
+
+.section-usp .usp-media{
+  position: relative;
+}
+
+.section-usp .usp-media img{
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-soft);
+  object-fit: cover;
+}
+
+/* give the content a tiny top alignment polish */
+.section-usp .usp-content .usp-head{
+  margin-top: 4px;
+}
+
+/* Mobile: stack */
+@media (max-width: 980px){
+  .section-usp .usp-split{
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
 .usp-head h2{ margin: 0 0 8px; font-size: 1.9rem; letter-spacing: -0.4px; }
 .usp-head p{ margin: 0; }
 
