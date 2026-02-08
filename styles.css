@@ -297,25 +297,13 @@ strong{ font-weight: 650; }
 
 /* Existing Students button stays a button */
 .btn-students{
-  background: repeating-linear-gradient(
-    45deg,
-    #e63946,
-    #e63946 6px,
-    #ffffff 6px,
-    #ffffff 12px,
-    #1d4ed8 12px,
-    #1d4ed8 18px,
-    #ffffff 18px,
-    #ffffff 24px
-  );
-  color: #0b1b33;
-  border: 1px solid rgba(11,27,51,.18);
-  font-weight: 600;
+  background: rgba(11,42,111,.10);
+  color: var(--navy);
+  border-color: rgba(11,42,111,.18);
 }
 
 .btn-students:hover{
-  transform: translateY(-1px);
-  box-shadow: 0 10px 22px rgba(9,24,54,.12);
+  background: rgba(11,42,111,.14);
 }
 
 .btn-full{ width: 100%; }
@@ -323,7 +311,7 @@ strong{ font-weight: 650; }
 .btn-small{
   padding: 8px 14px;
   font-size: .92rem;
-  font-weight: 650; /* was 900 */
+  font-weight: 900;
 }
 
 /* ---- Section spacing + anchor offset ---- */
