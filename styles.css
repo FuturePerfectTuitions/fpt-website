@@ -431,7 +431,7 @@ strong{ font-weight: 650; }
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
-  margin-top: 18px;
+  margin-top: 14px;
 }
 
 .trust-item{
@@ -1507,7 +1507,7 @@ strong{ font-weight: 650; }
 .hero-points{
   display: grid;
   gap: 6px;
-  margin: 10px 0 0;
+  margin: 12px 0 0;
   color: var(--ink);
   font-weight: 600;
 }
