@@ -204,6 +204,27 @@ strong{ font-weight: 650; }
 /* =========================
    FAQ background
    ========================= */
+/* Defensive: backgrounds always behind content */
+.section-usp-bg,
+.section-outcomes,
+.section-diff-bg,
+.section-method-bg,
+.section-faq-bg,
+.section-contact-bg{
+  position: relative;
+  isolation: isolate; /* creates a safe stacking context */
+}
+
+.section-usp-bg::before,
+.section-outcomes::before,
+.section-diff-bg::before,
+.section-method-bg::before,
+.section-faq-bg::before,
+.section-contact-bg::before{
+  z-index: -1;        /* push background behind everything */
+  pointer-events: none;
+}
+
 .section-faq-bg{
   position: relative;
   overflow: hidden;
