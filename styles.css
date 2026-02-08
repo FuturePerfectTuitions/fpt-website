@@ -1455,7 +1455,7 @@ strong{ font-weight: 650; }
 .fab{
   position: fixed;
   right: 18px;
-  bottom: 92px;
+  bottom: 24px;
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -1504,10 +1504,17 @@ strong{ font-weight: 650; }
   background: var(--red);
   color: #fff;
 }
-
+.hero-points{
+  display: grid;
+  gap: 6px;
+  margin: 10px 0 0;
+  color: var(--ink);
+  font-weight: 600;
+}
 @media (max-width: 760px){
   .sticky-cta{ display: flex; }
   body{ padding-bottom: 78px; } /* room for sticky bar */
+    .fab{ bottom: 88px; } /* sits just above the sticky CTA bar */
 }
 
 /* ✅ Modal removed completely (defensive) */
