@@ -142,8 +142,22 @@ strong{ font-weight: 650; }
 }
 
 .topbar-row-2{
+  position: relative;
   padding: 8px 0 14px;
   border-top: 1px solid var(--line);
+}
+
+/* subtle brand accent line */
+.topbar-row-2::before{
+  content:"";
+  position:absolute;
+  left: 0;
+  right: 0;
+  top: -1px;              /* sits on the divider */
+  height: 2px;
+  background: linear-gradient(90deg, var(--red), var(--navy));
+  opacity: .35;
+  pointer-events: none;
 }
 
 .brand{ display:flex; align-items:center; gap: 12px; }
