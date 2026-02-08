@@ -1,1489 +1,1271 @@
-/* =========================
-   Future Perfect Tuitions
-   styles.css (FULL / UPDATED)
-   ========================= */
-
-/* ---- CSS Reset (light) ---- */
-*,
-*::before,
-*::after { box-sizing: border-box; }
-
-html { scroll-behavior: smooth; }
-
-body{
-  margin: 0;
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-  color: #0b1b33;
-  background: #ffffff;
-  line-height: 1.55;
-}
-
-img{ max-width: 100%; height: auto; display: block; }
-a{ color: inherit; text-decoration: none; }
-button, input, select, textarea{ font: inherit; }
-
-/* Skip link */
-.skip-link{
-  position: absolute;
-  left: -999px;
-  top: 12px;
-  background: #fff;
-  border: 1px solid rgba(12,24,46,.18);
-  border-radius: 12px;
-  padding: 10px 12px;
-  font-weight: 900;
-  z-index: 2000;
-}
-.skip-link:focus{ left: 12px; }
-
-/* ---- Brand tokens ---- */
-:root{
-  --red:#d71920;
-  --navy:#0b2a6f;
-  --ink:#0b1b33;
-  --muted:#52607a;
-  --bg:#ffffff;
-  --bg-soft:#f7f9fc;
-  --line: rgba(12, 24, 46, .10);
-  --shadow: 0 18px 42px rgba(9, 24, 54, .14);
-  --shadow-soft: 0 12px 28px rgba(9, 24, 54, .10);
-  --radius: 18px;
-
-  /* Anchor offset so section titles don't hide under sticky header */
-  --headerH: 130px;
-
-  /* Tighten the gap between FAQ and Reviews slightly */
-  --reviewsTopGap: 40px;
-
-  /* (2) Hero parallax variables (used by hero background image) */
-  --heroPx: 0px;
-  --heroPy: 0px;
-}
-
-.info-card,
-.outcome-card,
-.panel,
-.step{
-  transition: transform .14s ease, box-shadow .18s ease;
-}
-
-.info-card:hover,
-.outcome-card:hover,
-.panel:hover,
-.step:hover{
-  transform: translateY(-3px);
-  box-shadow: 0 18px 38px rgba(9,24,54,.14);
-}
-
-/* ---- Layout helpers ---- */
-.container{
-  width: min(1120px, calc(100% - 48px));
-  margin: 0 auto;
-}
-
-.muted{ color: var(--muted); }
-.lead{ font-size: 1.05rem; color: var(--muted); }
-
-/* =========================================
-   TWO-ROW PREMIUM HEADER (logo row + nav row)
-   ========================================= */
-.topbar{
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background: rgba(255,255,255,.92);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--line);
-}
-
-.topbar-row{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 18px;
-}
-
-.topbar-row-1{
-  padding: 18px 0 10px;
-}
-
-.topbar-row-2{
-  padding: 8px 0 14px;
-  border-top: 1px solid var(--line);
-}
-
-.brand{ display:flex; align-items:center; gap: 12px; }
-
-/* Logo sizing (prominent without being huge) */
-.logo{
-  width: 360px;
-  height: auto;
-}
-
-/* Right-side actions (Enquire + Existing Students + hamburger) */
-.topbar-actions{
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-/* nav links (row 2 on desktop) */
-.navlinks{
-  display: flex;
-  align-items: center;
-  gap: 28px;
-}
-
-.navlinks > a{
-  position: relative;
-  padding: 10px 12px;
-  font-weight: 800;
-  color: var(--ink);
-  border-radius: 10px;
-  letter-spacing: .2px;
-}
-
-.navlinks > a:hover{
-  background: rgba(11,42,111,.06);
-}
-/* Nav CTA (Enquire) */
-.navlinks > a.nav-cta{
-  background: rgba(215,25,32,.10);
-  color: var(--red);
-  border: 1px solid rgba(215,25,32,.22);
-  padding: 10px 14px;
-  border-radius: 999px;
-  font-weight: 1000;
-}
-
-/* Mobile menu toggle button */
-.nav-toggle{
-  display: none;
-  border: 1px solid var(--line);
-  background: #fff;
-  border-radius: 12px;
-  padding: 10px 12px;
-  font-size: 18px;
-  cursor: pointer;
-}
-/* =========================
-   FAQ background
-   ========================= */
-.section-faq-bg{
-  position: relative;
-  overflow: hidden;
-}
-
-.section-faq-bg::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    linear-gradient(rgba(247,249,252,.92), rgba(247,249,252,.97)),
-    url("assets/faq.jpg") center/cover no-repeat;
-  opacity: .85;
-  z-index: 0;
-}
-
-/* keep content above the background */
-.section-faq-bg > .container{
-  position: relative;
-  z-index: 1;
-}
-/* Mobile nav dropdown */
-.mobile-nav{
-  border-top: 1px solid var(--line);
-  padding: 12px 0 16px;
-  background: #fff;
-}
-
-.mobile-nav a{
-  display: block;
-  padding: 12px 18px;
-  font-weight: 800;
-  color: var(--ink);
-}
-
-.mobile-nav a:hover{
-  background: rgba(11,42,111,.06);
-}
-
-/* ---- Buttons ---- */
-.btn{
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  border-radius: 999px;
-  padding: 12px 16px;
-  font-weight: 900;
-  letter-spacing: .2px;
-  border: 1px solid transparent;
-  cursor: pointer;
-  transition: transform .08s ease, box-shadow .15s ease, background .15s ease, border-color .15s ease;
-}
-
-.btn:active{ transform: translateY(1px); }
-
-.btn-primary{
-  background: var(--red);
-  color: #fff;
-  box-shadow: 0 12px 24px rgba(215,25,32,.18);
-}
-
-.btn-primary:hover{
-  box-shadow: 0 16px 34px rgba(215,25,32,.22);
-}
-
-.btn-outline{
-  background: #fff;
-  color: var(--navy);
-  border-color: rgba(11,42,111,.25);
-}
-
-.btn-outline:hover{
-  border-color: rgba(11,42,111,.45);
-  background: rgba(11,42,111,.04);
-}
-
-.btn-ghost{
-  background: transparent;
-  color: var(--navy);
-  border-color: transparent;
-}
-
-.btn-ghost:hover{
-  background: rgba(11,42,111,.06);
-}
-
-/* Existing Students button stays a button */
-.btn-students{
-  background: rgba(11,42,111,.10);
-  color: var(--navy);
-  border-color: rgba(11,42,111,.18);
-}
-
-.btn-students:hover{
-  background: rgba(11,42,111,.14);
-}
-
-.btn-full{ width: 100%; }
-
-.btn-small{
-  padding: 8px 14px;
-  font-size: .92rem;
-  font-weight: 900;
-}
-
-/* ---- Section spacing + anchor offset ---- */
-.section{
-  padding: 84px 0;
-}
-
-/* slightly tighter on mobile so it doesn’t feel too long */
-@media (max-width: 760px){
-  .section{
-    padding: 64px 0;
-  }
-}
-
-/* Ensure anchor jumps don't hide headings under sticky header */
-.section[id],
-.hero[id],
-.trial-steps[id]{
-  scroll-margin-top: calc(var(--headerH) + 18px);
-}
-
-.section-alt{
-  background: var(--bg-soft);
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-}
-
-/* ---- HERO ---- */
-.hero{
-  position: relative;
-  padding: 54px 0 20px;
-  background: #fff;
-  overflow: hidden;
-}
-
-.hero::before{
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(rgba(255,255,255,.88), rgba(255,255,255,.92)),
-    url("assets/hero-classroom.jpg") center/cover no-repeat;
-  /* (2) subtle parallax translate */
-  transform: translate(var(--heroPx), var(--heroPy)) scale(1.03);
-  opacity: 0.55;
-  z-index: 0;
-  will-change: transform;
-}
-
-/* keep hero content above image */
-.hero > *{
-  position: relative;
-  z-index: 1;
-}
-
-.hero-grid{
-  display: grid;
-  grid-template-columns: 1.25fr .85fr;
-  gap: 28px;
-  align-items: start;
-}
-
-.pill{
-  display: inline-block;
-  padding: 8px 12px;
-  border: 1px solid rgba(11,42,111,.20);
-  color: var(--navy);
-  background: rgba(11,42,111,.05);
-  border-radius: 999px;
-  font-weight: 900;
-  font-size: .9rem;
-}
-
-.hero h1{
-  margin: 14px 0 10px;
-  font-size: clamp(2.0rem, 3.2vw, 3.0rem);
-  line-height: 1.12;
-  letter-spacing: -0.6px;
-}
-
-.hero .lead{
-  font-size: 1.08rem;
-  margin: 0 0 18px;
-}
-
-.cta-row{
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin: 16px 0 18px;
-}
-
-/* Trust strip */
-.trust-strip{
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 12px;
-  margin-top: 18px;
-}
-
-.trust-item{
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  padding: 12px 14px;
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  background: rgba(255,255,255,.7);
-  box-shadow: 0 8px 18px rgba(9,24,54,.06);
-}
-
-.trust-icon{
-  width: 34px;
-  height: 34px;
-  display: grid;
-  place-items: center;
-  border-radius: 12px;
-  background: rgba(11,42,111,.08);
-  color: var(--navy);
-  font-size: 18px;
-}
-
-.trust-metric{
-  font-weight: 1000;
-  letter-spacing: -0.3px;
-}
-
-.trust-label{
-  font-size: .9rem;
-  color: var(--muted);
-}
-
-.hero-micro{
-  display: grid;
-  gap: 10px;
-  margin-top: 16px;
-  color: var(--muted);
-  font-weight: 800;
-}
-.micro-item{
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-}
-.micro-dot{
-  width: 10px;
-  height: 10px;
-  border-radius: 999px;
-  margin-top: 6px;
-  background: rgba(11,42,111,.25);
-}
-
-/* Right card */
-.card{
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: #fff;
-  box-shadow: var(--shadow);
-  padding: 18px;
-}
-
-.badge-row{
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 12px;
-}
-
-.badge{
-  font-weight: 1000;
-  font-size: .85rem;
-  color: #083046;
-  background: rgba(2, 138, 255, .10);
-  padding: 7px 10px;
-  border-radius: 999px;
-  border: 1px solid rgba(2, 138, 255, .18);
-}
-
-.badge-outline{
-  background: rgba(215,25,32,.06);
-  border-color: rgba(215,25,32,.18);
-  color: var(--red);
-}
-
-.card-title{
-  margin: 0 0 8px;
-  font-size: 1.35rem;
-  letter-spacing: -0.3px;
-}
-
-/* clickable badge links */
-.badge-link{
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  text-decoration: none;
-}
-
-.badge-link:hover{
-  transform: translateY(-1px);
-  box-shadow: 0 10px 18px rgba(9,24,54,.10);
-}
-
-.badge-link:focus-visible{
-  outline: 3px solid rgba(11,42,111,.22);
-  outline-offset: 3px;
-}
-
-.card-text{ margin: 0 0 12px; color: var(--muted); }
-
-.card-points{
-  display: grid;
-  gap: 6px;
-  margin: 12px 0 14px;
-  color: var(--ink);
-  font-weight: 800;
-}
-
-.mini{
-  margin-top: 14px;
-  padding-top: 12px;
-  border-top: 1px solid var(--line);
-}
-
-.mini-title{
-  font-weight: 1000;
-  color: var(--navy);
-  font-size: .9rem;
-}
-
-.mini-text{ color: var(--muted); }
-
-.mini-actions{
-  display: flex;
-  gap: 8px;
-  margin-top: 8px;
-  flex-wrap: wrap;
-}
-
-/* hide hero card quick actions on small screens */
-@media (max-width: 760px){
-  .mini-actions{ display: none; }
-}
-
-/* ---- 3-step trial strip under hero ---- */
-.trial-steps{
-  padding: 14px 0 34px;
-  background: transparent;
-}
-
-.trial-steps-grid{
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr auto;
-  gap: 12px;
-  align-items: stretch;
-}
-
-.trial-step{
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  padding: 14px 14px;
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  background: rgba(255,255,255,.85);
-  box-shadow: var(--shadow-soft);
-}
-
-.trial-step-num{
-  width: 40px;
-  height: 40px;
-  border-radius: 14px;
-  display: grid;
-  place-items: center;
-  background: rgba(215,25,32,.10);
-  color: var(--red);
-  font-weight: 1000;
-}
-
-.trial-step-title{
-  font-weight: 1000;
-  color: var(--ink);
-  line-height: 1.2;
-}
-
-.trial-step-text{
-  color: var(--muted);
-  font-weight: 800;
-  margin-top: 3px;
-  font-size: .95rem;
-}
-
-.trial-steps-cta{
-  height: 100%;
-  white-space: nowrap;
-  align-self: stretch;
-}
-
-@media (max-width: 980px){
-  .trial-steps-grid{ grid-template-columns: 1fr; }
-  .trial-steps-cta{ width: 100%; }
-}
-
-/* ---- USP grid ---- */
-.section-usp{ padding-top: 56px; }
-/* USP split layout (image + content) */
-.section-usp .usp-split{
-  display: grid;
-  grid-template-columns: 1fr 1.25fr; /* image | content */
-  gap: 60px;
-  align-items: start;
-}
-
-.section-usp .usp-media{
-  position: relative;
-}
-
-.section-usp .usp-media img{
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 8px;
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow-soft);
-  object-fit: cover;
-}
-
-/* give the content a tiny top alignment polish */
-.section-usp .usp-content .usp-head{
-  margin-top: 4px;
-}
-
-/* Mobile: stack */
-@media (max-width: 980px){
-  .section-usp .usp-split{
-    grid-template-columns: 1fr;
-    gap: 28px;
-  }
-}
-.usp-head h2{ margin: 0 0 8px; font-size: 1.9rem; letter-spacing: -0.4px; }
-.usp-head p{ margin: 0; }
-
-.usp-grid{
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
-  margin-top: 18px;
-}
-
-.usp-item{
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  padding: 16px;
-  background: #fff;
-  box-shadow: 0 10px 22px rgba(9,24,54,.06);
-  transition: transform .12s ease, box-shadow .18s ease;
-}
-
-.usp-item:hover{
-  transform: translateY(-2px);
-  box-shadow: 0 16px 34px rgba(9,24,54,.10);
-}
-
-.usp-icon{
-  width: 40px;
-  height: 40px;
-  display: grid;
-  place-items: center;
-  border-radius: 14px;
-  background: rgba(215,25,32,.08);
-  color: var(--red);
-  font-size: 18px;
-  margin-bottom: 10px;
-}
-
-.usp-title{ font-weight: 1000; margin: 0 0 6px; }
-.usp-text{ color: var(--muted); margin: 0; }
-
-.usp-band{
-  margin-top: 18px;
-  border: 1px solid rgba(11,42,111,.18);
-  background: rgba(11,42,111,.05);
-  border-radius: 18px;
-  padding: 16px;
-  display: flex;
-  gap: 14px;
-  align-items: center;
-  justify-content: space-between;
-}
-/* =========================
-   Our Approach background image
-   ========================= */
-.section-usp-bg{
-  position: relative;
-  overflow: hidden;
-  background: #fff;
-}
-
-.section-usp-bg::before{
-  content: "";
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(rgba(255,255,255,.78), rgba(255,255,255,.90)),
-    url("assets/our-approach.jpg") center/cover no-repeat;
-  transform: translate(var(--heroPx), var(--heroPy)) scale(1.03);
-  opacity: 0.60;
-  z-index: 0;
-  will-change: transform;
-}
-/* keep content above image */
-.section-usp-bg > .container{
-  position: relative;
-  z-index: 1;
-}
-.usp-band-title{ font-weight: 1000; color: var(--navy); }
-.usp-band-text{ color: var(--muted); }
-/* ---- Method background ---- */
-.section-method-bg{
-  position: relative;
-  overflow: hidden;
-}
-
-.section-method-bg::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    linear-gradient(rgba(255,255,255,.90), rgba(255,255,255,.96)),
-    url("assets/method.jpg") center/cover no-repeat;
-  opacity: .70;
-  z-index: 0;
-}
-/* =========================
-   Contact / Enquire background
-   ========================= */
-.section-contact-bg{
-  position: relative;
-  overflow: hidden;
-}
-
-.section-contact-bg::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    linear-gradient(rgba(255,255,255,.92), rgba(255,255,255,.97)),
-    url("assets/contact.jpg") center/cover no-repeat;
-  opacity: .75;
-  z-index: 0;
-}
-
-.section-contact-bg > .container{
-  position: relative;
-  z-index: 1;
-}
-.section-method-bg > .container{
-  position: relative;
-  z-index: 1;
-}
-
-/* ---- Outcomes ---- */
-.section-outcomes{
-  position: relative;
-  overflow: hidden;
-}
-
-.section-outcomes::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    linear-gradient(rgba(255,255,255,.85), rgba(255,255,255,.93)),
-    url("assets/outcomes.jpg") center/cover no-repeat;
-  opacity: .75;
-  z-index: 0;
-}
-
-.section-outcomes > .container{
-  position: relative;
-  z-index: 1;
-}
-
-.outcomes-head h2{ 
-  margin: 0 0 8px; 
-  font-size: 1.9rem; 
-  letter-spacing: -0.4px; 
-}
-
-.outcomes-grid{
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
-  margin-top: 18px;
-}
-
-.outcome-card{
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  padding: 16px;
-  background: #fff;
-  box-shadow: 0 10px 22px rgba(9,24,54,.06);
-}
-
-.outcome-top{
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 6px;
-}
-
-.outcome-icon{
-  width: 38px;
-  height: 38px;
-  display: grid;
-  place-items: center;
-  border-radius: 14px;
-  background: rgba(11,42,111,.08);
-  color: var(--navy);
-  font-size: 18px;
-}
-
-.outcome-title{ font-weight: 1000; }
-.outcome-text{ color: var(--muted); margin: 0; }
-
-.outcomes-cta{
-  margin-top: 18px;
-  border: 1px solid rgba(215,25,32,.18);
-  background: rgba(215,25,32,.06);
-  border-radius: 18px;
-  padding: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-}
-
-.outcomes-cta-title{ font-weight: 1000; color: var(--red); }
-.outcomes-cta-text{ color: var(--muted); }
-
-/* ---- Section headings + cards ---- */
-.section-head h2{
-  margin: 0 0 12px;
-  font-size: 2.1rem;
-  letter-spacing: -0.5px;
-  color: var(--navy);
-}
-
-.section-head{
-  max-width: 720px;
-}
-
-.section-head p{
-  margin: 0;
-  color: var(--muted);
-  max-width: 76ch;
-}
-/* =========================
-   Difference background image
-   ========================= */
-.section-diff-bg{
-  position: relative;
-  overflow: hidden;
-}
-
-.section-diff-bg::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    linear-gradient(rgba(255,255,255,.88), rgba(255,255,255,.94)),
-    url("assets/difference.jpg") center/cover no-repeat;
-  opacity: .60;
-  z-index: 0;
-}
-
-/* keep all content above the background */
-.section-diff-bg > .container{
-  position: relative;
-  z-index: 1;
-}
-.cards-3{
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
-  margin-top: 18px;
-}
-
-.info-card{
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  padding: 16px;
-  background: #fff;
-  box-shadow: var(--shadow-soft);
-}
-
-.info-card h3{
-  margin: 0 0 8px;
-  font-size: 1.25rem;
-  letter-spacing: -0.2px;
-}
-
-.info-card p{ margin: 0; color: var(--muted); }
-
-.big-quote{
-  margin-top: 24px;
-  border: 1px solid rgba(11,42,111,.18);
-  background: rgba(11,42,111,.05);
-  border-radius: 20px;
-  padding: 24px;
-  box-shadow: var(--shadow-soft);
-}
-
-.big-quote-text{
-  font-weight: 1000;
-  color: var(--navy);
-  font-size: 1.4rem;
-  letter-spacing: -0.4px;
-}
-
-.big-quote-sub{ color: var(--muted); margin-top: 6px; }
-
-/* ---- Tuition panels ---- */
-.two-col{
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
-  margin-top: 18px;
-}
-
-.panel{
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  background: #fff;
-  box-shadow: var(--shadow);
-  padding: 18px;
-}
-
-.panel h3{ margin: 0 0 10px; font-size: 1.35rem; letter-spacing: -0.3px; }
-
-.ticks{
-  margin: 12px 0 16px;
-  padding-left: 18px;
-  color: var(--ink);
-  font-weight: 900;
-}
-
-.ticks li{ margin: 8px 0; font-weight: 900; }
-.ticks li::marker{ color: var(--red); }
-
-/* ---- Steps ---- */
-.steps{
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 14px;
-  margin-top: 18px;
-}
-
-.step{
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  background: #fff;
-  box-shadow: var(--shadow-soft);
-  padding: 16px;
-}
-
-.step-num{
-  width: 38px;
-  height: 38px;
-  border-radius: 14px;
-  display: grid;
-  place-items: center;
-  background: rgba(215,25,32,.10);
-  color: var(--red);
-  font-weight: 1000;
-  margin-bottom: 10px;
-}
-
-.step h3{ margin: 0 0 8px; }
-.step p{ margin: 0; color: var(--muted); }
-
-/* ---- FAQ (premium accordion look) ---- */
-.faq{
-  margin-top: 18px;
-  display: grid;
-  gap: 12px;
-}
-
-/* Ensure opened FAQ doesn't sit under sticky header */
-.faq-item{
-  scroll-margin-top: 160px;
-}
-
-.faq details{
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  background: #fff;
-  box-shadow: var(--shadow-soft);
-  padding: 0;
-  overflow: hidden;
-}
-
-.faq details{
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  background: #fff;
-  box-shadow: var(--shadow-soft);
-  padding: 0;
-  overflow: hidden;
-}
-
-.faq summary{
-  list-style: none;
-  cursor: pointer;
-  padding: 18px 18px;
-  font-weight: 1000;
-  font-size: 1.1rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-}
-
-.faq summary::-webkit-details-marker{ display:none; }
-
-.faq summary .plus{
-  width: 34px;
-  height: 34px;
-  border-radius: 12px;
-  display: grid;
-  place-items: center;
-  background: rgba(11,42,111,.08);
-  color: var(--navy);
-  font-weight: 1000;
-  transition: transform .15s ease;
-}
-
-.faq details[open] summary .plus{ transform: rotate(45deg); }
-
-.faq .faq-body{
-  border-top: 1px solid var(--line);
-  padding: 0 18px 18px;
-  color: var(--muted);
-}
-
-/* ---- Reviews section ---- */
-.reviews{
-  background: var(--bg-soft);
-  border-top: 1px solid var(--line);
-  padding-top: var(--reviewsTopGap);
-  padding-bottom: 72px;
-}
-
-.reviews-head{
-  display: flex;
-  align-items: end;
-  justify-content: space-between;
-  gap: 12px;
-}
-
-.reviews-head h2{
-  margin: 0 0 6px;
-  font-size: 2.0rem;
-  letter-spacing: -0.5px;
-}
-
-.link{
-  color: var(--navy);
-  font-weight: 1000;
-  text-decoration: none;
-  border-bottom: 2px solid rgba(11,42,111,.30);
-  padding-bottom: 2px;
-}
-
-.link:hover{ border-bottom-color: rgba(11,42,111,.55); }
-
-/* ✅ Reviews: 3 visible, horizontal scroll */
-.reviews-grid{
-  display: flex;
-  gap: 14px;
-  margin-top: 18px;
-
-  overflow-x: auto;
-  overflow-y: hidden;
-
-  scroll-snap-type: x mandatory;
-  scroll-snap-stop: always;
-  -webkit-overflow-scrolling: touch;
-
-  padding-bottom: 10px;
-  scroll-padding-left: 10px;
-  scroll-padding-right: 10px;
-}
-
-.review-card{
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  background: #fff;
-  box-shadow: var(--shadow-soft);
-  padding: 16px;
-
-  flex: 0 0 calc((100% - (14px * 2)) / 3);
-  scroll-snap-align: start;
-}
-
-.review-top{
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 10px;
-}
-
-.avatar{
-  width: 42px;
-  height: 42px;
-  border-radius: 14px;
-  display: grid;
-  place-items: center;
-  font-weight: 1000;
-  color: var(--navy);
-  background: rgba(11,42,111,.08);
-  border: 1px solid rgba(11,42,111,.14);
-}
-
-.review-top-right{
-  display: grid;
-  gap: 2px;
-}
-
-.review-stars{
-  color: #0b1b33;
-  letter-spacing: 1px;
-  font-size: 1rem;
-}
-
-.review-text{
-  margin: 0;
-  color: var(--muted);
-  font-weight: 750;
-}
-
-.review-author{
-  font-weight: 1000;
-  color: var(--ink);
-}
-
-/* =========================================
-   Reviews scroller: premium arrows + edge fades
-   Requires HTML wrapper: .reviews-scroller around #reviews-container
-   ========================================= */
-.reviews-scroller{
-  position: relative;
-}
-
-/* subtle fade edges to hint horizontal scroll */
-.reviews-scroller::before,
-.reviews-scroller::after{
-  content:"";
-  position:absolute;
-  top: 0;
-  bottom: 0;
-  width: 54px;
-  pointer-events:none;
-  z-index: 2;
-  opacity: 0; /* enabled by JS when scrollable */
-  transition: opacity .18s ease;
-}
-
-.reviews-scroller::before{
-  left: 0;
-  background: linear-gradient(to right, var(--bg-soft), rgba(247,249,252,0));
-}
-
-.reviews-scroller::after{
-  right: 0;
-  background: linear-gradient(to left, var(--bg-soft), rgba(247,249,252,0));
-}
-
-.reviews-scroller.has-left::before{ opacity: 1; }
-.reviews-scroller.has-right::after{ opacity: 1; }
-
-/* Arrow buttons */
-.scroll-btn{
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 44px;
-  height: 44px;
-  border-radius: 999px;
-  border: 1px solid rgba(12,24,46,.14);
-  background: rgba(255,255,255,.92);
-  backdrop-filter: blur(8px);
-  box-shadow: 0 10px 24px rgba(9,24,54,.10);
-  display: none; /* shown on desktop only */
-  align-items: center;
-  justify-content: center;
-  font-size: 28px;
-  line-height: 1;
-  font-weight: 1000;
-  color: var(--navy);
-  cursor: pointer;
-  z-index: 3;
-}
-
-.scroll-btn:hover{
-  border-color: rgba(11,42,111,.35);
-  box-shadow: 0 14px 30px rgba(9,24,54,.14);
-}
-
-.scroll-btn:active{
-  transform: translateY(-50%) translateY(1px);
-}
-
-.scroll-btn[disabled]{
-  opacity: .35;
-  cursor: default;
-  box-shadow: none;
-}
-
-.scroll-btn-left{ left: 10px; }
-.scroll-btn-right{ right: 10px; }
-
-/* Don’t show arrows on mobile/tablet (swipe is enough) */
-@media (min-width: 981px){
-  .scroll-btn{ display: inline-flex; }
-  /* add extra breathing room so arrows don't cover cards */
-  .reviews-grid{
-    padding-left: 54px;
-    padding-right: 54px;
-  }
-}
-
-/* ---- Contact ---- */
-.contact-grid{
-  display: grid;
-  grid-template-columns: 1fr .9fr;
-  gap: 18px;
-  align-items: start;
-}
-
-.contact-points{
-  display: grid;
-  gap: 8px;
-  margin: 16px 0 18px;
-  font-weight: 700;
-  color: var(--ink);
-}
-
-.callout{
-  border: 1px solid rgba(11,42,111,.12);
-  background: rgba(11,42,111,.04);
-  border-radius: 16px;
-  padding: 14px 16px;
-}
-
-.callout-title{ 
-  font-weight: 800; 
-  color: var(--navy); 
-  font-size: .95rem;
-}
-
-.callout-text{ 
-  margin-top: 4px; 
-  font-weight: 600;
-}
-
-.contact-mini{ margin-top: 16px; }
-.contact-mini-row{ margin-top: 8px; color: var(--muted); font-weight: 600; }
-
-/* Map embed */
-.map-embed{
-  margin-top: 16px;
-  border-radius: 18px;
-  overflow: hidden;
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow-soft);
-}
-
-.map-embed iframe{
-  width: 100%;
-  height: 260px;
-  border: 0;
-  display: block;
-}
-
-@media (min-width: 900px){
-  .map-embed iframe{ height: 300px; }
-}
-
-/* Form */
-.form{
-  border: 1px solid rgba(12,24,46,.10);
-  border-radius: 18px;
-  background: rgba(255,255,255,.92);
-  box-shadow: 0 14px 30px rgba(9,24,54,.08);
-  padding: 18px;
-  backdrop-filter: blur(6px);
-}
-
-.form label{
-  display: grid;
-  gap: 8px;
-  margin-bottom: 16px;
-  font-weight: 650;
-  color: rgba(11,27,51,.92);
-  letter-spacing: .15px;
-}
-
-.form input,
-.form select,
-.form textarea{
-  border: 1px solid rgba(11,42,111,.12);
-  border-radius: 14px;
-  padding: 14px 16px;
-  outline: none;
-  background: rgba(255,255,255,.85);
-  box-shadow: inset 0 1px 2px rgba(0,0,0,.03);
-  transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
-}
-
-.form input:focus,
-.form select:focus,
-.form textarea:focus{
-  border-color: rgba(11,42,111,.38);
-  box-shadow: 0 0 0 3px rgba(11,42,111,.08);
-  background: #fff;
-}
-.form input::placeholder,
-.form textarea::placeholder{
-  color: rgba(82,96,122,.70);
-  font-weight: 600;
-}
-.form-note{
-  margin-top: 10px;
-  color: var(--muted);
-  font-weight: 650;
-  font-size: .95rem;
-}
-.form-note-sub{
-  display: block;
-  margin-top: 6px;
-  font-weight: 600;
-  opacity: .9;
-}
-
-/* Form status (success/error) */
-.form-status{
-  margin-top: 12px;
-  padding: 12px 14px;
-  border-radius: 14px;
-  border: 1px solid var(--line);
-  font-weight: 900;
-}
-
-.form-status.success{
-  border-color: rgba(20, 140, 80, .25);
-  background: rgba(20, 140, 80, .08);
-  color: #0b3b24;
-}
-
-.form-status.error{
-  border-color: rgba(215, 25, 32, .25);
-  background: rgba(215, 25, 32, .08);
-  color: #5a0b10;
-}
-
-/* ---- Footer ---- */
-.footer{
-  border-top: 1px solid var(--line);
-  background: #fff;
-  padding: 22px 0;
-}
-
-.footer-inner{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  color: var(--muted);
-  font-weight: 900;
-}
-
-.footer-links{
-  display: flex;
-  gap: 14px;
-  flex-wrap: wrap;
-}
-
-.footer-links a{
-  color: var(--navy);
-  font-weight: 1000;
-  opacity: .9;
-}
-
-.footer-links a:hover{ opacity: 1; }
-
-/* ---- Floating WhatsApp ---- */
-.fab{
-  position: fixed;
-  right: 18px;
-  bottom: 92px;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 12px 14px;
-  border-radius: 999px;
-  border: 1px solid rgba(11,42,111,.18);
-  background: #fff;
-  box-shadow: var(--shadow);
-  z-index: 1200;
-  font-weight: 1000;
-}
-.fab:hover{ transform: translateY(-1px); }
-.fab-whatsapp span[aria-hidden="true"]{ font-size: 18px; }
-.fab-label{ color: var(--navy); }
-
-/* ---- Sticky mobile CTA ---- */
-.sticky-cta{
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: none;
-  gap: 10px;
-  padding: 12px;
-  background: rgba(255,255,255,.92);
-  backdrop-filter: blur(10px);
-  border-top: 1px solid var(--line);
-  z-index: 1300;
-}
-
-.sticky-cta-btn{
-  flex: 1;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  padding: 12px 14px;
-  border-radius: 999px;
-  border: 1px solid rgba(11,42,111,.20);
-  background: #fff;
-  color: var(--navy);
-  font-weight: 1000;
-}
-
-.sticky-primary{
-  border-color: transparent;
-  background: var(--red);
-  color: #fff;
-}
-
-@media (max-width: 760px){
-  .sticky-cta{ display: flex; }
-  body{ padding-bottom: 78px; } /* room for sticky bar */
-}
-
-/* ✅ Modal removed completely (defensive) */
-.modal-backdrop,
-.modal,
-.modal-open .modal-backdrop{
-  display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
-}
-
-/* ---- Responsive ---- */
-@media (max-width: 980px){
-  :root{ --headerH: 122px; }
-  .hero-grid{ grid-template-columns: 1fr; }
-  .trust-strip{ grid-template-columns: 1fr; }
-  .usp-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .outcomes-grid{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .cards-3{ grid-template-columns: 1fr; }
-  .two-col{ grid-template-columns: 1fr; }
-  .steps{ grid-template-columns: repeat(2, minmax(0, 1fr)); }
-
-  /* reviews scroller: 2 across on tablet */
-  .review-card{ flex-basis: calc((100% - 14px) / 2); }
-
-  .contact-grid{ grid-template-columns: 1fr; }
-
-  /* header adjustments */
-  .logo{ width: 300px; }
-}
-
-@media (max-width: 760px){
-  :root{ --headerH: 96px; }
-  .container{ width: min(1120px, calc(100% - 32px)); }
-
-  /* Hide nav row 2 on mobile */
-  .topbar-row-2{ display: none; }
-
-  /* Show hamburger */
-  .nav-toggle{ display: inline-flex; }
-
-  .steps{ grid-template-columns: 1fr; }
-  .usp-grid{ grid-template-columns: 1fr; }
-  .outcomes-grid{ grid-template-columns: 1fr; }
-  .footer-inner{ flex-direction: column; align-items: flex-start; }
-
-  /* reviews scroller: 1 big card */
-  .review-card{ flex-basis: 92%; }
-
-  /* Mobile logo still strong */
-  .logo{ width: 240px; }
-}
-
-/* ---- Reduced motion ---- */
-@media (prefers-reduced-motion: reduce){
-  html{ scroll-behavior: auto; }
-  .btn{ transition: none; }
-  .usp-item{ transition: none; }
-  .hero::before{ transform: none; }
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Future Perfect Tuitions | Maths &amp; English for tomorrow</title>
+
+  <meta
+    name="description"
+    content="Give your child confidence, not just worksheets. Concept-driven Maths &amp; English tuition for Years 2–6 and 11+ preparation. Small groups (max 5) and 1-to-1. Rated 5-star by parents on Google."
+  />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://www.futureperfect.education/" />
+
+  <!-- Basic social sharing -->
+  <meta property="og:title" content="Future Perfect Tuitions | Maths &amp; English for tomorrow" />
+  <meta
+    property="og:description"
+    content="Give your child confidence, not just worksheets. Concept-driven Maths &amp; English tuition for Years 2–6 and 11+ preparation. Small groups (max 5) and 1-to-1."
+  />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.futureperfect.education/" />
+  <meta property="og:image" content="https://www.futureperfect.education/assets/fpt-logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
+
+  <!-- ✅ Font (Inter) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/styles.css?v=20260206-2" />
+</head>
+
+<body id="top">
+  <!-- Skip link (accessibility) -->
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- =========================
+       TWO-ROW PREMIUM HEADER
+  ========================= -->
+  <header class="topbar">
+    <!-- ROW 1: logo + actions -->
+    <div class="container topbar-row topbar-row-1">
+      <a class="brand" href="#top" aria-label="Future Perfect Tuitions">
+        <img
+          src="assets/fpt-logo.png"
+          alt="Future Perfect Tuitions"
+          class="logo"
+          width="300"
+          height="80"
+        />
+      </a>
+
+      <div class="topbar-actions">
+        <!-- Existing Students button unchanged -->
+        <a
+          href="https://lessons.futureperfect.education/"
+          class="btn btn-students"
+          target="_blank"
+          rel="noopener"
+        >
+          Existing Students
+        </a>
+
+        <button
+          class="nav-toggle"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="mobile-nav"
+        >
+          ☰
+        </button>
+      </div>
+    </div>
+
+    <!-- ROW 2: navigation -->
+    <div class="container topbar-row topbar-row-2">
+      <nav class="navlinks" aria-label="Primary">
+        <a href="#usp">Approach</a>
+        <a href="#outcomes">Outcomes</a>
+        <a href="#difference">Difference</a>
+        <a href="#tuition">Tuition</a>
+        <a href="#how">Method</a>
+        <a href="#faq">FAQ</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact" class="nav-cta">Enquire</a>
+      </nav>
+    </div>
+
+    <!-- Mobile nav -->
+    <div id="mobile-nav" class="mobile-nav" hidden>
+      <a href="#usp">Approach</a>
+      <a href="#outcomes">Outcomes</a>
+      <a href="#difference">Difference</a>
+      <a href="#tuition">Tuition</a>
+      <a href="#how">Method</a>
+      <a href="#faq">FAQ</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Enquire</a>
+      <a href="https://lessons.futureperfect.education/" target="_blank" rel="noopener"
+        >Existing Students</a
+      >
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <div class="pill">Years 2–6 • 11+ Preparation • Face-to-face or Online</div>
+
+          <h1>Give your child confidence, not just worksheets.</h1>
+
+          <p class="lead">
+            Maths and English lessons that are <strong>structured</strong>,
+            <strong>concept-driven</strong>, and designed to make children <strong>think</strong>,
+            not just complete. Strong foundations built early — for school, for 11+, and beyond.
+          </p>
+
+          <!-- Trust strip -->
+          <div class="trust-strip" aria-label="Key trust points">
+            <div class="trust-item">
+              <div class="trust-icon" aria-hidden="true">⭐</div>
+              <div>
+                <div class="trust-metric" id="trust-rating">5-star</div>
+                <div class="trust-label">Google reviews</div>
+              </div>
+            </div>
+
+            <div class="trust-item">
+              <div class="trust-icon" aria-hidden="true">👥</div>
+              <div>
+                <div class="trust-metric">Max 5</div>
+                <div class="trust-label">per group</div>
+              </div>
+            </div>
+
+            <div class="trust-item">
+              <div class="trust-icon" aria-hidden="true">🧠</div>
+              <div>
+                <div class="trust-metric">Concept-first</div>
+                <div class="trust-label">understanding, not memorising</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-micro">
+            <div class="micro-item">
+              <span class="micro-dot" aria-hidden="true"></span>
+              Parents can sit in and observe the free trial
+            </div>
+
+            <div class="micro-item">
+              <span class="micro-dot" aria-hidden="true"></span>
+              Future Perfect Tuitions, Penrose Avenue, Watford, WD19 5AH • Next to Carpenders Park
+              Overground Station
+            </div>
+          </div>
+        </div>
+
+        <aside class="hero-card" aria-label="Quick info card">
+          <div class="card">
+            <div class="badge-row">
+              <a
+                class="badge badge-link"
+                id="badge-rating"
+                href="#"
+                target="_blank"
+                rel="noopener"
+                aria-label="Read all Google reviews"
+              >
+                ⭐ 5-star Google reviews
+              </a>
+
+              <a
+                class="badge badge-outline badge-link"
+                href="#contact"
+                aria-label="Jump to the enquiry form"
+              >
+                Free trial available
+              </a>
+            </div>
+
+            <h2 class="card-title">See the difference in one lesson</h2>
+
+            <p class="card-text">
+              We invite parents to sit in on a free trial session and see exactly how we teach:
+              focused on understanding, confidence, and steady progress.
+            </p>
+
+            <div class="card-points">
+              <div>✔ Concept-driven teaching</div>
+              <div>✔ Gaps fixed early</div>
+              <div>✔ Revision support built in</div>
+            </div>
+
+            <a href="#contact" class="btn btn-outline btn-full">Enquire</a>
+
+            <div class="mini mini-2">
+              <div class="mini-title">Quick actions</div>
+
+              <div class="mini-actions">
+                <a class="btn btn-outline btn-small" href="tel:+447725443401">Call</a>
+                <a
+                  class="btn btn-outline btn-small"
+                  href="https://www.google.com/maps?q=158+Penrose+Avenue,+Watford,+WD19+5AH"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Directions
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-art" aria-hidden="true"></div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- USP -->
+    <section id="usp" class="section section-usp section-usp-bg">
+      <div class="container">
+        <div class="usp-head">
+          <h2>Our approach</h2>
+          <p class="muted">
+            Not silent repetition. Not endless worksheets. A structured system that builds
+            understanding, confidence, and results.
+          </p>
+        </div>
+
+        <div class="usp-grid">
+          <div class="usp-item">
+            <div class="usp-icon" aria-hidden="true">👥</div>
+            <div class="usp-title">Small batches (max 5)</div>
+            <div class="usp-text">
+              Personal attention, real interaction, and teaching that adapts to the child.
+            </div>
+          </div>
+
+          <div class="usp-item">
+            <div class="usp-icon" aria-hidden="true">🧠</div>
+            <div class="usp-title">Concept-driven teaching</div>
+            <div class="usp-text">
+              We teach the <strong>why</strong> behind answers — clear methods, not rushed shortcuts.
+            </div>
+          </div>
+
+          <div class="usp-item">
+            <div class="usp-icon" aria-hidden="true">🎥</div>
+            <div class="usp-title">Revision video lessons</div>
+            <div class="usp-text">
+              Topic-by-topic support so children can revisit learning and revise at their own pace.
+            </div>
+          </div>
+
+          <div class="usp-item">
+            <div class="usp-icon" aria-hidden="true">📝</div>
+            <div class="usp-title">Homework + answer packs</div>
+            <div class="usp-text">
+              Homework reinforces what was taught — with clear answer support for focused practice.
+            </div>
+          </div>
+
+          <div class="usp-item">
+            <div class="usp-icon" aria-hidden="true">📊</div>
+            <div class="usp-title">Assessments &amp; feedback</div>
+            <div class="usp-text">Regular checkpoints to spot gaps early and keep progress on track.</div>
+          </div>
+
+          <div class="usp-item">
+            <div class="usp-icon" aria-hidden="true">✅</div>
+            <div class="usp-title">Confidence built step-by-step</div>
+            <div class="usp-text">
+              Children feel safe to try, make mistakes, improve, and succeed — consistently.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- OUTCOMES -->
+    <section id="outcomes" class="section section-outcomes">
+      <div class="container">
+        <div class="outcomes-head">
+          <h2>Outcomes</h2>
+          <p class="muted">What your child gains — consistently, across Maths, English, and 11+ readiness.</p>
+        </div>
+
+        <div class="outcomes-grid">
+          <div class="outcome-card">
+            <div class="outcome-top">
+              <div class="outcome-icon" aria-hidden="true">💪</div>
+              <div class="outcome-title">Confidence in Maths &amp; English</div>
+            </div>
+            <div class="outcome-text">Children participate, attempt problems calmly, and stop fearing mistakes.</div>
+          </div>
+
+          <div class="outcome-card">
+            <div class="outcome-top">
+              <div class="outcome-icon" aria-hidden="true">🧱</div>
+              <div class="outcome-title">Strong foundations, not learning gaps</div>
+            </div>
+            <div class="outcome-text">We fix misunderstandings early so progress doesn’t wobble later.</div>
+          </div>
+
+          <div class="outcome-card">
+            <div class="outcome-top">
+              <div class="outcome-icon" aria-hidden="true">🧩</div>
+              <div class="outcome-title">Better reasoning &amp; problem-solving</div>
+            </div>
+            <div class="outcome-text">Children learn to think clearly, choose methods, and explain their answers.</div>
+          </div>
+
+          <div class="outcome-card">
+            <div class="outcome-top">
+              <div class="outcome-icon" aria-hidden="true">📚</div>
+              <div class="outcome-title">Improved reading, writing &amp; comprehension</div>
+            </div>
+            <div class="outcome-text">Stronger understanding, clearer writing, and better exam-style responses.</div>
+          </div>
+
+          <div class="outcome-card">
+            <div class="outcome-top">
+              <div class="outcome-icon" aria-hidden="true">🎯</div>
+              <div class="outcome-title">Accuracy and confidence with numbers</div>
+            </div>
+            <div class="outcome-text">More careful working, fewer careless errors, and stronger fluency.</div>
+          </div>
+
+          <div class="outcome-card">
+            <div class="outcome-top">
+              <div class="outcome-icon" aria-hidden="true">✨</div>
+              <div class="outcome-title">A lasting love for learning</div>
+            </div>
+            <div class="outcome-text">Children feel motivated because they understand — not because they memorise.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIFFERENCE -->
+    <section id="difference" class="section section-diff-bg">
+      <div class="container">
+        <div class="section-head">
+          <h2>Difference</h2>
+          <p>
+            If English and Maths feel boring, they are being taught the wrong way. At Future Perfect
+            Tuitions, children don’t dread learning — <strong>they own it</strong>.
+          </p>
+        </div>
+
+        <div class="cards-3">
+          <article class="info-card">
+            <h3>Strong foundations matter</h3>
+            <p>
+              Doing well at school — and later in exams like the 11+ — relies on strong English and
+              Maths foundations built early.
+            </p>
+          </article>
+
+          <article class="info-card">
+            <h3>Confidence built step-by-step</h3>
+            <p>
+              We build confidence through clear methods, patient teaching, and fixing gaps before
+              they become barriers.
+            </p>
+          </article>
+
+          <article class="info-card">
+            <h3>Think, don’t memorise</h3>
+            <p>
+              Lessons are structured and concept-driven. Children learn the <strong>why</strong>
+              behind answers — not silent repetition.
+            </p>
+          </article>
+        </div>
+
+        <div class="big-quote">
+          <div class="big-quote-inner">
+            <div class="big-quote-text">“Most tutors promise results. We show you how.”</div>
+            <div class="big-quote-sub">
+              Sit in a trial to see how we treat success as a process: thinking clearly, reasoning
+              confidently, and building secure foundations.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TUITION -->
+    <section id="tuition" class="section section-alt">
+      <div class="container">
+        <div class="section-head">
+          <h2>Tuition</h2>
+          <p>Face-to-face or online. Small groups (max 5) or 1-to-1.</p>
+        </div>
+
+        <div class="two-col">
+          <div class="panel">
+            <h3>Years 2 to Year 6</h3>
+            <p class="muted">
+              Foundations built for life: confidence in Maths and English, better reasoning skills,
+              and stronger reading, writing, and comprehension.
+            </p>
+
+            <ul class="ticks">
+              <li>Concept-driven Maths &amp; English</li>
+              <li>Improved problem-solving and reasoning</li>
+              <li>Accuracy and confidence with numbers</li>
+              <li>Enjoyment of learning and steady progress</li>
+            </ul>
+
+            <a href="#contact" class="btn btn-outline">Enquire for Years 2–6</a>
+          </div>
+
+          <div class="panel">
+            <h3>11+ Preparation (Year 4 and Year 5)</h3>
+            <p class="muted">
+              Don’t guess the right 11+ tuition. Experience it. Our approach is focused on
+              understanding, not memorisation.
+            </p>
+
+            <ul class="ticks">
+              <li>English, Maths, Verbal Reasoning and NVR support</li>
+              <li>Clear methods and exam-style practice</li>
+              <li>Confidence built step-by-step</li>
+              <li>Small batches for personal attention</li>
+            </ul>
+
+            <a href="#contact" class="btn btn-outline">Enquire for 11+</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- METHOD -->
+    <section id="how" class="section section-method-bg">
+      <div class="container">
+        <div class="section-head">
+          <h2>Method</h2>
+          <p>It’s not just the lesson — it’s everything around it.</p>
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <h3>Structured lessons</h3>
+            <p>Lessons are organised, concept-driven, and designed to make children think.</p>
+          </div>
+
+          <div class="step">
+            <div class="step-num">2</div>
+            <h3>Revision support built in</h3>
+            <p>Access past lessons for revision at your own pace, and reinforce learning over time.</p>
+          </div>
+
+          <div class="step">
+            <div class="step-num">3</div>
+            <h3>Homework + answer packs</h3>
+            <p>Homework supports what was taught, with clear answer packs to guide practice.</p>
+          </div>
+
+          <div class="step">
+            <div class="step-num">4</div>
+            <h3>Assessments and feedback</h3>
+            <p>Regular checkpoints highlight gaps early and keep progress on track.</p>
+          </div>
+
+          <div class="step">
+            <div class="step-num">5</div>
+            <h3>Confidence, motivation, rewards</h3>
+            <p>A positive environment where children feel safe to try, improve, and succeed.</p>
+          </div>
+
+          <div class="step">
+            <div class="step-num">6</div>
+            <h3>Parents can see the difference</h3>
+            <p>We invite parents to sit in on a free trial and watch how growth happens.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section section-alt section-faq-bg">
+      <div class="container">
+        <div class="section-head">
+          <h2>FAQ</h2>
+          <p class="muted">Quick answers to the most common questions parents ask us.</p>
+        </div>
+
+        <div class="faq">
+          <details class="faq-item">
+            <summary>
+              What happens in a free trial lesson?
+              <span class="plus" aria-hidden="true">+</span>
+            </summary>
+
+            <div class="faq-body">
+              <p>
+                Your child takes part in a real lesson, not a demonstration, so you can see exactly
+                how we teach and how we build understanding step by step. We begin by helping your
+                child feel comfortable, then move quickly into carefully chosen questions that show
+                us how they think, what they already know, and where they may need support.
+              </p>
+
+              <p>
+                During the lesson, we explain concepts clearly, ask plenty of questions, and guide
+                your child to work things out for themselves. This helps build both confidence and
+                accuracy, so you can see the difference in their understanding and approach.
+              </p>
+
+              <p>
+                Parents are very welcome to sit in and observe. By the end of the session, you will
+                have a clear sense of our teaching style, your child’s current level, and whether
+                our approach feels like the right fit.
+              </p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              How are groups formed?
+              <span class="plus" aria-hidden="true">+</span>
+            </summary>
+
+            <div class="faq-body">
+              <p>
+                Our groups are small, with a maximum of five children, so every child receives
+                personal attention and regular interaction with the teacher. This allows us to spot
+                gaps quickly, adjust explanations, and make sure no one is left behind.
+              </p>
+
+              <p>
+                Children are placed according to their ability, pace, and learning needs, not just
+                their school year. This means they work alongside others at a similar level, which
+                builds confidence, encourages participation, and creates a comfortable learning
+                environment.
+              </p>
+
+              <p>
+                Our aim is always to find the right fit, so each child feels challenged, supported,
+                and able to make steady progress.
+              </p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              Do you give homework?
+              <span class="plus" aria-hidden="true">+</span>
+            </summary>
+
+            <div class="faq-body">
+              <p>
+                Yes. We set homework after each lesson to reinforce the key ideas that were taught,
+                so learning continues beyond the session. Tasks are carefully chosen to practise
+                the exact skills your child has just learned, rather than large amounts of
+                repetitive work.
+              </p>
+
+              <p>
+                Homework comes with clear answer support, so practice stays focused, efficient, and
+                frustration-free. This allows children to check their understanding, correct
+                mistakes quickly, and build confidence before the next lesson.
+              </p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              Can we revise past topics?
+              <span class="plus" aria-hidden="true">+</span>
+            </summary>
+
+            <div class="faq-body">
+              <p>
+                Yes. Revision is built into our teaching, so students regularly revisit earlier
+                topics to keep their knowledge secure. We spiral back to key ideas in later lessons,
+                helping children strengthen weaker areas and connect new learning to what they
+                already know.
+              </p>
+
+              <p>
+                If a child needs extra support with a particular topic, we can focus on that area
+                so they feel more confident and prepared. This approach is especially helpful
+                before school tests, assessments, or entrance exams, as it ensures understanding is
+                solid rather than rushed.
+              </p>
+
+              <p>
+                Future Perfect students also have each lesson stored in their drive, along with
+                digital copies of worksheets and homework. This means they can revisit any topic at
+                any time, even months later.
+              </p>
+
+              <p>
+                In the older years, many lessons also include videos of the exact same sessions, so
+                students can review explanations and stay sharp in Maths.
+              </p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              Do you offer online lessons?
+              <span class="plus" aria-hidden="true">+</span>
+            </summary>
+
+            <div class="faq-body">
+              <p>
+                Yes. We offer both face-to-face and online lessons, depending on what suits your
+                family best. The same concept-driven approach is used in both formats, so the
+                quality of teaching and level of support remain consistent.
+              </p>
+
+              <p>
+                Our online lessons are fully interactive, with live explanations, shared work, and
+                regular questioning, just like in the classroom. Children stay engaged, participate
+                actively, and receive the same clear guidance and personal attention.
+              </p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>
+              What year groups do you teach?
+              <span class="plus" aria-hidden="true">+</span>
+            </summary>
+
+            <div class="faq-body">
+              <p>
+                We support children from Year 2 to Year 6 in both Maths and English, helping them
+                build strong foundations, improve confidence, and stay ahead at school.
+              </p>
+
+              <p>
+                We also offer 11+ preparation for Year 4 and Year 5 students. This includes
+                targeted teaching in Maths, English, Verbal Reasoning (VR), and Non-Verbal Reasoning
+                (NVR), with a focus on the skills, speed, and exam technique needed for selective
+                school tests.
+              </p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section id="reviews" class="section reviews">
+      <div class="container">
+        <div class="reviews-head">
+          <div>
+            <h2>Reviews</h2>
+            <p class="muted"><span id="review-meta">Selected excerpts from Google Reviews.</span></p>
+          </div>
+
+          <a class="link" id="reviews-link" href="#" target="_blank" rel="noopener"
+            >View all Google reviews →</a
+          >
+        </div>
+
+        <div class="reviews-scroller" aria-label="Scrollable review excerpts">
+          <button class="scroll-btn scroll-btn-left" type="button" aria-label="Scroll reviews left">
+            ‹
+          </button>
+          <div id="reviews-container" class="reviews-grid"></div>
+          <button class="scroll-btn scroll-btn-right" type="button" aria-label="Scroll reviews right">
+            ›
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section section-contact-bg">
+      <div class="container">
+        <div class="contact-grid">
+          <div>
+            <h2>Enquire now</h2>
+            <p class="lead">
+              Tell us your child’s year group and what support you’re looking for. We’ll recommend
+              the best next step.
+            </p>
+
+            <div class="contact-points">
+              <div>✔ Years 2–6 (Maths &amp; English)</div>
+              <div>✔ 11+ (English, Maths, Verbal Reasoning, NVR)</div>
+              <div>✔ Online or face-to-face</div>
+            </div>
+
+            <div class="callout">
+              <div class="callout-title">Prefer a call?</div>
+              <div class="callout-text">
+                <strong>Barkha and Sej:</strong>
+                <a class="link" href="tel:+447725443401">07725 443401</a>
+              </div>
+            </div>
+
+            <div class="contact-mini">
+              <div class="contact-mini-row">
+                <strong>Location:</strong> Future Perfect Tuitions, Penrose Avenue, Watford, WD19
+                5AH • Next to Carpenders Park Overground Station.
+              </div>
+
+              <div class="contact-mini-row">
+                <a
+                  class="link"
+                  target="_blank"
+                  rel="noopener"
+                  href="https://www.google.com/maps?q=158+Penrose+Avenue,+Watford,+WD19+5AH"
+                >
+                  Open in Google Maps →
+                </a>
+              </div>
+            </div>
+
+            <div class="map-embed" aria-label="Map showing the location of Future Perfect Tuitions">
+              <iframe
+                src="https://www.google.com/maps?q=158+Penrose+Avenue,+Watford,+WD19+5AH&amp;output=embed"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+
+          <form id="enquiry-form" class="form" method="post" action="https://api.web3forms.com/submit">
+            <input type="hidden" name="access_key" value="e78ceb49-e34b-43b3-840c-a01217005ae9" />
+            <input type="hidden" name="subject" value="New enquiry from futureperfect.education" />
+            <input type="hidden" name="from_name" value="Future Perfect Website" />
+
+            <!-- Honeypot -->
+            <input
+              type="checkbox"
+              name="botcheck"
+              class="hidden"
+              style="display:none"
+              tabindex="-1"
+              autocomplete="off"
+            />
+
+            <label>
+              Parent/Guardian name
+              <input name="name" required autocomplete="name" placeholder="Your name" />
+            </label>
+
+            <label>
+              Email
+              <input name="email" type="email" required autocomplete="email" placeholder="you@example.com" />
+            </label>
+
+            <label>
+              Child’s year group
+              <input name="year" required placeholder="e.g. Year 3 / Year 5 (11+)" />
+            </label>
+
+            <label>
+              Tuition type
+              <select name="tuition_type" required>
+                <option value="" selected disabled>Select…</option>
+                <option>Years 2–6 (Maths &amp; English)</option>
+                <option>11+ (English, Maths, VR, NVR)</option>
+                <option>Not sure yet</option>
+              </select>
+            </label>
+
+            <label>
+              Online or face-to-face?
+              <select name="mode" required>
+                <option value="" selected disabled>Select…</option>
+                <option>Face-to-face</option>
+                <option>Online</option>
+                <option>Either</option>
+              </select>
+            </label>
+
+            <label>
+              Message
+              <textarea
+                name="message"
+                rows="5"
+                required
+                placeholder="Tell us what your child needs help with…"
+              ></textarea>
+            </label>
+
+            <button class="btn btn-primary btn-full" type="submit" id="enquiry-submit">Send enquiry</button>
+
+            <div class="form-note">
+              We’ll reply as soon as possible.
+              <span class="form-note-sub">Tip: include your child’s school (optional) and any specific subject needs.</span>
+            </div>
+
+            <div id="form-status" class="form-status" role="status" aria-live="polite" hidden></div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <div class="footer-brand">© Future Perfect Tuitions</div>
+        <div class="footer-sub">Penrose Avenue, Watford, WD19 5AH</div>
+        <div class="footer-sub">Years 2–6 • 11+ Preparation</div>
+        <div class="footer-sub"><a href="tel:+447725443401">07725 443401</a></div>
+      </div>
+
+      <div class="footer-links">
+        <a href="#usp">Approach</a>
+        <a href="#outcomes">Outcomes</a>
+        <a href="#difference">Difference</a>
+        <a href="#tuition">Tuition</a>
+        <a href="#how">Method</a>
+        <a href="#faq">FAQ</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact">Enquire</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp -->
+  <a
+    class="fab fab-whatsapp"
+    href="https://wa.me/447725443401?text=Hi%20Future%20Perfect%20Tuitions%2C%20I%27d%20like%20to%20enquire%20about%20a%20free%20trial%20lesson."
+    target="_blank"
+    rel="noopener"
+    aria-label="Chat on WhatsApp"
+  >
+    <span aria-hidden="true">💬</span>
+    <span class="fab-label">WhatsApp</span>
+  </a>
+
+  <!-- Sticky mobile CTA bar -->
+  <div class="sticky-cta" role="region" aria-label="Quick actions">
+    <a class="sticky-cta-btn sticky-primary" href="#contact">Enquire</a>
+    <a class="sticky-cta-btn" href="tel:+447725443401">Call</a>
+  </div>
+
+  <script>
+    // ============================
+    // Mobile nav toggle
+    // ============================
+    const toggle = document.querySelector(".nav-toggle");
+    const mobileNav = document.getElementById("mobile-nav");
+
+    function closeMobileNav() {
+      if (!toggle || !mobileNav) return;
+      toggle.setAttribute("aria-expanded", "false");
+      mobileNav.hidden = true;
+    }
+
+    function openMobileNav() {
+      if (!toggle || !mobileNav) return;
+      toggle.setAttribute("aria-expanded", "true");
+      mobileNav.hidden = false;
+    }
+
+    if (toggle && mobileNav) {
+      toggle.addEventListener("click", () => {
+        const expanded = toggle.getAttribute("aria-expanded") === "true";
+        expanded ? closeMobileNav() : openMobileNav();
+      });
+
+      mobileNav.addEventListener("click", (e) => {
+        const t = e.target;
+        if (t && t.tagName === "A") closeMobileNav();
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeMobileNav();
+      });
+
+      document.addEventListener("click", (e) => {
+        if (mobileNav.hidden) return;
+        const within = mobileNav.contains(e.target) || toggle.contains(e.target);
+        if (!within) closeMobileNav();
+      });
+
+      window.addEventListener("resize", () => {
+        if (window.innerWidth > 760) closeMobileNav();
+      });
+    }
+
+    // ============================
+    // Smooth scroll + focus when clicking #contact links
+    // ============================
+    document.querySelectorAll('a[href="#contact"]').forEach((link) => {
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+        const section = document.getElementById("contact");
+        const form = document.getElementById("enquiry-form");
+        if (!section) return;
+
+        section.scrollIntoView({ behavior: "smooth", block: "start" });
+
+        setTimeout(() => {
+          const firstInput = form?.querySelector("input, textarea, select");
+          if (firstInput) firstInput.focus();
+        }, 500);
+      });
+    });
+
+    // ============================
+    // Reviews + meta + schema
+    // ============================
+    const starRow = (n) =>
+      "★".repeat(Math.max(0, Math.min(5, n || 0))) + "☆".repeat(Math.max(0, 5 - (n || 0)));
+
+    const initialsOf = (name = "") => {
+      const parts = name.trim().split(/\s+/).filter(Boolean);
+      const a = parts[0]?.[0] || "";
+      const b = parts.length > 1 ? parts[parts.length - 1][0] : "";
+      return (a + b).toUpperCase();
+    };
+
+    const injectLD = (obj) => {
+      const s = document.createElement("script");
+      s.type = "application/ld+json";
+      s.textContent = JSON.stringify(obj);
+      document.head.appendChild(s);
+    };
+
+    fetch("reviews.json")
+      .then((res) => res.json())
+      .then((data) => {
+        const container = document.getElementById("reviews-container");
+        const link = document.getElementById("reviews-link");
+        const meta = document.getElementById("review-meta");
+        const badge = document.getElementById("badge-rating");
+        const trust = document.getElementById("trust-rating");
+
+        const reviews = Array.isArray(data?.reviews) ? data.reviews : [];
+        const reviewCount = Number(data?.source?.reviewCount) || reviews.length || 0;
+
+        const avgRating = reviews.length
+          ? reviews.reduce((sum, r) => sum + (Number(r.rating) || 0), 0) / reviews.length
+          : null;
+
+        const ratingValueFromSource = data?.source?.ratingValue ? Number(data.source.ratingValue) : null;
+        const ratingValue =
+          ratingValueFromSource && ratingValueFromSource > 0
+            ? ratingValueFromSource
+            : avgRating
+              ? Math.round(avgRating * 10) / 10
+              : null;
+
+        const ratingLabel = ratingValue ? `${ratingValue.toFixed(1)}` : "5-star";
+
+        if (data?.source?.url && link) link.href = data.source.url;
+        if (data?.source?.url && badge) badge.href = data.source.url;
+
+        if (meta) meta.textContent = "Selected excerpts from Google Reviews.";
+        if (badge) badge.textContent = ratingValue ? `⭐ Rated ${ratingLabel} on Google` : "⭐ 5-star Google reviews";
+        if (trust) trust.textContent = ratingValue ? ratingLabel : "5-star";
+
+        if (container) container.innerHTML = "";
+
+        reviews.forEach((r) => {
+          const name = r.author || "Parent";
+          const card = document.createElement("div");
+          card.className = "review-card";
+          card.innerHTML = `
+            <div class="review-top">
+              <div class="avatar" aria-hidden="true">${initialsOf(name)}</div>
+              <div class="review-top-right">
+                <div class="review-author">${name}</div>
+                <div class="review-stars" aria-label="${r.rating || 5} out of 5 stars">${starRow(r.rating || 5)}</div>
+              </div>
+            </div>
+            <p class="review-text">“${(r.text || "").trim()}”</p>
+          `;
+          container && container.appendChild(card);
+        });
+
+        // LocalBusiness schema (with address)
+        const localBusiness = {
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          name: "Future Perfect Tuitions",
+          url: "https://www.futureperfect.education/",
+          telephone: "+447725443401",
+          email: "barkha@futureperfect.education",
+          image: "https://www.futureperfect.education/assets/fpt-logo.png",
+          priceRange: "££",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress: "Future Perfect Tuitions, Penrose Avenue",
+            addressLocality: "Watford",
+            addressRegion: "Hertfordshire",
+            postalCode: "WD19 5AH",
+            addressCountry: "GB",
+          },
+          areaServed: ["Watford", "Hertfordshire", "North West London"],
+          description:
+            "Concept-driven Maths & English tuition for Years 2–6 and 11+ preparation. Small groups (max 5) and 1-to-1.",
+        };
+
+        if (ratingValue && reviewCount) {
+          localBusiness.aggregateRating = {
+            "@type": "AggregateRating",
+            ratingValue: String(ratingValue),
+            reviewCount: String(reviewCount),
+          };
+        }
+
+        // FAQPage schema (matches on-page FAQs)
+        const faqPage = {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: [
+            {
+              "@type": "Question",
+              name: "What happens in a free trial lesson?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "We teach a real lesson (not a demo) so you can see our style and how we build understanding. Parents are welcome to sit in and observe.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "How are groups formed?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "We keep groups small (max 5) and align children by ability and learning needs, not just by year group.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Do you give homework?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Yes. Homework is set to reinforce what was taught, with clear answer support to keep practice focused and efficient.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Can we revise past topics?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Yes — revision support is built in, and students can revisit learning to strengthen weaker areas and prepare for tests/exams.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Do you offer online lessons?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Yes. We offer face-to-face and online. The same concept-driven approach is used in both formats.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "What year groups do you teach?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "We support Years 2–6 for Maths and English, and 11+ preparation (Year 4 and Year 5), including Maths, English, VR and NVR.",
+              },
+            },
+          ],
+        };
+
+        injectLD(localBusiness);
+        injectLD(faqPage);
+      })
+      .catch(() => {
+        const container = document.getElementById("reviews-container");
+        if (container) {
+          container.innerHTML = `
+            <div class="review-card">
+              <div class="review-stars">★★★★★</div>
+              <p class="review-text">“Parents consistently recommend Future Perfect Tuitions.”</p>
+              <div class="review-author">— Future Perfect Tuitions</div>
+            </div>
+          `;
+        }
+      });
+
+    // ============================
+    // Reviews scroller arrows + fades
+    // ============================
+    (function () {
+      const wrap = document.querySelector(".reviews-scroller");
+      const scroller = document.getElementById("reviews-container");
+      const btnL = document.querySelector(".scroll-btn-left");
+      const btnR = document.querySelector(".scroll-btn-right");
+      if (!wrap || !scroller || !btnL || !btnR) return;
+
+      const step = () => Math.max(260, Math.floor(scroller.clientWidth * 0.85));
+
+      const update = () => {
+        const max = scroller.scrollWidth - scroller.clientWidth;
+        const x = scroller.scrollLeft;
+        const hasLeft = x > 6;
+        const hasRight = x < max - 6;
+        wrap.classList.toggle("has-left", hasLeft);
+        wrap.classList.toggle("has-right", hasRight);
+        btnL.disabled = !hasLeft;
+        btnR.disabled = !hasRight;
+      };
+
+      btnL.addEventListener("click", () => scroller.scrollBy({ left: -step(), behavior: "smooth" }));
+      btnR.addEventListener("click", () => scroller.scrollBy({ left: step(), behavior: "smooth" }));
+      scroller.addEventListener("scroll", () => requestAnimationFrame(update));
+      window.addEventListener("resize", () => requestAnimationFrame(update));
+
+      // initial
+      setTimeout(update, 200);
+    })();
+
+    // ============================
+    // Web3Forms AJAX submit + success/error message
+    // ============================
+    (function () {
+      const form = document.getElementById("enquiry-form");
+      if (!form) return;
+
+      const statusEl = document.getElementById("form-status");
+      const submitBtn = document.getElementById("enquiry-submit");
+
+      const setStatus = (type, html) => {
+        if (!statusEl) return;
+        statusEl.hidden = false;
+        statusEl.classList.remove("success", "error");
+        if (type) statusEl.classList.add(type);
+        statusEl.innerHTML = html;
+      };
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        if (statusEl) {
+          statusEl.hidden = true;
+          statusEl.classList.remove("success", "error");
+          statusEl.textContent = "";
+        }
+
+        const originalBtnText = submitBtn ? submitBtn.textContent : "";
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.textContent = "Sending…";
+        }
+
+        try {
+          const formData = new FormData(form);
+          const res = await fetch(form.action, {
+            method: "POST",
+            body: formData,
+            headers: { Accept: "application/json" },
+          });
+
+          const data = await res.json().catch(() => ({}));
+
+          if (res.ok && (data.success === true || data.message === "Email sent successfully")) {
+            setStatus(
+              "success",
+              `✅ <strong>Thanks!</strong> Your enquiry has been sent.<br />
+              We’ll reply as soon as possible. If it’s urgent, call
+              <a class="link" href="tel:+447725443401">07725 443401</a>.`
+            );
+            form.reset();
+          } else {
+            setStatus(
+              "error",
+              `⚠️ <strong>Sorry — something went wrong.</strong><br />
+              Please try again, or email
+              <a class="link" href="mailto:barkha@futureperfect.education">barkha@futureperfect.education</a>.`
+            );
+          }
+        } catch (err) {
+          setStatus(
+            "error",
+            `⚠️ <strong>Couldn’t send your enquiry.</strong><br />
+            Please check your connection and try again, or email
+            <a class="link" href="mailto:barkha@futureperfect.education">barkha@futureperfect.education</a>.`
+          );
+        } finally {
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalBtnText || "Send enquiry";
+          }
+        }
+      });
+    })();
+
+    // ============================
+    // (2) Hero parallax (subtle)
+    // ============================
+    (function () {
+      const hero = document.querySelector(".hero");
+      if (!hero) return;
+
+      const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (reduce) return;
+
+      let raf = null;
+      const strength = 10;
+
+      function onMove(e) {
+        const rect = hero.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width;
+        const y = (e.clientY - rect.top) / rect.height;
+
+        const px = (x - 0.5) * strength;
+        const py = (y - 0.5) * strength;
+
+        if (raf) cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(() => {
+          document.documentElement.style.setProperty("--heroPx", px.toFixed(2) + "px");
+          document.documentElement.style.setProperty("--heroPy", py.toFixed(2) + "px");
+        });
+      }
+
+      hero.addEventListener("mousemove", onMove);
+      hero.addEventListener("mouseleave", () => {
+        document.documentElement.style.setProperty("--heroPx", "0px");
+        document.documentElement.style.setProperty("--heroPy", "0px");
+      });
+    })();
+
+    // ============================
+    // FAQ: auto-scroll opened item into view
+    // ============================
+    (function () {
+      const faq = document.querySelector("#faq");
+      if (!faq) return;
+
+      const prefersReduce =
+        window.matchMedia &&
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      const getHeaderHeight = () => {
+        const topbar = document.querySelector(".topbar");
+        if (!topbar) return 130;
+        return Math.ceil(topbar.getBoundingClientRect().height);
+      };
+
+      faq.querySelectorAll("details.faq-item").forEach((d) => {
+        d.addEventListener("toggle", () => {
+          if (!d.open) return;
+
+          requestAnimationFrame(() => {
+            const summary = d.querySelector("summary") || d;
+            const rect = summary.getBoundingClientRect();
+            const topY = rect.top + window.scrollY;
+
+            const offset = getHeaderHeight() + 32;
+
+            window.scrollTo({
+              top: Math.max(0, topY - offset),
+              behavior: prefersReduce ? "auto" : "smooth",
+            });
+          });
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
