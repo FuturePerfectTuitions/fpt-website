@@ -24,6 +24,23 @@ body{
   -moz-osx-font-smoothing: grayscale;
 }
 
+.airmail-divider{
+  height: 4px;
+  width: 100%;
+  background: repeating-linear-gradient(
+    90deg,
+    #e63946,
+    #e63946 14px,
+    #ffffff 14px,
+    #ffffff 28px,
+    #1d4ed8 28px,
+    #1d4ed8 42px,
+    #ffffff 42px,
+    #ffffff 56px
+  );
+  opacity: .35;
+}
+
 h1, h2, h3, .section-head h2, .usp-title, .outcome-title, .card-title{
   font-family: Poppins, Inter, sans-serif;
   font-weight: 600;
@@ -1386,7 +1403,20 @@ strong{ font-weight: 650; }
 /* ---- Footer ---- */
 .footer{
   border-top: 1px solid var(--line);
-  background: #fff;
+  background:
+    linear-gradient(#fff,#fff) padding-box,
+    repeating-linear-gradient(
+      90deg,
+      #e63946,
+      #e63946 12px,
+      #ffffff 12px,
+      #ffffff 24px,
+      #1d4ed8 24px,
+      #1d4ed8 36px,
+      #ffffff 36px,
+      #ffffff 48px
+    ) border-box;
+  border-top: 6px solid transparent;
   padding: 22px 0;
 }
 
